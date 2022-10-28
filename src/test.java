@@ -4,10 +4,10 @@ public class test {
 //		DSNhanVien ds = new DSNhanVien();
 //		ds.Tao();
 //		ds.Xuat();
-	
-	
-		Date d = new Date();
-		d.setFullDay();
-		System.out.println(d.XuatNgay());
+
+		
+	 SanPham sp = new SanPham();
+	 sp.Tao();
+	 sp.Xuat();
 	}
 }
