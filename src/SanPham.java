@@ -3,29 +3,32 @@ import java.util.Scanner;
 
 public class SanPham {
 	static Scanner sc = new Scanner(System.in);
-	private static int id = 0;
+	private String id;
+	private static int stt = 1000;
 	private String ten, moTa, mau, kichCo;
 	private float gia;
-	private int nhaCC_id; 
-	private Date ngaySanXuat = new Date();
-	
+	private String ncc_id; 
+	private Date ngayRaMat = new Date(); 
+	private String donViTinh;
+	private static float soLuong = 0 ;
 	public SanPham() {
+		
 	}
-	public SanPham(int id, String ten, String moTa, String mau, String kichCo, float gia, int nhaCC_id) {
-		super();
+	public SanPham(String id, String ten, String moTa, String mau, String kichCo, float gia, String ncc_id) {
 		this.id = id;
 		this.ten = ten;
 		this.moTa = moTa;
 		this.mau = mau;
 		this.kichCo = kichCo;
 		this.gia = gia;
-		this.nhaCC_id = nhaCC_id;
+		this.ncc_id = ncc_id;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	public void setId() {
-		this.id = ++id;
+		
+		this.id = "SP" + ++stt;
 	}
 	public String getTen() {
 		return ten;
@@ -63,13 +66,14 @@ public class SanPham {
 	public void setNhaCC_id(int nhaCC_id) {
 		this.nhaCC_id = nhaCC_id;
 	}
-	public Date getNgaySanXuat() {
-		return ngaySanXuat;
-	}
-	public void setNgaySanXuat(Date ngaySanXuat) {
-		this.ngaySanXuat = ngaySanXuat;
-	}
 	
+	
+	public Date getNgayRaMat() {
+		return ngayRaMat;
+	}
+	public void setNgayRaMat() {
+		this.ngayRaMat.setTime();
+	}
 	public void Tao() {
 		setId();
 		System.out.println("Moi nhap ten san pham:");
@@ -80,7 +84,7 @@ public class SanPham {
         setKichCo(sc.nextLine());
         System.out.println("Moi nhap mo ta:");
         setMoTa(sc.nextLine());
-        ngaySanXuat.setTime();
+        setNgayRaMat();
 	}
 	
 	
@@ -88,7 +92,7 @@ public class SanPham {
 	@Override
 	public String toString() {
 		return "SanPham [id=" + id + ", ten=" + ten + ", moTa=" + moTa + ", mau=" + mau + ", kichCo=" + kichCo
-				+ ", gia=" + gia + ", nhaCC_id=" + nhaCC_id + ", ngaySanXuat=" + ngaySanXuat + "]";
+				+ ", gia=" + gia + ", nhaCC_id=" + nhaCC_id + ", ngayRaMat=" + ngayRaMat + "]";
 	}
 	public void Xuat() {
 		System.out.println(toString());

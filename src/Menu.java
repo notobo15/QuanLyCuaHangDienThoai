@@ -11,18 +11,26 @@ public class Menu {
 	       
 	        int select = 0;
 	        do {
-	            System.out.println("||===================== MENU ===================||");
-	            System.out.println("||1. Chon cac thao tac nhan vien quan ly\t||");
-	            System.out.println("||2. Chon cac thao tac nhan vien thu ngan\t||");
-	            System.out.println("||3. Chon cac thao tac nhan vien ban hang\t||");
-	            System.out.println("||4. Chon cac thao tac khach hang\t\t||");
-	            System.out.println("||5. Chon cac thao tac nha cung cap\t\t||");
-	            System.out.println("||6. Chon cac thao tac san pham\t\t\t||");
-	            System.out.println("||7. Chon cac thao tac don hang\t\t\t||");
-	            System.out.println("||8. Thong ke\t\t\t\t\t||");
-	            System.out.println("||0. Thoat chuong trinh\t\t\t\t||");
-	            System.out.println("||==============================================||");
-	            System.out.print("Nhap lua chon: ");
+	            System.out.println("+---+--------------- MENU -----------------+");
+	            System.out.println("| 1 | Chon cac thao tac nhan vien quan ly  |");
+	            System.out.println("+---+--------------------------------------+");
+	            System.out.println("| 2 | Chon cac thao tac nhan vien thu ngan |");
+	            System.out.println("+---+--------------------------------------+");
+	            System.out.println("| 3 | Chon cac thao tac nhan vien ban hang |");
+	            System.out.println("+---+--------------------------------------+");
+	            System.out.println("| 4 | Chon cac thao tac khach hang         |");
+	            System.out.println("+---+--------------------------------------+");
+	            System.out.println("| 5 | Chon cac thao tac nha cung cap       |");
+	            System.out.println("+---+--------------------------------------+");
+	            System.out.println("| 6 | Chon cac thao tac san pham           |");
+	            System.out.println("+---+--------------------------------------+");
+	            System.out.println("| 7 | Chon cac thao tac don hang           |");
+	            System.out.println("+---+--------------------------------------+");
+	            System.out.println("| 8 | Thong ke                             |");
+	            System.out.println("+---+--------------------------------------+");
+	            System.out.println("| 0 | Thoat chuong trinh                   |");
+	            System.out.println("+---+--------------------------------------+");
+	            System.out.print("Vui long chon: ");
 	            select = sc.nextInt();
 	            switch (select) {
 	                case 1: {

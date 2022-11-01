@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
-public class ConNguoi {
-	private int id;
-	private String hoVaTen;
-	private String diaChi;
-	private String gioiTinh;
+public abstract class ConNguoi {
 	static Scanner sc = new Scanner(System.in);
+
+	private int id;
+	private String hoVaTen, diaChi, gioiTinh, email, sdt;
 	private  Date ngaySinh = new Date();
 	public ConNguoi() {
 	}

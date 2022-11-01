@@ -2,5 +2,10 @@
 public interface ThaoTac {
 	public void Tao();
 	public void Xuat();
-	void XuatMenu();
+	public void XuatMenu();
+	//public void Sua();
+	//public void TimKiem();
+	//public void DocFile();
+	//public void GhiFile();
+	
 }

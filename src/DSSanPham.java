@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,8 +21,7 @@ public class DSSanPham implements ThaoTac {
             System.out.println("Them nhan vien thanh cong");
         }
         size += sl;
-		
-        GhiFileJava();
+        GhiFile();
 	}
 
 	@Override
@@ -73,7 +74,7 @@ public class DSSanPham implements ThaoTac {
     }
     
     
-    public void GhiFileJava() {
+    public void GhiFile() {
         try {
             FileWriter fw = new FileWriter("database/DSSanPham.txt", false);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -88,6 +89,41 @@ public class DSSanPham implements ThaoTac {
             bw.close();
         } catch (IOException e) {
         }
+    }
+    
+    public void DocFile() {
+        int i = 0;
+        try {
+            FileReader fr = new FileReader("database/DSSanPham.txt");
+            BufferedReader br = new BufferedReader(fr);
+            try {
+                String line = "";
+                while (true) {
+                    line = br.readLine();
+                    if (line == null) {
+                        break;
+                    }
+                    String txt[] = line.split("\\|");
+                    String id = txt[0];
+                    String fullName = txt[1];
+                    String gender = txt[2];
+                    int age = Integer.parseInt(txt[3]);
+                    String phongBan = "Phong Dev";
+                    String chucVu = "Coder";
+                    double luongcoban = 1500000;
+                    double heSoLuong = Double.parseDouble(txt[4]);
+                    double gioLamThem = Double.parseDouble(txt[5]);
+                    //sp[i] = new SanPham(id, fullName, gender);
+                    i++;
+                }
+            } finally {
+                size = i;
+                br.close();
+            }
+
+        } catch (Exception e) {
+        }
+
     }
 	
 }
