@@ -3,21 +3,29 @@ import java.util.Scanner;
 public abstract class ConNguoi {
 	static Scanner sc = new Scanner(System.in);
 
-	private int id;
-	private String hoVaTen, diaChi, gioiTinh, email, sdt;
-	private  Date ngaySinh = new Date();
+	protected String id;
+	protected String hoVaTen;
+
+	protected String diaChi;
+
+	protected String gioiTinh;
+
+	protected String email;
+
+	protected String sdt;
+	protected  Date ngaySinh = new Date();
 	public ConNguoi() {
 	}
-	public ConNguoi(int id, String hoVaTen, String diaChi, String gioiTinh) {
+	public ConNguoi(String id, String hoVaTen, String diaChi, String gioiTinh) {
 		this.id = id;
 		this.hoVaTen = hoVaTen;
 		this.diaChi = diaChi;
 		this.gioiTinh = gioiTinh;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId() {
 		this.id = id;
 	}
 	public String getHoVaTen() {
@@ -55,20 +63,11 @@ public abstract class ConNguoi {
 	}
 	@Override
     public String toString() { 
-        return  "hoTen=" + hoVaTen + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi  + ngaySinh.toString();
+        return "id: "+ id + "; hoTen: " + hoVaTen + "; gioiTinh: " + gioiTinh + "; diaChi: " +diaChi+"; "  + ngaySinh.toString();
     }
-     public void nhap(){
-         System.out.println("Moi nhap ho ten:");
-         setHoVaTen(sc.nextLine());
-         System.out.println("Moi nhap gioi tinh:");
-         setGioiTinh(sc.nextLine());
-         System.out.println("Moi nhap dia chi:");
-         diaChi=sc.nextLine();
-         System.out.println("Moi nhap ngay sinh:");
-         ngaySinh.setTime();
-     }
+     public abstract void nhap();
      public void xuat(){
-         System.out.println(toString());
+         System.out.print(toString());
      }
 	
 }

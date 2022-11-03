@@ -8,11 +8,12 @@ public class Menu {
 	        
 	        
 	        DSSanPham dssp = new DSSanPham();
+	        DSNhanVien nv = new DSNhanVien();
 	       
 	        int select = 0;
 	        do {
 	            System.out.println("+---+--------------- MENU -----------------+");
-	            System.out.println("| 1 | Chon cac thao tac nhan vien quan ly  |");
+	            System.out.println("| 1 | Chon cac thao tac nhan vien          |");
 	            System.out.println("+---+--------------------------------------+");
 	            System.out.println("| 2 | Chon cac thao tac nhan vien thu ngan |");
 	            System.out.println("+---+--------------------------------------+");
@@ -34,7 +35,7 @@ public class Menu {
 	            select = sc.nextInt();
 	            switch (select) {
 	                case 1: {
-	                	
+	                	nv.XuatMenu();
 	                    break;
 	                }
 	                case 2: {
@@ -47,6 +48,7 @@ public class Menu {
 	                    break;
 	                }
 	                case 5:
+	                	
 	                    break;
 	                case 6:
 	                	dssp.XuatMenu();

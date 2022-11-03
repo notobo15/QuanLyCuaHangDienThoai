@@ -52,6 +52,7 @@ public class DSSanPham implements ThaoTac {
                 }
 
                 case 2:
+                	DocFile();
                     Xuat();
                     break;
                 case 3:
@@ -125,5 +126,11 @@ public class DSSanPham implements ThaoTac {
         }
 
     }
+
+	@Override
+	public void Xoa() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
