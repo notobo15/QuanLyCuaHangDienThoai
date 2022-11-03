@@ -5,8 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
-
-import java.io.FileReader;
 public class DSNhanVien implements ThaoTac{
 	private static int size = 0;
 	public NhanVien[] nv = new NhanVien[1000];
@@ -48,7 +46,8 @@ public class DSNhanVien implements ThaoTac{
 
 	@Override
 	public void Xuat() {
-		DocFile();
+		System.out.println("ID\tHO VA TEN\t\t\tGIOI TINH\tDIA CHI\t\tNGAY SINH\tCHUC VU\t\tLUONG");
+		System.out.println("-------------------------------------------------------------------------------------------------------------");
 		for (int i = 0; i < size; i++) {
             nv[i].xuat();
         }
@@ -90,7 +89,7 @@ public class DSNhanVien implements ThaoTac{
 	@Override
 	public void XuatMenu() {
 		 int select = 0;
-	        //DocFileJava();
+	       	DocFile();
 	        do {
 	            System.out.println("||============ Chon thao tac ===============||");
 	            System.out.println("||1. Them nhan vien moi                     ||");
@@ -137,16 +136,16 @@ public class DSNhanVien implements ThaoTac{
 		System.out.print("Nhap ID nhan vien can sua: ");
         String id = sc.nextLine();
         id.toLowerCase();
-        NhanVien nvm ;
-        for (int i = 0; i < size; i++) {
+        //NhanVien nvm ;
+        int i;
+        for (i = 0; i< size; i++) {
             if (id.equals(nv[i].getId().toLowerCase())) {
-            	
-            	nvm = nv[i];
             	break;
             }else {
             	System.out.println("nhan vien khong ton tai");
             	id = sc.nextLine();
             	id.toLowerCase();
+            	break;
             }
         }
         System.out.println("||============ Chon muc ban muon sua ===============||");
@@ -262,9 +261,15 @@ public class DSNhanVien implements ThaoTac{
                     String gioiTinh = txt[2];
                     String diachi = txt[3];
                     String date = txt[4];
+                    String tam[] = date.split("\\/");
+                    int ngay = Integer.parseInt(tam[0]);
+                    int thang = Integer.parseInt(tam[1]);
+                    int nam = Integer.parseInt(tam[2]);
+                    Date ngaySinh = new Date(ngay, thang, nam); 
+                    
                     double luong = Double.parseDouble(txt[5]);
                     String chucVu = txt[6];
-                    nv[i] = new NhanVien(id, ten,diachi, gioiTinh,  luong, chucVu);
+                    nv[i] = new NhanVien(id, ten,diachi, gioiTinh, ngaySinh , luong, chucVu);
                     i++;
                 }
             } finally {

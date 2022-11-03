@@ -6,8 +6,8 @@ public class NhanVien extends ConNguoi {
 	public NhanVien() {
 	}
 	
-	public NhanVien(String id, String hoVaTen,  String gioiTinh,String diaChi,double luong, String chucVu) {
-		super(id, hoVaTen, gioiTinh, diaChi);
+	public NhanVien(String id, String hoVaTen,  String gioiTinh,String diaChi,Date ngaySinh, double luong, String chucVu) {
+		super(id, hoVaTen, gioiTinh, diaChi, ngaySinh);
 		this.chucVu = chucVu;
 		this.luong = luong;
 	}
@@ -36,9 +36,10 @@ public class NhanVien extends ConNguoi {
         return super.toString();
     }
 	public void xuat() {
+		
 		super.xuat();
-		System.out.print("; chuc vu: " + chucVu);
-		System.out.println("; luong: " + luong);
+		System.out.print("\t" + chucVu);
+		System.out.println("\t\t" + luong);
 	}
     public void nhap() {
     	setId();

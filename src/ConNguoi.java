@@ -16,11 +16,12 @@ public abstract class ConNguoi {
 	protected  Date ngaySinh = new Date();
 	public ConNguoi() {
 	}
-	public ConNguoi(String id, String hoVaTen, String diaChi, String gioiTinh) {
+	public ConNguoi(String id, String hoVaTen, String diaChi, String gioiTinh, Date ngaySinh) {
 		this.id = id;
 		this.hoVaTen = hoVaTen;
 		this.diaChi = diaChi;
 		this.gioiTinh = gioiTinh;
+		this.ngaySinh = ngaySinh;
 	}
 	public String getId() {
 		return id;
@@ -63,7 +64,7 @@ public abstract class ConNguoi {
 	}
 	@Override
     public String toString() { 
-        return "id: "+ id + "; hoTen: " + hoVaTen + "; gioiTinh: " + gioiTinh + "; diaChi: " +diaChi+"; "  + ngaySinh.toString();
+        return id + "\t" + hoVaTen + "\t\t\t" + gioiTinh + "\t\t" +diaChi+"\t\t"  + ngaySinh.toString();
     }
      public abstract void nhap();
      public void xuat(){

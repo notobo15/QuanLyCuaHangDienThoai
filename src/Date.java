@@ -202,7 +202,7 @@ public class Date {
 
     @Override
     public String toString() {
-        return "ngay sinh: "+day + "/" + month + "/" + year;
+        return day + "/" + month + "/" + year;
     }
 
     public String XuatNgay() {
