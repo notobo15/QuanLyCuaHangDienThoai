@@ -15,7 +15,7 @@ public class Menu {
 	            System.out.println("+---+--------------- MENU -----------------+");
 	            System.out.println("| 1 | Chon cac thao tac nhan vien          |");
 	            System.out.println("+---+--------------------------------------+");
-	            System.out.println("| 2 | Chon cac thao tac nhan vien thu ngan |");
+	            System.out.println("| 2 | Chon cac thao tac khach hang         |");
 	            System.out.println("+---+--------------------------------------+");
 	            System.out.println("| 3 | Chon cac thao tac nhan vien ban hang |");
 	            System.out.println("+---+--------------------------------------+");
@@ -32,6 +32,8 @@ public class Menu {
 	            System.out.println("| 0 | Thoat chuong trinh                   |");
 	            System.out.println("+---+--------------------------------------+");
 	            System.out.print("Vui long chon: ");
+	            
+	            
 	            select = sc.nextInt();
 	            switch (select) {
 	                case 1: {

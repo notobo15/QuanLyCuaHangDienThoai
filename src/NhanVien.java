@@ -39,7 +39,7 @@ public class NhanVien extends ConNguoi {
 		for(;;){
             if(luong >= 0)
                 break;
-            System.out.println("Moi nhap lai (nam/ nu):");
+            System.out.println("Moi nhap lai:");
             luong = sc.nextDouble();
         }
 		this.luong = luong;
@@ -59,7 +59,8 @@ public class NhanVien extends ConNguoi {
     	super.nhap();
     	setId();
         System.out.println("Moi nhap chuc vu:");
-        setChucVu(sc.nextLine()); 
+        chucVu = sc.nextLine();
+        setChucVu(sc.nextLine());
         System.out.println("Moi nhap luong:");
         setLuong(Integer.parseInt(sc.nextLine()));
     }

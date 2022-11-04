@@ -12,9 +12,6 @@ public class Date {
     Scanner sc = new Scanner(System.in);
 
     public Date() {
-        day = 0;
-        month = 0;
-        year = 0;
     }
 
     public Date(int day, int month, int year) {

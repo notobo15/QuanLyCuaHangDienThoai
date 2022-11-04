@@ -28,7 +28,7 @@ public class DSNhanVien implements ThaoTac{
 	        int slnv = sc.nextInt();
 	        for (int i = size; i < size + slnv; i++) {
 	            nv[i] = new NhanVien();
-	            System.out.println("Nhap thong tin nhan vien: ");
+	            System.out.println("Nhap thong tin nhan vien");
 	            nv[i].nhap();
 	            System.out.println("Them nhan vien thanh cong");
 	        }
@@ -46,6 +46,7 @@ public class DSNhanVien implements ThaoTac{
 			System.out.print("-");
 		}
 		System.out.println();
+		
 		for (int i = 0; i < size; i++) {
             nv[i].xuat();
         }
@@ -55,16 +56,15 @@ public class DSNhanVien implements ThaoTac{
 	@Override
     public void Xoa() {
         sc = new Scanner(System.in);
-        System.out.println("||============ Xoa nhan vien ===============||");
+        System.out.println(" Xoa nhan vien ");
 
         System.out.print("Nhap ID coder can xoa : ");
         String id = sc.nextLine();
-        
-        id.toLowerCase();
+        id = id.toLowerCase();
         boolean flag = false;
         
         for (int i = 0; i < size; i++) {
-            if ( id.equals(nv[i].getId())) {
+            if ( id.equals(nv[i].getId().toLowerCase())) {
             	nv[i] = null;
                 for (int j = i; j < size; j++) {
                 	
@@ -413,7 +413,7 @@ public class DSNhanVien implements ThaoTac{
             FileReader fr = new FileReader("database\\DSNhanVien.txt");
             BufferedReader br = new BufferedReader(fr);
             try {
-                String line = " ";
+                String line = "";
                 while (true) {
                     line = br.readLine();
                     if (line == null) {
