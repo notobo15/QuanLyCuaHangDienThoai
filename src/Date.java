@@ -47,48 +47,84 @@ public class Date {
         return day;
     }
 
-    public void setDay(int day) {
-        this.day = day;
+    public void setDay() {
+    	System.out.print("Nhap ngay: ");
+    	day = Integer.parseInt(sc.nextLine());
+    	for(;;){
+    		if(checkYear(getYear())) {
+    			if(day > 0 && day <= 29 )
+    				break;
+    			
+    		}else {
+    			if(day > 0 && day <= 28 )
+    				break;
+    		}
+            System.out.println("Moi nhap lai:");
+            day = Integer.parseInt(sc.nextLine());
+        }
+    	
+//        while (true) {
+//            try {
+//                System.out.print("+ Ngay: ");
+//                day = Integer.parseInt(sc.nextLine());;
+//                break;
+//            } catch (Exception ex) {
+//                System.out.println("Cu phap ko chinh xac moi ban nhap lai !!! ");
+//            }
+//        }
     }
 
     public int getMonth() {
         return month;
     }
 
-    public void setMonth(int month) {
-        this.month = month;
+    public void setMonth() {
+    	System.out.print("Nhap thang: ");
+    	month = Integer.parseInt(sc.nextLine());
+    	for(;;){
+            if(month >= 0 && month <= 12)
+                break;
+            System.out.println("Moi nhap lai:");
+            month = Integer.parseInt(sc.nextLine());
+        }
+//        while (true) {
+//            try {
+//                do {
+//                    System.out.print("+ Thang: ");
+//                    month = Integer.parseInt(sc.nextLine());
+//                } while (month > 12 || month < 1);
+//                break;
+//            } catch (Exception ex) {
+//                System.out.println("Cu phap ko chinh xac moi ban nhap lai !!! ");
+//            }
+//        }
     }
 
     public int getYear() {
         return year;
     }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     public void setYear() {
-        while (true) {
-            try {
-                System.out.print("+ Nam: ");
-                year = Integer.parseInt(sc.nextLine());;
+        
+        System.out.print("Nhap nam: ");
+        year = Integer.parseInt(sc.nextLine());
+    	for(;;){
+            if(year >= 1900 && year <= 2022)
                 break;
-            } catch (Exception ex) {
-                System.out.println("Cu phap ko chinh xac moi ban nhap lai !!! ");
-            }
+            System.out.println("Moi nhap lai:");
+            year = Integer.parseInt(sc.nextLine());
         }
+//    	while (true) {
+//            try {
+//                System.out.print("+ Nam: ");
+//                year = Integer.parseInt(sc.nextLine());;
+//                break;
+//            } catch (Exception ex) {
+//                System.out.println("Cu phap ko chinh xac moi ban nhap lai !!! ");
+//            }
+//        }
     }
-    public void setDay() {
-        while (true) {
-            try {
-                System.out.print("+ Ngay: ");
-                day = Integer.parseInt(sc.nextLine());;
-                break;
-            } catch (Exception ex) {
-                System.out.println("Cu phap ko chinh xac moi ban nhap lai !!! ");
-            }
-        }
-    }
+    
 
 //    public void setDay() {
 //        while (true) {
@@ -107,19 +143,7 @@ public class Date {
 //        }
 //    }
 
-    public void setMonth() {
-        while (true) {
-            try {
-                do {
-                    System.out.print("+ Thang: ");
-                    month = Integer.parseInt(sc.nextLine());
-                } while (month > 12 || month < 1);
-                break;
-            } catch (Exception ex) {
-                System.out.println("Cu phap ko chinh xac moi ban nhap lai !!! ");
-            }
-        }
-    }
+
 
     public void setHour() {
         while (true) {
@@ -188,7 +212,7 @@ public class Date {
     }
 
     public void setTime() {
-        setYear();
+    	setYear();
         setMonth();
         setDay();
     }

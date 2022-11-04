@@ -9,8 +9,8 @@ public class Menu {
 	        
 	        DSSanPham dssp = new DSSanPham();
 	        DSNhanVien nv = new DSNhanVien();
-	       
-	        int select = 0;
+	        
+	        int select = 0;	
 	        do {
 	            System.out.println("+---+--------------- MENU -----------------+");
 	            System.out.println("| 1 | Chon cac thao tac nhan vien          |");

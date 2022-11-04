@@ -13,14 +13,6 @@ public class DSNhanVien implements ThaoTac{
 	public DSNhanVien() {
 		super();
 	}
-	
-	public static int getSize() {
-		return size;
-	}
-
-	public static void setSize(int size) {
-		DSNhanVien.size = size;
-	}
 
 	public NhanVien[] getNv() {
 		return nv;
@@ -46,8 +38,14 @@ public class DSNhanVien implements ThaoTac{
 
 	@Override
 	public void Xuat() {
-		System.out.println("ID\tHO VA TEN\t\t\tGIOI TINH\tDIA CHI\t\tNGAY SINH\tCHUC VU\t\tLUONG");
-		System.out.println("-------------------------------------------------------------------------------------------------------------");
+		System.out.println("ID\tHO VA TEN\t\t\tGIOI TINH\tDIA CHI\t\tNGAY SINH\tEMAIL\t\tSDT\t\tCHUC VU\t\tLUONG");
+//		System.out.println("-------------------------------------------"
+//				+ "----------------------------------------------------"
+//				+ "------------------------------------------------------");
+		for(int i = 0; i <= 140; i++) {
+			System.out.print("-");
+		}
+		System.out.println();
 		for (int i = 0; i < size; i++) {
             nv[i].xuat();
         }
@@ -61,6 +59,7 @@ public class DSNhanVien implements ThaoTac{
 
         System.out.print("Nhap ID coder can xoa : ");
         String id = sc.nextLine();
+        
         id.toLowerCase();
         boolean flag = false;
         
@@ -83,8 +82,6 @@ public class DSNhanVien implements ThaoTac{
         }
 
     }
-	
-	
 
 	@Override
 	public void XuatMenu() {
@@ -106,7 +103,6 @@ public class DSNhanVien implements ThaoTac{
 	                    Tao();
 	                    break;
 	                }
-
 	                case 2:
 	                    Xuat();
 	                    break;
@@ -129,65 +125,233 @@ public class DSNhanVien implements ThaoTac{
 	        } while (select != 0);
 		
 	}
-
+//	public String kiemTraInput(String str) {
+//		do {
+//			 System.out.println("Nhap ID nhan vien can sua: ");
+//			 System.out.println("0. thoat");
+//			 str = sc.nextLine();
+//		}while(str != "0");
+//		str = ID.toLowerCase();
+//		return str;
+//	}
 	@Override
 	public void Sua() {
-		sc.nextLine();
-		System.out.print("Nhap ID nhan vien can sua: ");
-        String id = sc.nextLine();
-        id.toLowerCase();
-        //NhanVien nvm ;
-        int i;
-        for (i = 0; i< size; i++) {
-            if (id.equals(nv[i].getId().toLowerCase())) {
-            	break;
-            }else {
-            	System.out.println("nhan vien khong ton tai");
-            	id = sc.nextLine();
-            	id.toLowerCase();
-            	break;
-            }
-        }
-        System.out.println("||============ Chon muc ban muon sua ===============||");
-        System.out.println("||1. Sua ho va ten nhan vien                        ||");
-        System.out.println("||2. Sua dia chi                         ||");
-        System.out.println("||3. Sua gioi tinh                     ||");
-        System.out.println("||4. Sua email                  ||");
-        System.out.println("||5. Sua so dien thoai                      ||");
-        System.out.println("||6. Sua ngay sinh                      ||");
-        System.out.println("||7. Sua chuc vu                     ||");
-        System.out.println("||8. Sua luong                     ||");
-        System.out.println("||9. Sua tat ca                     ||");
-        System.out.println("||0. Quay lai                                       ||");
-        System.out.println("||==================================================||");
+        System.out.println("+--------------- Chon muc ban muon sua ---------------+");
+        System.out.println("|1. Sua ho va ten nhan vien                           |");
+        System.out.println("|2. Sua gioi tinh                                     |");
+        System.out.println("|3. Sua dia chi                                       |");
+        System.out.println("|4. Sua ngay sinh                                     |");
+        System.out.println("|5. Sua email                                         |");
+        System.out.println("|6. Sua so dien thoai                                 |");
+        System.out.println("|7. Sua chuc vu                                       |");
+        System.out.println("|8. Sua luong                                         |");
+        System.out.println("|9. Sua tat ca                                        |");
+        System.out.println("|0. Quay lai                                          |");
+        System.out.println("+-----------------------------------------------------+");
         System.out.print("Nhap thao tac : ");
-	   int select = sc.nextInt();
-	        
-	        switch (select) {
-		       
-	            case 1: {
-	                
-	                System.out.print("Nhap ho va ten nhan vien moi : ");
-	                
-	                //nvm.setHoVaTen(newFullName);
-	                    System.out.println("Khong co nhan vien de sua");
-	                //GhiFileJava();
-	                break;
+        int select = sc.nextInt();
+        switch (select) {
+        case 1: {
+            sc = new Scanner(System.in);
+            System.out.println("Nhap ID nhan vien can sua: ");
 
-	            }
-	            case 2: {
-	                
-	            }
-	            case 3: {
-	                
-	            }
-	            case 0:
-	                break;
-	            default:
-	                System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+            String ID = sc.nextLine();
+            
+            String toLowerCase = ID.toLowerCase();
 
-	        }
-		
+            System.out.print("Nhap ho va ten nhan vien moi : ");
+            String newFullName = sc.nextLine();
+            
+            boolean flag = false;
+            for (int i = 0; i < size; i++) {
+                if (toLowerCase.equals(nv[i].getId().toLowerCase())) {
+                	nv[i].setHoVaTen(newFullName);
+                    System.out.println("Da sua thanh cong!");
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                System.out.println("Khong co nhan vien de sua");
+            }
+            GhiFile();
+            break;
+        }
+        case 2: {
+            sc = new Scanner(System.in);
+            System.out.print("Nhap ID nhan vien can sua: ");
+            System.out.print("0. Quay lai ");
+            String ID = sc.nextLine();
+            ID = ID.toLowerCase();
+            System.out.print("gioi tinh moi : ");
+            String input = sc.nextLine();
+            boolean flag = false;
+            for (int i = 0; i < size; i++) {
+                if (ID.equals(nv[i].getId().toLowerCase())) {
+                	nv[i].setGioiTinh(input);
+                    System.out.println("Da sua thanh cong!");
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                System.out.println("Khong co nhan vien de sua");
+            }
+            GhiFile();
+            break;
+        }
+        case 3: {
+            sc = new Scanner(System.in);
+            System.out.print("Nhap ID nhan vien can sua: ");
+            String ID = sc.nextLine();
+            ID = ID.toLowerCase();
+            System.out.print("Nhap dia chi moi : ");
+            String input = sc.nextLine();
+            boolean flag = false;
+            for (int i = 0; i < size; i++) {
+                if (ID.equals(nv[i].getId().toLowerCase())) {
+                	nv[i].setDiaChi(input);
+                    System.out.println("Da sua thanh cong!");
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                System.out.println("Khong co nhan vien de sua");
+            }
+            GhiFile();
+            break;
+        }
+        case 4: {
+            sc = new Scanner(System.in);
+            System.out.print("Nhap ID nhan vien can sua: ");
+            String ID = sc.nextLine();
+            ID = ID.toLowerCase();
+            boolean flag = false;
+            for (int i = 0; i < size; i++) {
+                if (ID.equals(nv[i].getId().toLowerCase())) {
+                	Date ngaySinhMoi = new Date();
+                	ngaySinhMoi.setTime();
+                	nv[i].setNgaySinh(ngaySinhMoi);
+                    System.out.println("Da sua thanh cong!");
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                System.out.println("Khong co nhan vien de sua");
+            }
+            GhiFile();
+            break;
+        }
+        case 5: {
+            sc = new Scanner(System.in);
+            System.out.print("Nhap ID nhan vien can sua: ");
+            String ID = sc.nextLine();
+            ID = ID.toLowerCase();
+            System.out.print("Nhap email moi : ");
+            String input = sc.nextLine();
+            boolean flag = false;
+            for (int i = 0; i < size; i++) {
+                if (ID.equals(nv[i].getId().toLowerCase())) {
+                	nv[i].setEmail(input);
+                    System.out.println("Da sua thanh cong!");
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                System.out.println("Khong co nhan vien de sua");
+            }
+            GhiFile();
+            break;
+        }
+        case 6: {
+            sc = new Scanner(System.in);
+            System.out.print("Nhap ID nhan vien can sua: ");
+            String ID = sc.nextLine();
+            ID = ID.toLowerCase();
+            System.out.print("Nhap so dien thoai moi : ");
+            String input = sc.nextLine();
+            boolean flag = false;
+            for (int i = 0; i < size; i++) {
+                if (ID.equals(nv[i].getId().toLowerCase())) {
+                	nv[i].setSdt(input);
+                    System.out.println("Da sua thanh cong!");
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                System.out.println("Khong co nhan vien de sua");
+            }
+            GhiFile();
+            break;
+        }
+        case 7: {
+            sc = new Scanner(System.in);
+            System.out.print("Nhap ID nhan vien can sua: ");
+            String ID = sc.nextLine();
+            String toLowerCase = ID.toLowerCase();
+            System.out.print("Nhap chuc vu moi : ");
+            String newChucVu = sc.nextLine();
+            boolean flag = false;
+            for (int i = 0; i < size; i++) {
+                if (toLowerCase.equals(nv[i].getId().toLowerCase())) {
+                    nv[i].setChucVu(newChucVu);
+                    System.out.println("Da sua thanh cong!");
+                    flag = true;
+                }
+            }
+
+            if (flag == false) {
+                System.out.println("Khong co nhan vien de sua");
+            }
+            GhiFile();
+            break;
+        }
+        case 8: {
+            sc = new Scanner(System.in);
+            System.out.print("Nhap ID nhan vien can sua: ");
+            String ID = sc.nextLine();
+            String toLowerCase = ID.toLowerCase();
+            System.out.print("Nhap luong moi : ");
+            double newHeSoLuong = sc.nextDouble();
+            boolean flag = false;
+            for (int i = 0; i < size; i++) {
+                if (toLowerCase.equals(nv[i].getId().toLowerCase())) {
+                	nv[i].setLuong(newHeSoLuong);
+                    System.out.println("Da sua thanh cong!");
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                System.out.println("Khong co nhan vien de sua");
+            }
+            GhiFile();
+            break;
+        }
+        case 9: {
+            sc = new Scanner(System.in);
+            System.out.print("Nhap ID nhan vien can sua: ");
+            String ID = sc.nextLine();
+            String toLowerCase = ID.toLowerCase();
+
+            boolean flag = false;
+            for (int i = 0; i < size; i++) {
+                if (toLowerCase.equals(nv[i].getId().toLowerCase())) {
+                	nv[i].nhap();
+                    System.out.println("Da sua thanh cong!");
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                System.out.println("Khong co nhan vien de sua");
+            }
+            GhiFile();
+            break;
+        }
+        case 0:
+            break;
+        default:
+            System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+
+    
+        }
 	}
 
 	@Override
@@ -266,10 +430,11 @@ public class DSNhanVien implements ThaoTac{
                     int thang = Integer.parseInt(tam[1]);
                     int nam = Integer.parseInt(tam[2]);
                     Date ngaySinh = new Date(ngay, thang, nam); 
-                    
-                    double luong = Double.parseDouble(txt[5]);
-                    String chucVu = txt[6];
-                    nv[i] = new NhanVien(id, ten,diachi, gioiTinh, ngaySinh , luong, chucVu);
+                    String e = txt[5];
+                    String sdt = txt[6];
+                    double luong = Double.parseDouble(txt[7]);
+                    String chucVu = txt[8];
+                    nv[i] = new NhanVien(id, ten,diachi, gioiTinh, ngaySinh , luong, chucVu, e, sdt);
                     i++;
                 }
             } finally {
@@ -278,6 +443,7 @@ public class DSNhanVien implements ThaoTac{
             }
 
         } catch (Exception e) {
+        	System.out.println("Loi khong doc dc file");
         }
 
     }
@@ -293,13 +459,14 @@ public class DSNhanVien implements ThaoTac{
 	                        + nv[i].getGioiTinh() + "|"
 	                        + nv[i].getDiaChi() + "|"
 	                        + nv[i].ngaySinh.toString() + "|"
+	                        + nv[i].getEmail() + "|"
+	                        + nv[i].getSdt() + "|"
 	                        + nv[i].getLuong() + "|"
 	                        + nv[i].getChucVu());
-	                
 	            }
-
 	            bw.close();
 	        } catch (IOException e) {
+	        	System.out.println("Loi khong ghi dc file");
 	        }
 		
 	}

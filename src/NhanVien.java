@@ -6,8 +6,8 @@ public class NhanVien extends ConNguoi {
 	public NhanVien() {
 	}
 	
-	public NhanVien(String id, String hoVaTen,  String gioiTinh,String diaChi,Date ngaySinh, double luong, String chucVu) {
-		super(id, hoVaTen, gioiTinh, diaChi, ngaySinh);
+	public NhanVien(String id, String hoVaTen,  String gioiTinh,String diaChi,Date ngaySinh, double luong, String chucVu,String e,String sdt) {
+		super(id, hoVaTen, gioiTinh, diaChi, ngaySinh, e, sdt);
 		this.chucVu = chucVu;
 		this.luong = luong;
 	}
@@ -21,12 +21,27 @@ public class NhanVien extends ConNguoi {
 		return chucVu;
 	}
 	public void setChucVu(String chucVu) {
+		for(;;){
+            if(chucVu.equalsIgnoreCase("ban hang") 
+            || chucVu.equalsIgnoreCase("thu ngan")
+            || chucVu.equalsIgnoreCase("quan ly")
+              )
+                break;
+            System.out.println("Moi nhap lai (ban hang/ thu ngan/quan ly):");
+            chucVu=sc.nextLine();
+        }
 		this.chucVu = chucVu;
 	}
 	public double getLuong() {
 		return luong;
 	}
 	public void setLuong(double luong) {
+		for(;;){
+            if(luong >= 0)
+                break;
+            System.out.println("Moi nhap lai (nam/ nu):");
+            luong = sc.nextDouble();
+        }
 		this.luong = luong;
 	}
 
@@ -38,23 +53,15 @@ public class NhanVien extends ConNguoi {
 	public void xuat() {
 		
 		super.xuat();
-		System.out.print("\t" + chucVu);
-		System.out.println("\t\t" + luong);
+		System.out.print("\t" + chucVu +"\t\t" + luong+"\n");
 	}
     public void nhap() {
+    	super.nhap();
     	setId();
-    	System.out.println("Moi nhap ho ten:");
-	    setHoVaTen(sc.nextLine());
-	    System.out.println("Moi nhap gioi tinh:");
-	    setGioiTinh(sc.nextLine());
-	    System.out.println("Moi nhap dia chi:");
-	    diaChi=sc.nextLine();
-	    System.out.println("Moi nhap ngay sinh:");
-	    ngaySinh.setTime();
         System.out.println("Moi nhap chuc vu:");
-        chucVu=sc.nextLine();
+        setChucVu(sc.nextLine()); 
         System.out.println("Moi nhap luong:");
-        luong=Integer.parseInt(sc.nextLine());
+        setLuong(Integer.parseInt(sc.nextLine()));
     }
 	
 }
