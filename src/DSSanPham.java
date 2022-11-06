@@ -16,9 +16,7 @@ public class DSSanPham implements ThaoTac {
         int sl = sc.nextInt();
         for (int i = size; i < size + sl; i++) {
         	sp[i] = new SanPham();
-            System.out.println("Nhap thong tin nhan vien: ");
             sp[i].Tao();
-            System.out.println("Them nhan vien thanh cong");
         }
         size += sl;
         GhiFile();
@@ -36,11 +34,11 @@ public class DSSanPham implements ThaoTac {
         int select = 0;
         do {
             System.out.println("||============ Chon thao tac ===============||");
-            System.out.println("||1. Them nhan vien moi                     ||");
-            System.out.println("||2. Xuat danh sach nhan vien               ||");
-            System.out.println("||3. Xoa nhan vien                          ||");
-            System.out.println("||4. Sua nhan vien                          ||");
-            System.out.println("||5. Tim nhan vien                          ||");
+            System.out.println("||1. Them san pham                          ||");
+            System.out.println("||2. Xuat danh sach san pham                ||");
+            System.out.println("||3. Xoa san pham                           ||");
+            System.out.println("||4. Sua san pham                           ||");
+            System.out.println("||5. Tim san pham                           ||");
             System.out.println("||0. Quay lai                               ||");
             System.out.println("||==========================================||");
             System.out.print("Nhap thao tac: ");
@@ -81,10 +79,14 @@ public class DSSanPham implements ThaoTac {
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
             for (int i = 0; i < size; i++) {
-                pw.println(sp[i].getId() + "|"
-                        + sp[i].getTen() + "|"
-                        + sp[i].getMau() + "|"
-                        + sp[i].getKichCo());
+                pw.println(sp[i].getId()    +"|"
+                        + sp[i].getTen()    +"|"
+                        + sp[i].getMoTa()   +"|"
+                        + sp[i].getMau()    +"|"
+                        + sp[i].getKichCo() +"|"
+                        + sp[i].getGia()    +"|"
+                        + sp[i].getNCC_ID() +"|" 
+                        + sp[i].getNgayRaMat());
             }
 
             bw.close();
@@ -105,16 +107,20 @@ public class DSSanPham implements ThaoTac {
                         break;
                     }
                     String txt[] = line.split("\\|");
-                    String id = txt[0];
-                    String fullName = txt[1];
-                    String gender = txt[2];
-                    int age = Integer.parseInt(txt[3]);
-                    String phongBan = "Phong Dev";
-                    String chucVu = "Coder";
-                    double luongcoban = 1500000;
-                    double heSoLuong = Double.parseDouble(txt[4]);
-                    double gioLamThem = Double.parseDouble(txt[5]);
-                    //sp[i] = new SanPham(id, fullName, gender);
+                    String id=txt[0];
+                    String Ten=txt[1];
+                    String moTa=txt[2];
+                    String Mau=txt[3];
+                    String kichCo=txt[4];
+                    int Gia= Integer.parseInt(txt[5]);
+                    String NCC_ID=txt[6];
+                    String date=txt[7];
+                    String temp[]= date.split("\\/");
+                    int ngay = Integer.parseInt(temp[0]);
+                    int thang = Integer.parseInt(temp[1]);
+                    int nam = Integer.parseInt(temp[2]);
+                    Date ngayRaMat=new Date(ngay,thang,nam);
+                    sp[i] = new SanPham(id, Ten,moTa,Mau,kichCo,Gia,NCC_ID,ngayRaMat);
                     i++;
                 }
             } finally {
@@ -123,6 +129,7 @@ public class DSSanPham implements ThaoTac {
             }
 
         } catch (Exception e) {
+            System.out.println("Khong doc duoc file!!!");
         }
 
     }
@@ -132,5 +139,17 @@ public class DSSanPham implements ThaoTac {
 		// TODO Auto-generated method stub
 		
 	}
+
+    @Override
+    public void Sua() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void TimKiem() {
+        // TODO Auto-generated method stub
+        
+    }
 	
 }

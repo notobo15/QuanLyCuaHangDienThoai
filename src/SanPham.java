@@ -6,15 +6,15 @@ public class SanPham {
 	private String id;
 	private static int stt = 1000;
 	private String ten, moTa, mau, kichCo;
-	private float gia;
+	private int gia;
 	private String ncc_id; 
 	private Date ngayRaMat = new Date(); 
-	private String donViTinh;
-	private static float soLuong = 0 ;
+	private int soLuongSanPham;
 	public SanPham() {
 		
 	}
-	public SanPham(String id, String ten, String moTa, String mau, String kichCo, float gia, String ncc_id) {
+	
+	public SanPham(String id, String ten, String moTa, String mau, String kichCo, int gia, String ncc_id,Date ngayRaMat) {
 		this.id = id;
 		this.ten = ten;
 		this.moTa = moTa;
@@ -22,6 +22,7 @@ public class SanPham {
 		this.kichCo = kichCo;
 		this.gia = gia;
 		this.ncc_id = ncc_id;
+		this.ngayRaMat=ngayRaMat;
 	}
 	public String getId() {
 		return id;
@@ -54,19 +55,18 @@ public class SanPham {
 	public void setKichCo(String kichCo) {
 		this.kichCo = kichCo;
 	}
-	public float getGia() {
+	public int getGia() {
 		return gia;
 	}
-	public void setGia(float gia) {
+	public void setGia(int gia) {
 		this.gia = gia;
 	}
-	public int getNhaCC_id() {
-		return nhaCC_id;
+	public String getNCC_ID(){
+		return ncc_id;
 	}
-	public void setNhaCC_id(int nhaCC_id) {
-		this.nhaCC_id = nhaCC_id;
+	public void setNCC_ID(){
+		this.ncc_id="NCC" + ++stt;
 	}
-	
 	
 	public Date getNgayRaMat() {
 		return ngayRaMat;
@@ -84,6 +84,9 @@ public class SanPham {
         setKichCo(sc.nextLine());
         System.out.println("Moi nhap mo ta:");
         setMoTa(sc.nextLine());
+		System.out.println("Nhap gia ban:");
+		setGia(sc.nextInt());
+		setNCC_ID();
         setNgayRaMat();
 	}
 	
@@ -92,7 +95,7 @@ public class SanPham {
 	@Override
 	public String toString() {
 		return "SanPham [id=" + id + ", ten=" + ten + ", moTa=" + moTa + ", mau=" + mau + ", kichCo=" + kichCo
-				+ ", gia=" + gia + ", nhaCC_id=" + nhaCC_id + ", ngayRaMat=" + ngayRaMat + "]";
+				+ ", gia=" + gia + ", nhaCC_id=" + ncc_id +", ngayRaMat=" + ngayRaMat + "]";
 	}
 	public void Xuat() {
 		System.out.println(toString());
