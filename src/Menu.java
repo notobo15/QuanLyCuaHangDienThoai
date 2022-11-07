@@ -9,9 +9,9 @@ public class Menu {
 	        
 	        
 	        DSSanPham dssp = new DSSanPham();
-	        DSNhanVien nv = new DSNhanVien();
+	        DSNhanVien dsnv = new DSNhanVien();
 	        
-			
+			DSDonHang dsdh = new DSDonHang();
 	        int select = 0;	
 	        do {
 	            System.out.println("+---+--------------- MENU -----------------+");
@@ -39,7 +39,7 @@ public class Menu {
 	            select = sc.nextInt();
 	            switch (select) {
 	                case 1: {
-	                	nv.XuatMenu();
+	                	dsnv.XuatMenu();
 	                    break;
 	                }
 	                case 2: {
@@ -57,6 +57,9 @@ public class Menu {
 	                case 6:
 	                	dssp.XuatMenu();
 	                    break;
+	                case 7: 
+	                	dsdh.XuatMenu();
+	                	break;
 	                case 0:
 	                    break;
 
