@@ -71,7 +71,7 @@ public class DonHang {
 		return gia;
 	}
 
-	public static void setGia(double d) {
+	public static void setGia() {
 		
 	}
 
@@ -135,5 +135,5 @@ public class DonHang {
 	public void xuat() {
 		System.out.println(toString());
 	}
-
+	
 }

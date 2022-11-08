@@ -138,5 +138,15 @@ public class DSChiTietDonHang implements ThaoTac {
 		// TODO Auto-generated metho d stub
 
 	}
-
+	
+	
+	public double thanhTien(String id) {
+		double s = 0;
+		for(int i = 0; i < size; i++) {
+			if(id.equalsIgnoreCase(dsctdh[i].getDonHang_id())) {
+				s += dsctdh[i].getThanhTien();
+			}
+		}
+		return s;
+	}
 }

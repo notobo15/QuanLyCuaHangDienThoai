@@ -3,19 +3,16 @@ import java.util.Scanner;
 
 public class Menu {
 	static Scanner sc = new Scanner(System.in);
-	 public static void main(String[] args) {
-	       
-	        
-	        
-	        
-	        DSSanPham dssp = new DSSanPham();
-	        DSNhanVien dsnv = new DSNhanVien();
-	        
-			DSDonHang dsdh = new DSDonHang();
-			
-			
-			DSChiTietDonHang dsctdh = new DSChiTietDonHang();
-	        int select = 0;	
+	public static void menu() {
+		DSSanPham dssp = new DSSanPham();
+        DSNhanVien dsnv = new DSNhanVien();
+        
+		DSDonHang dsdh = new DSDonHang();
+		
+		
+		DSChiTietDonHang dsctdh = new DSChiTietDonHang();
+       
+		 int select = 0;	
 	        do {
 	            System.out.println("+---+--------------- MENU -----------------+");
 	            System.out.println("| 1 | Chon cac thao tac nhan vien          |");
@@ -73,5 +70,11 @@ public class Menu {
 	            }
 	        } while (select != 0);
 
+	}
+	
+	 public static void main(String[] args) {
+
+			menu();
+	        
 	    }
 }

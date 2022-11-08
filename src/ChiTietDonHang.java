@@ -85,11 +85,7 @@ public class ChiTietDonHang {
 		setThanhTien();
 		
 	}
-	@Override
-	public String toString() {
-		return id + ", donHang_id=" + donHang_id + ", sanPham_id=" + sanPham_id + ", soLuong="
-				+ soLuong + ", dateBaoHanh=" + dateBaoHanh + ", thanhTien=" + thanhTien + "]";
-	}
+	
 	public void xuat() {
 		System.out.println(toString());
 	}
