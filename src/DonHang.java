@@ -9,7 +9,7 @@ public class DonHang {
 	private String thuNgan_id;
 	private String khachHang_id;
 	private String cuaHang_id;
-	private float gia;
+	private static float gia = 0;
 	private String date;
 
 	public DonHang() {
@@ -71,8 +71,9 @@ public class DonHang {
 		return gia;
 	}
 
-	public void setGia(float gia) {
-		this.gia = gia;
+	public static void setGia(double d) {
+		
+		gia += d;
 	}
 
 	public void setDate() {
@@ -98,9 +99,24 @@ public class DonHang {
 		setHinhThucThanhToan(sc.nextLine());
 		setDate();
 		
-		DSChiTietDonHang dsctdh = new DSChiTietDonHang();
-		dsctdh.Tao();
-		
+		ChiTietDonHang dsctdh[] = new ChiTietDonHang[1000];
+		int n = 1;
+		System.out.println(getId());
+		for(int i = 0; i < n; i++) {
+			dsctdh[i] = new ChiTietDonHang(getId());
+			dsctdh[i].nhap();
+			dsctdh[i].xuat();
+			setGia(dsctdh[i].getThanhTien());
+		}
+//		System.out.println("Nhap so luong san pham: ");
+//        int slnv = sc.nextInt();
+//        for (int i = size; i < size + slnv; i++) {
+//        	dsctdh[i] = new ChiTietDonHang();
+//            System.out.println("---------Nhap thong tin-----------");
+//            dsctdh[i].nhap();
+//            System.out.println("Them nhan vien thanh cong");
+//        }
+//        size += slnv;
 	}
 	
 	@Override
@@ -111,5 +127,9 @@ public class DonHang {
 	public void xuat() {
 		System.out.println(toString());
 	}
-
+	public static void main(String[] args) {
+		DonHang dh = new DonHang();
+		dh.nhap();
+		dh.xuat();
+	}
 }

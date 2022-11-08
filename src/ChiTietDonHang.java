@@ -11,7 +11,9 @@ public class ChiTietDonHang {
 	Scanner sc = new Scanner(System.in);
 	public ChiTietDonHang() {
 	}
-
+	public ChiTietDonHang(String donHang_id) {
+		this.donHang_id = donHang_id;
+	}
 	
 	public ChiTietDonHang(String id, String donHang_id, String sanPham_id, float soLuong, float dateBaoHanh,
 			double thanhTien) {
@@ -67,8 +69,10 @@ public class ChiTietDonHang {
 		return thanhTien;
 	}
 
-	public void setThanhTien(double thanhTien) {
-		this.thanhTien = thanhTien;
+	public void setThanhTien() {
+		DSNhanVien dsnv = new DSNhanVien();
+		dsnv.DocFile();
+		this.thanhTien = soLuong * 111111;
 	}
 	public void nhap() {
 		setId();
@@ -78,12 +82,8 @@ public class ChiTietDonHang {
 		setSoLuong(Float.parseFloat(sc.nextLine()));
 		System.out.println("Nhap so ngay bao hanh: ");
 		setDateBaoHanh(Float.parseFloat(sc.nextLine()));
+		setThanhTien();
 		
-	}
-	public double thanhTien() {
-		DSNhanVien dsnv = new DSNhanVien();
-		dsnv.DocFile();
-		return soLuong * dsnv.getGia("nv1");
 	}
 	@Override
 	public String toString() {
