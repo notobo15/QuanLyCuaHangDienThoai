@@ -73,7 +73,6 @@ public class DonHang {
 
 	public static void setGia(double d) {
 		
-		gia += d;
 	}
 
 	public void setDate() {
@@ -99,15 +98,24 @@ public class DonHang {
 		setHinhThucThanhToan(sc.nextLine());
 		setDate();
 		
-		ChiTietDonHang dsctdh[] = new ChiTietDonHang[1000];
-		int n = 1;
+		
+		DSChiTietDonHang dsctdh = new DSChiTietDonHang();
 		System.out.println(getId());
-		for(int i = 0; i < n; i++) {
-			dsctdh[i] = new ChiTietDonHang(getId());
-			dsctdh[i].nhap();
-			dsctdh[i].xuat();
-			setGia(dsctdh[i].getThanhTien());
-		}
+		dsctdh.nhap(getId());
+		dsctdh.GhiFile();
+		System.out.println("--------------");
+		dsctdh.Xuat();
+		
+		
+//		ChiTietDonHang dsctdh[] = new ChiTietDonHang[1000];
+//		int n = 2;
+//		System.out.println(getId());
+//		for(int i = 0; i < n; i++) {
+//			dsctdh[i] = new ChiTietDonHang(getId());
+//			dsctdh[i].nhap();
+//			dsctdh[i].xuat();
+//			setGia(dsctdh[i].getThanhTien());
+//		}
 //		System.out.println("Nhap so luong san pham: ");
 //        int slnv = sc.nextInt();
 //        for (int i = size; i < size + slnv; i++) {
@@ -127,9 +135,5 @@ public class DonHang {
 	public void xuat() {
 		System.out.println(toString());
 	}
-	public static void main(String[] args) {
-		DonHang dh = new DonHang();
-		dh.nhap();
-		dh.xuat();
-	}
+
 }

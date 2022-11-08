@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class DSDonHang implements ThaoTac {
@@ -24,7 +28,7 @@ public class DSDonHang implements ThaoTac {
             select = sc.nextInt();
             switch (select) {
                 case 1: {
-                    Tao();
+                	Tao();
                     break;
                 }
                 case 2:
@@ -87,7 +91,24 @@ public class DSDonHang implements ThaoTac {
 	}
 	@Override
 	public void GhiFile() {
-		// TODO Auto-generated method stub
+	
+		try {
+            FileWriter fw = new FileWriter("database\\DSDonHang.txt", false);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            for (int i = 0; i < size; i++) {
+                pw.println(dsdh[i].getId() + "|"
+                        + dsdh[i].getthuNgan_id() + "|"
+                        + dsdh[i].getCuaHang_id() + "|"
+                        + dsdh[i].getKhachHang_id() + "|"
+                        + dsdh[i].getDate()+ "|"
+                        + dsdh[i].getGia() + "|"
+                        + dsdh[i].getHinhThucThanhToan());
+            }
+            bw.close();
+        } catch (IOException e) {
+        	System.out.println("Loi khong ghi dc file");
+        }
 		
 	}
 	@Override

@@ -12,6 +12,9 @@ public class Menu {
 	        DSNhanVien dsnv = new DSNhanVien();
 	        
 			DSDonHang dsdh = new DSDonHang();
+			
+			
+			DSChiTietDonHang dsctdh = new DSChiTietDonHang();
 	        int select = 0;	
 	        do {
 	            System.out.println("+---+--------------- MENU -----------------+");
@@ -21,7 +24,7 @@ public class Menu {
 	            System.out.println("+---+--------------------------------------+");
 	            System.out.println("| 3 | Chon cac thao tac nhan vien ban hang |");
 	            System.out.println("+---+--------------------------------------+");
-	            System.out.println("| 4 | Chon cac thao tac khach hang         |");
+	            System.out.println("| 4 | Chon cac thao tac chi tiet don hang  |");
 	            System.out.println("+---+--------------------------------------+");
 	            System.out.println("| 5 | Chon cac thao tac nha cung cap       |");
 	            System.out.println("+---+--------------------------------------+");
@@ -49,6 +52,7 @@ public class Menu {
 	                    break;
 	                }
 	                case 4: {
+	                	dsdh.XuatMenu();
 	                    break;
 	                }
 	                case 5:
