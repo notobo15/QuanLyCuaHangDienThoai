@@ -1,15 +1,64 @@
-
 import java.util.Scanner;
+import java.util.Random;
+// import javax.print.Doc;
+// import java.io.BufferedReader;
+// // import java.io.BufferedWriter;
+// import java.io.FileReadaaer;
+// import java.io.FileWriter;
+// import java.io.IOException;
+// import java.io.PrintWriter;
+
 
 public class SanPham {
 	static Scanner sc = new Scanner(System.in);
 	private String id;
-	private static int stt = 1000;
 	private String ten, moTa, mau, kichCo;
 	private int gia;
 	private String ncc_id; 
 	private Date ngayRaMat = new Date(); 
-	private int soLuongSanPham;
+	// private int soLuongSanPham;
+	// private static int stt=100;
+	// private static int stt_ncc=200;
+	public SanPham[] sp = new SanPham[100];
+	// // public void DocFile() {
+    //     int i = 0;
+    //     try {
+    //         FileReader fr = new FileReader("database/DSSanPham.txt");
+    //         BufferedReader br = new BufferedReader(fr);
+    //         try {
+    //             String line = "";
+    //             while (true) {
+    //                 line = br.readLine();
+    //                 if (line == null) {
+    //                     break;
+    //                 }
+    //                 String txt[] = line.split("\\|");
+    //                 String id=txt[0];
+    //                 String Ten=txt[1];
+    //                 String moTa=txt[2];
+    //                 String Mau=txt[3];
+    //                 String kichCo=txt[4];
+    //                 int Gia= Integer.parseInt(txt[5]);
+    //                 String NCC_ID=txt[6];
+    //                 String date=txt[7];
+    //                 String temp[]= date.split("\\/");
+    //                 int ngay = Integer.parseInt(temp[0]);
+    //                 int thang = Integer.parseInt(temp[1]);
+    //                 int nam = Integer.parseInt(temp[2]);
+    //                 Date ngayRaMat=new Date(ngay,thang,nam);
+    //                 sp[i] = new SanPham(id, Ten,moTa,Mau,kichCo,Gia,NCC_ID,ngayRaMat);
+    //                 i++;
+    //             }
+    //         } finally {
+    //             soLuongSanPham = i;
+    //             br.close();
+    //         }
+
+    //     } catch (Exception e) {
+    //         System.out.println("KHONG DOC DUOC DU LIEU!!!");
+    //     }
+
+    // }
 	public SanPham() {
 		
 	}
@@ -27,9 +76,10 @@ public class SanPham {
 	public String getId() {
 		return id;
 	}
-	public void setId() {
+	public void setId(int stt) {
+		// DocFile();
 		
-		this.id = "SP" + ++stt;
+		this.id = "SP" + stt ;
 	}
 	public String getTen() {
 		return ten;
@@ -64,8 +114,9 @@ public class SanPham {
 	public String getNCC_ID(){
 		return ncc_id;
 	}
-	public void setNCC_ID(){
-		this.ncc_id="NCC" + ++stt;
+	public void setNCC_ID(int stt_ncc){
+		// DocFile();
+		this.ncc_id="NCC" + stt_ncc ;
 	}
 	
 	public Date getNgayRaMat() {
@@ -75,18 +126,23 @@ public class SanPham {
 		this.ngayRaMat.setTime();
 	}
 	public void Tao() {
-		setId();
-		System.out.println("Moi nhap ten san pham:");
+		Random rd=new Random();
+		int stt=1000+ rd.nextInt(999);
+		setId(stt);
+		Random rand=new Random();
+		int stt_ncc=2000 + rand.nextInt(999);
+		sc.nextLine();
+		System.out.print("Moi nhap ten san pham:");
         setTen(sc.nextLine());
-        System.out.println("Moi nhap mau:");
+        System.out.print("Moi nhap mau:");
         setMau(sc.nextLine());
-        System.out.println("Moi nhap kich co:");
+        System.out.print("Moi nhap kich co:");
         setKichCo(sc.nextLine());
-        System.out.println("Moi nhap mo ta:");
+        System.out.print("Moi nhap mo ta:");
         setMoTa(sc.nextLine());
-		System.out.println("Nhap gia ban:");
-		setGia(sc.nextInt());
-		setNCC_ID();
+		System.out.print("Nhap gia ban:");
+		setGia(sc.nextInt());		
+		setNCC_ID(stt_ncc);
         setNgayRaMat();
 	}
 	

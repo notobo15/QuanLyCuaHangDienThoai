@@ -7,13 +7,15 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class DSSanPham implements ThaoTac {
-	private static int size = 0;
+	private static int size ;
 	public SanPham[] sp = new SanPham[100];
 	static Scanner sc = new Scanner(System.in);
 	@Override
 	public void Tao() {
+        DocFile();
 		System.out.println("Nhap so luong san pham can them: ");
         int sl = sc.nextInt();
+     
         for (int i = size; i < size + sl; i++) {
         	sp[i] = new SanPham();
             sp[i].Tao();
@@ -24,6 +26,7 @@ public class DSSanPham implements ThaoTac {
 
 	@Override
 	public void Xuat() {
+        
 		for (int i = 0; i < size; i++) {
             sp[i].Xuat();
         }
@@ -54,7 +57,7 @@ public class DSSanPham implements ThaoTac {
                     Xuat();
                     break;
                 case 3:
-                    //Xoa();
+                    Xoa();
                     break;
                 case 4:
                     //Sua();
@@ -91,7 +94,9 @@ public class DSSanPham implements ThaoTac {
 
             bw.close();
         } catch (IOException e) {
+           
         }
+        
     }
     
     public void DocFile() {
@@ -129,14 +134,38 @@ public class DSSanPham implements ThaoTac {
             }
 
         } catch (Exception e) {
-            System.out.println("Khong doc duoc file!!!");
+            
         }
 
     }
 
 	@Override
 	public void Xoa() {
-		// TODO Auto-generated method stub
+		sc = new Scanner(System.in);
+        System.out.println(" Xoa san pham ");
+
+        System.out.print("Nhap ID san pham can xoa theo kieu SP1xxx : ");
+        String id = sc.nextLine();
+        id = id.toLowerCase();
+        boolean flag = false;
+        for (int i = 0; i < size; i++) {
+            if ( id.equals(sp[i].getId().toLowerCase())) {
+            	sp[i] = null;
+                for (int j = i; j < size; j++) {
+                	
+                	sp[j] = sp[j + 1];
+                }
+                flag = true;
+                size--;
+                GhiFile();
+                System.out.println("Da xoa thanh cong!");
+            }
+        }
+
+        if (flag == false) {
+            System.out.println("Khong co san pham de xoa");
+        }
+
 		
 	}
 
