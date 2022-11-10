@@ -11,7 +11,6 @@ public class DSNhanVien implements ThaoTac{
 	static Scanner sc = new Scanner(System.in);
 	
 	public DSNhanVien() {
-		super();
 	}
 
 	public NhanVien[] getNv() {
@@ -21,10 +20,19 @@ public class DSNhanVien implements ThaoTac{
 	public void setNv(NhanVien[] nv) {
 		this.nv = nv;
 	}
-
+	
+	public double getGia(String id) {
+		for(int i = 0; i < size; i++) {
+			if(id.equalsIgnoreCase(nv[i].getId())) {
+				return nv[i].getLuong();
+			}
+		}
+		return 0;
+	}
+	
 	@Override
 	public void Tao() {
-		 System.out.println("Nhap so luong nhan vien can them: ");
+		 	System.out.println("Nhap so luong nhan vien can them: ");
 	        int slnv = sc.nextInt();
 	        for (int i = size; i < size + slnv; i++) {
 	            nv[i] = new NhanVien();
@@ -354,6 +362,7 @@ public class DSNhanVien implements ThaoTac{
         }
 	}
 
+	
 	@Override
 	public void TimKiem() {
 		 System.out.println("||============ Chon thao tac tim kiem ===============||");
@@ -407,6 +416,7 @@ public class DSNhanVien implements ThaoTac{
 	        }
 		
 	}
+	@Override
 	public void DocFile() {
         int i = 0;
         try {
@@ -447,6 +457,8 @@ public class DSNhanVien implements ThaoTac{
         }
 
     }
+	
+	
 	@Override
 	public void GhiFile() {
 		 try {

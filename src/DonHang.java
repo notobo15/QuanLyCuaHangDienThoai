@@ -1,78 +1,139 @@
+import java.time.LocalDateTime;
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
 
 public class DonHang {
 	Scanner sc = new Scanner(System.in);
-	
-	
+	private static int stt = 0;
 	private String id, hinhThucThanhToan;
-	private String thuNhan_id;
-	private String kh_id;
+	private String thuNgan_id;
+	private String khachHang_id;
 	private String cuaHang_id;
-	private float gia = 0;
-	private Date date = new Date();
-	private Date dateBaoHanh = new Date();
-	public DonHang(String id, String hinhThucThanhToan, String thuNhan_id, String kh_id, String cuaHang_id, float gia,
-			Date date, Date dateBaoHanh) {
-		super();
+	private static float gia = 0;
+	private String date;
+
+	public DonHang() {
+	}
+
+	public DonHang(String id, String hinhThucThanhToan, String thuNgan_id, String khachHang_id, String cuaHang_id,
+			float gia, String date) {
 		this.id = id;
 		this.hinhThucThanhToan = hinhThucThanhToan;
-		this.thuNhan_id = thuNhan_id;
-		this.kh_id = kh_id;
+		this.thuNgan_id = thuNgan_id;
+		this.khachHang_id = khachHang_id;
 		this.cuaHang_id = cuaHang_id;
 		this.gia = gia;
 		this.date = date;
-		this.dateBaoHanh = dateBaoHanh;
-		
 	}
+
 	public String getId() {
 		return id;
 	}
-	public void setId(String id) {
-		this.id = id;
+
+	public void setId() {
+
+		this.id = "DH" + ++stt;
 	}
+
 	public String getHinhThucThanhToan() {
 		return hinhThucThanhToan;
 	}
+
 	public void setHinhThucThanhToan(String hinhThucThanhToan) {
 		this.hinhThucThanhToan = hinhThucThanhToan;
 	}
-	public String getThuNhan_id() {
-		return thuNhan_id;
+
+	public String getthuNgan_id() {
+		return thuNgan_id;
 	}
-	public void setThuNhan_id(String thuNhan_id) {
-		this.thuNhan_id = thuNhan_id;
+
+	public void setthuNgan_id(String thuNgan_id) {
+		this.thuNgan_id = thuNgan_id;
 	}
-	public String getKh_id() {
-		return kh_id;
+
+	public String getKhachHang_id() {
+		return khachHang_id;
 	}
-	public void setKh_id(String kh_id) {
-		this.kh_id = kh_id;
+
+	public void setKhachHang_id(String khachHang_id) {
+		this.khachHang_id = khachHang_id;
 	}
+
 	public String getCuaHang_id() {
 		return cuaHang_id;
 	}
+
 	public void setCuaHang_id(String cuaHang_id) {
 		this.cuaHang_id = cuaHang_id;
 	}
+
 	public float getGia() {
 		return gia;
 	}
-	public void setGia(float gia) {
-		this.gia = gia;
+
+	public static void setGia() {
+		
 	}
-	public Date getDate() {
+
+	public void setDate() {
+		LocalDateTime myDateObj = LocalDateTime.now();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		String formattedDate = myDateObj.format(myFormatObj);
+		this.date = formattedDate;
+	}
+
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+
+	public void nhap() {
+		setId();
+		System.out.println("Nhap id cua khach hang: ");
+		setKhachHang_id(sc.nextLine());
+		System.out.println("Nhap id cua thu ngan: ");
+		setthuNgan_id(sc.nextLine());
+		System.out.println("Nhap id cua cua hang: ");
+		setCuaHang_id(sc.nextLine());
+		System.out.println("Nhap hanh thuc thanh toan: ");
+		setHinhThucThanhToan(sc.nextLine());
+		setDate();
+		
+		
+		DSChiTietDonHang dsctdh = new DSChiTietDonHang();
+		System.out.println(getId());
+		dsctdh.nhap(getId());
+		dsctdh.GhiFile();
+		System.out.println("--------------");
+		dsctdh.Xuat();
+		
+		
+//		ChiTietDonHang dsctdh[] = new ChiTietDonHang[1000];
+//		int n = 2;
+//		System.out.println(getId());
+//		for(int i = 0; i < n; i++) {
+//			dsctdh[i] = new ChiTietDonHang(getId());
+//			dsctdh[i].nhap();
+//			dsctdh[i].xuat();
+//			setGia(dsctdh[i].getThanhTien());
+//		}
+//		System.out.println("Nhap so luong san pham: ");
+//        int slnv = sc.nextInt();
+//        for (int i = size; i < size + slnv; i++) {
+//        	dsctdh[i] = new ChiTietDonHang();
+//            System.out.println("---------Nhap thong tin-----------");
+//            dsctdh[i].nhap();
+//            System.out.println("Them nhan vien thanh cong");
+//        }
+//        size += slnv;
 	}
-	public Date getDateBaoHanh() {
-		return dateBaoHanh;
+	
+	@Override
+	public String toString() {
+		return id + ", hinhThucThanhToan=" + hinhThucThanhToan + ", thuNgan_id=" + thuNgan_id + ", khachHang_id="
+				+ khachHang_id + ", cuaHang_id=" + cuaHang_id + ", gia=" + gia + ", date=" + date;
 	}
-	public void setDateBaoHanh(Date dateBaoHanh) {
-		this.dateBaoHanh = dateBaoHanh;
+	public void xuat() {
+		System.out.println(toString());
 	}
-	public void Tao() {
-		System.out.println();
-	}
+	
 }
