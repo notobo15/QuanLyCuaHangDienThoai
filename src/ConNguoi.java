@@ -86,17 +86,17 @@ public abstract class ConNguoi {
 		return email;
 	}
 	public void setEmail(String email) {
-		final String regexPattern = "^[A-Za-z0-9+._-]+@(.+)$";
-		Pattern pattern = Pattern.compile(regexPattern);
-		Matcher matcher = pattern.matcher(email);
-		  for(;;){
-			  System.out.println(matcher.matches());
-			  if(matcher.matches()) {
-				  break;
-			  }
-	            System.out.println("Moi nhap lai email:");
-	            email=sc.nextLine();
-	        }
+//		final String regexPattern = "^[A-Za-z0-9+._-]+@(.+)$";
+//		Pattern pattern = Pattern.compile(regexPattern);
+//		Matcher matcher = pattern.matcher(email);
+//		  for(;;){
+//			  System.out.println(matcher.matches());
+//			  if(matcher.matches()) {
+//				  break;
+//			  }
+//	            System.out.println("Moi nhap lai email:");
+//	            email=sc.nextLine();
+//	        }
 		this.email = email;
 	}
 	public String getSdt() {

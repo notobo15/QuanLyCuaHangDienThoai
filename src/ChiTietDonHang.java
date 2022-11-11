@@ -5,7 +5,6 @@ public class ChiTietDonHang {
 	private String donHang_id;
 	private String sanPham_id;
 	private float soLuong = 1;
-	private float dateBaoHanh;
 	private double thanhTien;
 	private static int stt = 0;
 	Scanner sc = new Scanner(System.in);
@@ -15,13 +14,11 @@ public class ChiTietDonHang {
 		this.donHang_id = donHang_id;
 	}
 	
-	public ChiTietDonHang(String id, String donHang_id, String sanPham_id, float soLuong, float dateBaoHanh,
-			double thanhTien) {
+	public ChiTietDonHang(String id, String donHang_id, String sanPham_id, float soLuong,double thanhTien) {
 		this.id = id;
 		this.donHang_id = donHang_id;
 		this.sanPham_id = sanPham_id;
 		this.soLuong = soLuong;
-		this.dateBaoHanh = dateBaoHanh;
 		this.thanhTien = thanhTien;
 	}
 
@@ -57,22 +54,15 @@ public class ChiTietDonHang {
 		this.soLuong = soLuong;
 	}
 
-	public float getDateBaoHanh() {
-		return dateBaoHanh;
-	}
-
-	public void setDateBaoHanh(float dateBaoHanh) {
-		this.dateBaoHanh = dateBaoHanh;
-	}
-
 	public double getThanhTien() {
 		return thanhTien;
 	}
 
 	public void setThanhTien() {
-		DSNhanVien dsnv = new DSNhanVien();
-		dsnv.DocFile();
-		this.thanhTien = soLuong * 111111;
+		DSSanPham dssp = new DSSanPham();
+		System.out.println(dssp.xuatGia(sanPham_id));
+		System.out.println(soLuong);
+		this.thanhTien = soLuong * dssp.xuatGia(sanPham_id);
 	}
 	public void nhap() {
 		setId();
@@ -80,9 +70,8 @@ public class ChiTietDonHang {
 		setSanPham_id(sc.nextLine());
 		System.out.println("nhap so luong: ");
 		setSoLuong(Float.parseFloat(sc.nextLine()));
-		System.out.println("Nhap so ngay bao hanh: ");
-		setDateBaoHanh(Float.parseFloat(sc.nextLine()));
 		setThanhTien();
+		System.out.println(getThanhTien());
 		
 	}
 	

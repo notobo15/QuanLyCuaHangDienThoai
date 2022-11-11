@@ -64,5 +64,8 @@ public class NhanVien extends ConNguoi {
         System.out.println("Moi nhap luong:");
         setLuong(Integer.parseInt(sc.nextLine()));
     }
+	public static void main(String[] args) {
+		
+	}
 	
 }

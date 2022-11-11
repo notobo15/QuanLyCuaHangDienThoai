@@ -9,22 +9,26 @@ public class DonHang {
 	private String thuNgan_id;
 	private String khachHang_id;
 	private String cuaHang_id;
-	private static float gia = 0;
+	private double tongTien;
 	private String date;
 
 	public DonHang() {
 	}
 
-	public DonHang(String id, String hinhThucThanhToan, String thuNgan_id, String khachHang_id, String cuaHang_id,
-			float gia, String date) {
+	
+
+	public DonHang(String id, String khachHang_id, String thuNgan_id, String cuaHang_id, String date,
+			String hinhThucThanhToan, double tongTien) {
 		this.id = id;
 		this.hinhThucThanhToan = hinhThucThanhToan;
 		this.thuNgan_id = thuNgan_id;
 		this.khachHang_id = khachHang_id;
 		this.cuaHang_id = cuaHang_id;
-		this.gia = gia;
+		this.tongTien = tongTien;
 		this.date = date;
 	}
+
+
 
 	public String getId() {
 		return id;
@@ -67,12 +71,15 @@ public class DonHang {
 		this.cuaHang_id = cuaHang_id;
 	}
 
-	public float getGia() {
-		return gia;
+	
+
+	public double getTongTien() {
+		return tongTien;
 	}
 
-	public static void setGia() {
-		
+	public void setTongTien() {
+		DSChiTietDonHang ds = new DSChiTietDonHang();
+		this.tongTien = ds.tongTien(id);
 	}
 
 	public void setDate() {
@@ -100,11 +107,10 @@ public class DonHang {
 		
 		
 		DSChiTietDonHang dsctdh = new DSChiTietDonHang();
-		System.out.println(getId());
 		dsctdh.nhap(getId());
 		dsctdh.GhiFile();
-		System.out.println("--------------");
-		dsctdh.Xuat();
+		setTongTien();
+		System.out.println(getTongTien());
 		
 		
 //		ChiTietDonHang dsctdh[] = new ChiTietDonHang[1000];
@@ -130,7 +136,7 @@ public class DonHang {
 	@Override
 	public String toString() {
 		return id + ", hinhThucThanhToan=" + hinhThucThanhToan + ", thuNgan_id=" + thuNgan_id + ", khachHang_id="
-				+ khachHang_id + ", cuaHang_id=" + cuaHang_id + ", gia=" + gia + ", date=" + date;
+				+ khachHang_id + ", cuaHang_id=" + cuaHang_id  + ", date=" + date + "tong tien " + tongTien;
 	}
 	public void xuat() {
 		System.out.println(toString());
