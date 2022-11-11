@@ -412,7 +412,7 @@ public class DSKhachHang implements ThaoTac{
 	public void DocFile() {
         int i = 0;
         try {
-            FileReader fr = new FileReader("D:\\QuanLyCuaHangDienThoai-dev\\src\\khachang.txt");
+            FileReader fr = new FileReader("database\\DSKhachHang.txt");
             BufferedReader br = new BufferedReader(fr);
             try {
                 String line = "";

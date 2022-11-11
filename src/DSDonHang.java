@@ -19,14 +19,14 @@ public class DSDonHang implements ThaoTac {
 		int select = 0;
 		DocFile();
 		do {
-			System.out.println("||============ Chon thao tac ===============||");
-			System.out.println("||1. Them don hang moi                      ||");
-			System.out.println("||2. Xuat danh sach don hang              ||");
-			System.out.println("||3. Xoa don hang                          ||");
-			System.out.println("||4. Sua don hang                          ||");
-			System.out.println("||5. Tim don hang                         ||");
-			System.out.println("||0. Quay lai                               ||");
-			System.out.println("||==========================================||");
+			System.out.println("+-------------- Chon thao tac --------------+");
+			System.out.println("|1. Them don hang moi                       |");
+			System.out.println("|2. Xuat danh sach don hang                 |");
+			System.out.println("|3. Xoa don hang                            |");
+			System.out.println("|4. Sua don hang                            |");
+			System.out.println("|5. Tim don hang                            |");
+			System.out.println("|0. Quay lai                               ||");
+			System.out.println("+-------------------------------------------+");
 			System.out.print("Nhap thao tac: ");
 			select = sc.nextInt();
 			switch (select) {
