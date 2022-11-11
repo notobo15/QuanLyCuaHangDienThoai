@@ -6,10 +6,7 @@ public class Menu {
 	public static void menu() {
 		DSSanPham dssp = new DSSanPham();
         DSNhanVien dsnv = new DSNhanVien();
-        
 		DSDonHang dsdh = new DSDonHang();
-		
-		
 		DSChiTietDonHang dsctdh = new DSChiTietDonHang();
        
 		 int select = 0;	
@@ -35,7 +32,6 @@ public class Menu {
 	            System.out.println("+---+--------------------------------------+");
 	            System.out.print("Vui long chon: ");
 	            
-	            
 	            select = sc.nextInt();
 	            switch (select) {
 	                case 1: {
@@ -56,7 +52,7 @@ public class Menu {
 	                	
 	                    break;
 	                case 6:
-	                	dssp.XuatMenu();
+	                	dsctdh.XuatMenu();
 	                    break;
 	                case 7: 
 	                	dsdh.XuatMenu();

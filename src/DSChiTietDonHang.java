@@ -77,11 +77,9 @@ public class DSChiTietDonHang implements ThaoTac {
             PrintWriter pw = new PrintWriter(bw);
             for (int i = 0; i < size; i++) {
                 pw.println(dsctdh[i].getId() + "|"
-                        + dsctdh[i].getId() + "|"
                         + dsctdh[i].getDonHang_id() + "|"
                         + dsctdh[i].getSanPham_id() + "|"
                         + dsctdh[i].getSoLuong() + "|"
-                        + dsctdh[i].getDateBaoHanh() + "|"
                         + dsctdh[i].getThanhTien());
             }
             bw.close();
@@ -93,43 +91,34 @@ public class DSChiTietDonHang implements ThaoTac {
 
 	@Override
 	public void DocFile() {
-//		int i = 0;
-//        try {
-//            FileReader fr = new FileReader("database\\DSNhanVien.txt");
-//            BufferedReader br = new BufferedReader(fr);
-//            try {
-//                String line = "";
-//                while (true) {
-//                    line = br.readLine();
-//                    if (line == null) {
-//                        break;
-//                    }
-//                    String txt[] = line.split("\\|");
-//                    String id = txt[0];
-//                    String ten = txt[1];
-//                    String gioiTinh = txt[2];
-//                    String diachi = txt[3];
-//                    String date = txt[4];
-//                    String tam[] = date.split("\\/");
-//                    int ngay = Integer.parseInt(tam[0]);
-//                    int thang = Integer.parseInt(tam[1]);
-//                    int nam = Integer.parseInt(tam[2]);
-//                    Date ngaySinh = new Date(ngay, thang, nam); 
-//                    String e = txt[5];
-//                    String sdt = txt[6];
-//                    double luong = Double.parseDouble(txt[7]);
-//                    String chucVu = txt[8];
-//                    dsctdh[i] = new NhanVien(id, ten,diachi, gioiTinh, ngaySinh , luong, chucVu, e, sdt);
-//                    i++;
-//                }
-//            } finally {
-//                size = i;
-//                br.close();
-//            }
-//
-//        } catch (Exception e) {
-//        	System.out.println("Loi khong doc dc file");
-//        }
+		int i = 0;
+        try {
+            FileReader fr = new FileReader("database\\DSChiTietDonHang.txt");
+            BufferedReader br = new BufferedReader(fr);
+            try {
+                String line = "";
+                while (true) {
+                    line = br.readLine();
+                    if (line == null) {
+                        break;
+                    }
+                    String txt[] = line.split("\\|");
+                    String id = txt[0];
+                    String donHang_id = txt[1];
+                    String sanPham_id = txt[2];
+                    float soLuong = Float.parseFloat(txt[3]);
+                    double thanhTien = Double.parseDouble(txt[4]);
+                    dsctdh[i] = new ChiTietDonHang(id, donHang_id, sanPham_id, soLuong, thanhTien);
+                    i++;
+                }
+            } finally {
+                size = i;
+                br.close();
+            }
+
+        } catch (Exception e) {
+        	System.out.println("Loi khong doc dc file");
+        }
 
 	}
 
@@ -141,6 +130,16 @@ public class DSChiTietDonHang implements ThaoTac {
 	
 	
 	public double thanhTien(String id) {
+		double s = 0;
+		for(int i = 0; i < size; i++) {
+			if(id.equalsIgnoreCase(dsctdh[i].getDonHang_id())) {
+				s += dsctdh[i].getThanhTien();
+			}
+		}
+		return s;
+	}
+	public double tongTien(String id) {
+		DocFile();
 		double s = 0;
 		for(int i = 0; i < size; i++) {
 			if(id.equalsIgnoreCase(dsctdh[i].getDonHang_id())) {

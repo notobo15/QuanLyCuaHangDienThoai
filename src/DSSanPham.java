@@ -168,7 +168,17 @@ public class DSSanPham implements ThaoTac {
 
 		
 	}
-
+	public int xuatGia(String id) {
+		DocFile();
+		for (int i = 0; i < size; i++) {
+            if(id.equalsIgnoreCase(sp[i].getId())) {
+            	return sp[i].getGia();
+            }
+        }
+		return 0;
+	}
+	
+	
     @Override
     public void Sua() {
         // TODO Auto-generated method stub
@@ -180,5 +190,5 @@ public class DSSanPham implements ThaoTac {
         // TODO Auto-generated method stub
         
 	}
-
+   
 }
