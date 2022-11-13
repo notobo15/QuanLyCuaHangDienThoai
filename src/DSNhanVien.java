@@ -60,6 +60,12 @@ public class DSNhanVien implements ThaoTac{
         }
 		
 	}
+
+	// @Override
+	// public void XuatMenu() {
+	// 	// TODO Auto-generated method stub
+		
+	// }
 	
 	@Override
     public void Xoa() {

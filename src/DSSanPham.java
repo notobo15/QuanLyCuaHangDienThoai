@@ -27,21 +27,10 @@ public class DSSanPham implements ThaoTac {
 	@Override
 	public void Xuat() {
         
-		// for (int i = 0; i < size; i++) {
-        //     sp[i].Xuat();
-        // }
-		System.out.println("ID\tTEN SAN PHAM\t\tMO TA\tMAU MAY\t\t\t\tKICH CO\t\t\tGIA\t\t\t\tNCC_ID\t\t\t\tNGAY RA MAT");
-//		System.out.println("-------------------------------------------"
-//				+ "----------------------------------------------------"
-//				+ "------------------------------------------------------");
-		for(int i = 0; i <= 140; i++) {
-			System.out.print("-");
-		}
-		System.out.println();
+		 for (int i = 0; i < size; i++) {
+             sp[i].Xuat();
+         }
 		
-		for (int i = 0; i < size; i++) {
-            sp[i].Xuat();
-        }
 	}
 	//@Override
     public void XuatMenu() {
@@ -180,17 +169,7 @@ public class DSSanPham implements ThaoTac {
 
 		
 	}
-	public int xuatGia(String id) {
-		DocFile();
-		for (int i = 0; i < size; i++) {
-            if(id.equalsIgnoreCase(sp[i].getId())) {
-            	return sp[i].getGia();
-            }
-        }
-		return 0;
-	}
-	
-	
+
     @Override
     public void Sua() {
         // TODO Auto-generated method stub
@@ -217,5 +196,5 @@ public class DSSanPham implements ThaoTac {
 	                }
                   
 	}
-   
+
 }
