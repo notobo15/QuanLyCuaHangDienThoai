@@ -31,26 +31,26 @@ public class DSDonHang implements ThaoTac {
 			System.out.print("Nhap thao tac: ");
 			select = sc.nextInt();
 			switch (select) {
-			case 1: {
-				Tao();
-				break;
-			}
-			case 2:
-				Xuat();
-				break;
-			case 3:
-				Xoa();
-				break;
-			case 4:
-				Sua();
-				break;
-			case 5:
-				TimKiem();
-				break;
-			case 0:
-				break;
-			default:
-				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+				case 1: {
+					Tao();
+					break;
+				}
+				case 2:
+					Xuat();
+					break;
+				case 3:
+					Xoa();
+					break;
+				case 4:
+					Sua();
+					break;
+				case 5:
+					TimKiem();
+					break;
+				case 0:
+					break;
+				default:
+					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 			}
 
@@ -103,7 +103,7 @@ public class DSDonHang implements ThaoTac {
 	public void GhiFile() {
 
 		try {
-			FileWriter fw = new FileWriter("database\\DSDonHang.txt", false);
+			FileWriter fw = new FileWriter("..\\database\\DSDonHang.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
 			for (int i = 0; i < size; i++) {
@@ -122,7 +122,7 @@ public class DSDonHang implements ThaoTac {
 	public void DocFile() {
 		int i = 0;
 		try {
-			FileReader fr = new FileReader("database\\DSDonHang.txt");
+			FileReader fr = new FileReader("..\\database\\DSDonHang.txt");
 			BufferedReader br = new BufferedReader(fr);
 			try {
 				String line = "";

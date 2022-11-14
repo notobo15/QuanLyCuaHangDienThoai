@@ -1,4 +1,4 @@
-NV1|Nguyen Thanh B|nam|HCM|29/2/2000|binh@gmail.com|0123456789|123.0|admin
+NV1|Nguyen Van B|nam|HCM|29/2/2000|binh@gmail.com|0123456789|123.0|admin
 NV2|Nhan Vien 2|nam|LA|28/2/2001|a@gmail.com|0123456789|534.0|admin
 NV3|Nguyen Van D|nu|HCM|11/2/2002|a@gmail.com|0123456788|534.0|quan ly
 NV4|Nguyen Van E|nam|LA|15/1/2003|a@gmail.com|0123456789|534.0|admin
