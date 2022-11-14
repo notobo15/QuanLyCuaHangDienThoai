@@ -138,14 +138,34 @@ public class SanPham {
         setMau(sc.nextLine());
         System.out.print("Moi nhap kich co:");
         setKichCo(sc.nextLine());
-        System.out.print("Moi nhap mo ta:");
-        setMoTa(sc.nextLine());
+        System.out.println("Moi nhap loai hang:");
+		System.out.println("||============ Chon thao tac ===============||");
+		System.out.println("||1. Hang New                         		||");
+		System.out.println("||2. Hang Likenew                			||");
+		System.out.println("||2. Hang Old                			||");
+		System.out.println("||==========================================||");
+		System.out.print("Nhap mo ta: ");
+		int select = sc.nextInt();
+		switch (select) {
+			case 1: {
+				setMoTa("New");
+				break;
+			}
+			case 2:
+				setMoTa("Likenew");
+				break;
+			case 3:
+				setMoTa("Old");
+				break;
+			default:
+				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+		}
 		System.out.print("Nhap gia ban:");
 		setGia(sc.nextInt());		
 		setNCC_ID(stt_ncc);
         setNgayRaMat();
 	}
-	
+
 	
 	
 	@Override

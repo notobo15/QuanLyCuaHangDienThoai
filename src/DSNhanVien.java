@@ -36,7 +36,7 @@ public class DSNhanVien implements ThaoTac{
 	        int slnv = sc.nextInt();
 	        for (int i = size; i < size + slnv; i++) {
 	            nv[i] = new NhanVien();
-	            System.out.println("Nhap thong tin nhan vien");
+	            System.out.println("------ Nhap thong tin nhan vien ------");
 	            nv[i].nhap();
 	            System.out.println("Them nhan vien thanh cong");
 	        }
@@ -60,6 +60,12 @@ public class DSNhanVien implements ThaoTac{
         }
 		
 	}
+
+	// @Override
+	// public void XuatMenu() {
+	// 	// TODO Auto-generated method stub
+		
+	// }
 	
 	@Override
     public void Xoa() {
@@ -365,7 +371,7 @@ public class DSNhanVien implements ThaoTac{
 	
 	@Override
 	public void TimKiem() {
-		 System.out.println("||============ Chon thao tac tim kiem ===============||");
+		    System.out.println("||============ Chon thao tac tim kiem ===============||");
 	        System.out.println("||1. Tim nhan vien theo ID                           ||");
 	        System.out.println("||2. Tim nhan vien theo ten                          ||");
 	        System.out.println("||0. Quay lai                                        ||");

@@ -27,14 +27,15 @@ public class DSSanPham implements ThaoTac {
 	@Override
 	public void Xuat() {
         
-		for (int i = 0; i < size; i++) {
-            sp[i].Xuat();
-        }
+		 for (int i = 0; i < size; i++) {
+             sp[i].Xuat();
+         }
 		
 	}
 	//@Override
     public void XuatMenu() {
         int select = 0;
+        DocFile();
         do {
             System.out.println("||============ Chon thao tac ===============||");
             System.out.println("||1. Them san pham                          ||");
@@ -53,7 +54,7 @@ public class DSSanPham implements ThaoTac {
                 }
 
                 case 2:
-                	DocFile();
+                	
                     Xuat();
                     break;
                 case 3:
@@ -63,7 +64,7 @@ public class DSSanPham implements ThaoTac {
                     //Sua();
                     break;
                 case 5:
-                    //TimKiem();
+                    TimKiem();
                     break;
                 case 0:
                     break;
@@ -168,17 +169,7 @@ public class DSSanPham implements ThaoTac {
 
 		
 	}
-	public int xuatGia(String id) {
-		DocFile();
-		for (int i = 0; i < size; i++) {
-            if(id.equalsIgnoreCase(sp[i].getId())) {
-            	return sp[i].getGia();
-            }
-        }
-		return 0;
-	}
-	
-	
+
     @Override
     public void Sua() {
         // TODO Auto-generated method stub
@@ -188,7 +179,22 @@ public class DSSanPham implements ThaoTac {
     @Override
     public void TimKiem() {
         // TODO Auto-generated method stub
-        
+                    sc = new Scanner(System.in);
+	                System.out.print("Nhap ID san pham can tim: ");
+	                String id = sc.nextLine();
+	                String ID=id.toLowerCase();
+                    boolean flag = false;
+	                for (int i = 0; i < size; i++) {
+	                    if (ID.equals(sp[i].getId().toLowerCase())) {
+	                    	sp[i].Xuat();
+	                        flag = true;
+	                       
+	                    }
+	                }
+	                if (flag == false) {
+	                    System.out.println("Khong tim thay san pham!!!");
+	                }
+                  
 	}
-   
+
 }
