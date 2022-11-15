@@ -1,0 +1,4 @@
+SP1|Nokia|New|Black|12mb|2000|NCC1|5/2/2002
+SP1|Iphone|New|1280|12mb|2000|NCC1|6/2/2010
+SP1|Iphone|New|Black|256gb|2000|NCC1|11/12/2022
+SP2|Iphone|Likenew|Black|64mb|2500|NCC2|22/10/2003

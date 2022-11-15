@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class Menu {
-
+	static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
 
-		Scanner sc = new Scanner(System.in);
+		
 		DSSanPham dssp = new DSSanPham();
 		DSNhanVien dsnv = new DSNhanVien();
 		DSKhachHang dskh = new DSKhachHang();

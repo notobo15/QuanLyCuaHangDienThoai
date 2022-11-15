@@ -15,8 +15,8 @@ public class DSSanPham implements ThaoTac {
     public void Tao() {
         DocFile();
         System.out.println("Nhap so luong san pham can them: ");
-        int sl = sc.nextInt();
-
+        int sl = Integer.valueOf(sc.nextInt());
+      
         for (int i = size; i < size + sl; i++) {
             sp[i] = new SanPham();
             sp[i].Tao();
@@ -63,7 +63,7 @@ public class DSSanPham implements ThaoTac {
                     Xoa();
                     break;
                 case 4:
-                    // Sua();
+                    Sua();
                     break;
                 case 5:
                     TimKiem();
@@ -172,9 +172,126 @@ public class DSSanPham implements ThaoTac {
 
     @Override
     public void Sua() {
-        // TODO Auto-generated method stub
+        
+            String id = "";
+    
+            System.out.println("Nhap ID cua NHAN VIEN ban muon sua?");
+            System.out.println("0. Quay lai");
+            System.out.print("Moi ban nhap: ");
+            sc.nextLine();
+            SanPham tam = null;
+            id = sc.nextLine();
+            boolean timThay = false;
+            for (;;) {
+                for (int i = 0; i < size; i++) {
+                    if (sp[i].getId().equalsIgnoreCase(id)) {
+                        tam = sp[i];
+                        timThay = true;
+                        break;
+                    }
+                }
+                if (timThay == true || id.equalsIgnoreCase("0"))
+                    break;
+                System.out.println("ID KHONG TON TAI moi ban nhap lai!!!");
+                System.out.println("0. Quay lai");
+                id = sc.nextLine();
+            }
+            ;
+            if (timThay == true) {
+                System.out.println(
+                        "ID\tHO VA TEN\t\t\tGIOI TINH\tDIA CHI\t\tNGAY SINH\tEMAIL\t\tSDT\t\tNhom\t\tLuong");
+                for (int i = 0; i <= 140; i++) {
+                    System.out.print("-");
+                }
+                System.out.println();
+                tam.Xuat();
+                System.out.println("+------------- Chon thao tac ban muon sua ------------+");
+                System.out.println("|1. Sua ho va ten nhan vien                           |");
+                System.out.println("|2. Sua gioi tinh                                     |");
+                System.out.println("|3. Sua dia chi                                       |");
+                System.out.println("|4. Sua ngay sinh                                     |");
+                System.out.println("|5. Sua email                                         |");
+                System.out.println("|6. Sua so dien thoai                                 |");
+                System.out.println("|7. Sua chuc vu                                       |");
+                System.out.println("|8. Sua luong                                         |");
+                System.out.println("|9. Sua tat ca                                        |");
+                System.out.println("|0. Quay lai                                          |");
+                System.out.println("+-----------------------------------------------------+");
+                System.out.print("Nhap thao tac : ");
+                try {
+    
+                    int select = Integer.parseInt(sc.nextLine());
+    
+                    switch (select) {
+    
+                        case 1: {
+                            System.out.print("Nhap ten san pham moi : ");
+                            String tenMoi = sc.nextLine();
+                            tam.setTen(tenMoi);
+                            System.out.println("Da sua thanh cong!");
+                            tam.Xuat();
+                            GhiFile();
+                            break;
+                        }
+                        case 2: {
+                            System.out.print("Nhap mo ta moi: ");
+                            String tenMoi = sc.nextLine();
+                            tam.setMoTa(tenMoi);
+                            System.out.println("Da sua thanh cong!");
+                            tam.Xuat();
+                            GhiFile();
+                            break;
+                        }
+                        case 3: {
+                            System.out.print("Nhap mau moi : ");
+                            String tenMoi = sc.nextLine();
+                            tam.setMau(tenMoi);
+                            System.out.println("Da sua thanh cong!");
+                            tam.Xuat();
+                            GhiFile();
+                            break;
+                        }
+                        case 4: {
+                            System.out.print("Nhap kich co moi : ");
+                             String tenMoi = sc.nextLine();
+                             tam.setKichCo(tenMoi);
+                            System.out.println("Da sua thanh cong!");
+                            tam.Xuat();
+                            GhiFile();
+                            break;
+                        }
+                        case 5: {
+                            System.out.print("Nhap gia moi : ");
+                            int giaMoi = sc.nextInt();
+                            tam.setGia(giaMoi);
+                            System.out.println("Da sua thanh cong!");
+                            tam.Xuat();
+                            GhiFile();
+                            break;
+                        }
+                        case 6: {
+                            System.out.print("Nhap ngay ra mat moi : ");
+                            tam.setNgayRaMat();
+                            System.out.println("Da sua thanh cong!");
+                            tam.Xuat();
+                            GhiFile();
+                            break;
+                        }
+                       
+                        case 0:
+                            break;
+                        default:
+                            System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+    
+                    }
+                } catch (Exception e) {
+                    System.out.println("BAN CHI DUOC NHAP SO.\nMoi ban nhap lai...");
+                }
+            }
+        }
+    
 
-    }
+
 
     @Override
     public void TimKiem() {
