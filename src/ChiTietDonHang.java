@@ -8,13 +8,15 @@ public class ChiTietDonHang {
 	private double thanhTien;
 	private static int stt = 0;
 	Scanner sc = new Scanner(System.in);
+
 	public ChiTietDonHang() {
 	}
+
 	public ChiTietDonHang(String donHang_id) {
 		this.donHang_id = donHang_id;
 	}
-	
-	public ChiTietDonHang(String id, String donHang_id, String sanPham_id, float soLuong,double thanhTien) {
+
+	public ChiTietDonHang(String id, String donHang_id, String sanPham_id, float soLuong, double thanhTien) {
 		this.id = id;
 		this.donHang_id = donHang_id;
 		this.sanPham_id = sanPham_id;
@@ -64,6 +66,7 @@ public class ChiTietDonHang {
 		System.out.println(soLuong);
 		this.thanhTien = soLuong * dssp.xuatGia(sanPham_id);
 	}
+
 	public void nhap() {
 		setId();
 		System.out.println("nhap id san pham: ");
@@ -72,11 +75,11 @@ public class ChiTietDonHang {
 		setSoLuong(Float.parseFloat(sc.nextLine()));
 		setThanhTien();
 		System.out.println(getThanhTien());
-		
+
 	}
-	
+
 	public void xuat() {
 		System.out.println(toString());
 	}
-	
+
 }
