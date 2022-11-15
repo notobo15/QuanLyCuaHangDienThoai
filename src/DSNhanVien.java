@@ -40,6 +40,7 @@ public class DSNhanVien implements ThaoTac {
         for (int i = size; i < size + slnv; i++) {
             nv[i] = new NhanVien();
             System.out.println("------ Nhap thong tin nhan vien ------");
+            nv[i].setId();
             nv[i].nhap();
             System.out.println("Them nhan vien thanh cong");
         }
@@ -383,7 +384,7 @@ public class DSNhanVien implements ThaoTac {
     public void DocFile() {
         int i = 0;
         try {
-            FileReader fr = new FileReader("..\\database\\DSNhanVien.txt");
+            FileReader fr = new FileReader(".\\database\\DSNhanVien.txt");
             BufferedReader br = new BufferedReader(fr);
             try {
                 String line = "";
@@ -441,23 +442,23 @@ public class DSNhanVien implements ThaoTac {
 
     }
 
-    public static NhanVien[] add(int n, NhanVien myarray[], NhanVien ele) {
-        int i;
-        NhanVien newArray[] = new NhanVien[n + 1];
-        // copy original array into new array
-        for (i = 0; i < n; i++)
-            newArray[i] = myarray[i];
+    // public static NhanVien[] add(int n, NhanVien myarray[], NhanVien ele) {
+    // int i;
+    // NhanVien newArray[] = new NhanVien[n + 1];
+    // // copy original array into new array
+    // for (i = 0; i < n; i++)
+    // newArray[i] = myarray[i];
 
-        // add element to the new array
-        newArray[n] = ele;
+    // // add element to the new array
+    // newArray[n] = ele;
 
-        return newArray;
-    }
+    // return newArray;
+    // }
 
     @Override
     public void GhiFile() {
         try {
-            FileWriter fw = new FileWriter("..\\database\\DSNhanVien.txt", false);
+            FileWriter fw = new FileWriter(".\\database\\DSNhanVien.txt", false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
             for (int i = 0; i < size; i++) {

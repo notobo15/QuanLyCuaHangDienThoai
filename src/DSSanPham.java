@@ -104,7 +104,7 @@ public class DSSanPham implements ThaoTac {
     public void DocFile() {
         int i = 0;
         try {
-            FileReader fr = new FileReader("database/DSSanPham.txt");
+            FileReader fr = new FileReader("..\\database\\DSSanPham.txt");
             BufferedReader br = new BufferedReader(fr);
             try {
                 String line = "";
@@ -136,6 +136,7 @@ public class DSSanPham implements ThaoTac {
             }
 
         } catch (Exception e) {
+            System.out.println("Loi khong doc dc file");
 
         }
 
