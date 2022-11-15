@@ -150,7 +150,14 @@ public abstract class ConNguoi {
 	}
 
 	public void xuat() {
-		System.out.print(toString());
+		System.out.printf("|  %-10s", getId());
+		System.out.printf("%-25s", getHoVaTen());
+		System.out.printf("%-15s", getGioiTinh());
+		System.out.printf("%-15s", getDiaChi());
+		System.out.printf("%-15s", getNgaySinh());
+		System.out.printf("%-15s", getEmail());
+		System.out.printf("%-15s", getSdt());
+		// System.out.println("'%15s' %n", "baeldung");
 	}
 
 }

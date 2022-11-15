@@ -62,9 +62,10 @@ public class NhanVien extends ConNguoi {
 	}
 
 	public void xuat() {
-
 		super.xuat();
-		System.out.print("\t" + chucVu + "\t\t" + luong + "\n");
+		System.out.printf("%-15s", getChucVu());
+		System.out.printf("%-15s|%n", getLuong());
+		// System.out.print("\t" + chucVu + "\t\t" + luong + "\n");
 	}
 
 	public void nhap() {
@@ -72,7 +73,6 @@ public class NhanVien extends ConNguoi {
 		System.out.println("Moi nhap chuc vu:");
 		setChucVu(sc.nextLine());
 		System.out.println("Moi nhap luong:");
-		sc.nextLine();
 		setLuong(Integer.parseInt(sc.nextLine()));
 	}
 
