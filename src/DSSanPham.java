@@ -80,7 +80,7 @@ public class DSSanPham implements ThaoTac {
 
     public void GhiFile() {
         try {
-            FileWriter fw = new FileWriter("database/DSSanPham.txt", false);
+            FileWriter fw = new FileWriter(".\\database\\DSSanPham.txt", false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
             for (int i = 0; i < size; i++) {
@@ -104,7 +104,7 @@ public class DSSanPham implements ThaoTac {
     public void DocFile() {
         int i = 0;
         try {
-            FileReader fr = new FileReader("..\\database\\DSSanPham.txt");
+            FileReader fr = new FileReader(".\\database\\DSSanPham.txt");
             BufferedReader br = new BufferedReader(fr);
             try {
                 String line = "";

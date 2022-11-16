@@ -406,9 +406,7 @@ public class DSNhanVien implements ThaoTac {
     @Override
     public void DocFile() {
         int i = 0;
-
         try {
-
             FileReader fr2 = new FileReader(".\\database\\DSNhanVien.txt");
             BufferedReader br2 = new BufferedReader(fr2);
             try {

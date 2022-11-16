@@ -15,8 +15,6 @@ public class DonHang {
 	public DonHang() {
 	}
 
-	
-
 	public DonHang(String id, String khachHang_id, String thuNgan_id, String cuaHang_id, String date,
 			String hinhThucThanhToan, double tongTien) {
 		this.id = id;
@@ -27,8 +25,6 @@ public class DonHang {
 		this.tongTien = tongTien;
 		this.date = date;
 	}
-
-
 
 	public String getId() {
 		return id;
@@ -71,8 +67,6 @@ public class DonHang {
 		this.cuaHang_id = cuaHang_id;
 	}
 
-	
-
 	public double getTongTien() {
 		return tongTien;
 	}
@@ -104,42 +98,53 @@ public class DonHang {
 		System.out.println("Nhap hanh thuc thanh toan: ");
 		setHinhThucThanhToan(sc.nextLine());
 		setDate();
-		
-		
-		DSChiTietDonHang dsctdh = new DSChiTietDonHang();
-		dsctdh.nhap(getId());
-		dsctdh.GhiFile();
-		setTongTien();
-		System.out.println(getTongTien());
-		
-		
-//		ChiTietDonHang dsctdh[] = new ChiTietDonHang[1000];
-//		int n = 2;
-//		System.out.println(getId());
-//		for(int i = 0; i < n; i++) {
-//			dsctdh[i] = new ChiTietDonHang(getId());
-//			dsctdh[i].nhap();
-//			dsctdh[i].xuat();
-//			setGia(dsctdh[i].getThanhTien());
-//		}
-//		System.out.println("Nhap so luong san pham: ");
-//        int slnv = sc.nextInt();
-//        for (int i = size; i < size + slnv; i++) {
-//        	dsctdh[i] = new ChiTietDonHang();
-//            System.out.println("---------Nhap thong tin-----------");
-//            dsctdh[i].nhap();
-//            System.out.println("Them nhan vien thanh cong");
-//        }
-//        size += slnv;
+		DSChiTietDonHang ctdh = new DSChiTietDonHang(getId());
+		ctdh.XuatMenu();
+
+		// DSChiTietDonHang dsctdh = new DSChiTietDonHang();
+		// dsctdh.nhap(getId());
+		// dsctdh.GhiFile();
+		// setTongTien();
+		// System.out.println(getTongTien());
+
+		// ChiTietDonHang dsctdh[] = new ChiTietDonHang[1000];
+		// int n = 2;
+		// System.out.println(getId());
+		// for(int i = 0; i < n; i++) {
+		// dsctdh[i] = new ChiTietDonHang(getId());
+		// dsctdh[i].nhap();
+		// dsctdh[i].xuat();
+		// setGia(dsctdh[i].getThanhTien());
+		// }
+		// System.out.println("Nhap so luong san pham: ");
+		// int slnv = sc.nextInt();
+		// for (int i = size; i < size + slnv; i++) {
+		// dsctdh[i] = new ChiTietDonHang();
+		// System.out.println("---------Nhap thong tin-----------");
+		// dsctdh[i].nhap();
+		// System.out.println("Them nhan vien thanh cong");
+		// }
+		// size += slnv;
 	}
-	
+
 	@Override
 	public String toString() {
 		return id + ", hinhThucThanhToan=" + hinhThucThanhToan + ", thuNgan_id=" + thuNgan_id + ", khachHang_id="
-				+ khachHang_id + ", cuaHang_id=" + cuaHang_id  + ", date=" + date + "tong tien " + tongTien;
+				+ khachHang_id + ", cuaHang_id=" + cuaHang_id + ", date=" + date + "tong tien " + tongTien;
 	}
+
 	public void xuat() {
-		System.out.println(toString());
+		// System.out.println(toString());
+		System.out.printf("|  %-10s", getId());
+		System.out.printf("%-20s", getKhachHang_id());
+		System.out.printf("%-20s", getthuNgan_id());
+		System.out.printf("%-20s", getCuaHang_id());
+		System.out.printf("%-15s", getHinhThucThanhToan());
+		System.out.printf("%-25s", getDate());
+		System.out.printf("%-15s|%n", getTongTien());
+
+		DSChiTietDonHang ds = new DSChiTietDonHang();
+		ds.XuatTronGDonHang(getId());
 	}
-	
+
 }

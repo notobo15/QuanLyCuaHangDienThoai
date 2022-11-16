@@ -67,15 +67,25 @@ public class ChiTietDonHang {
 		this.thanhTien = soLuong * dssp.xuatGia(sanPham_id);
 	}
 
-	public void nhap() {
+	public void nhap(String id) {
 		setId();
+		setDonHang_id(id);
 		System.out.println("nhap id san pham: ");
 		setSanPham_id(sc.nextLine());
 		System.out.println("nhap so luong: ");
 		setSoLuong(Float.parseFloat(sc.nextLine()));
 		setThanhTien();
-		System.out.println(getThanhTien());
+		// System.out.println(getThanhTien());
 
+	}
+
+	@Override
+	public String toString() {
+		return "{" +
+				" id='" + getId() + "'" +
+				", donHang_id='" + getDonHang_id() + "'" +
+				", sanPham_id='" + getSanPham_id() + "'" +
+				", soLuong='" + getSoLuong() + "thanh tien " + getThanhTien();
 	}
 
 	public void xuat() {
