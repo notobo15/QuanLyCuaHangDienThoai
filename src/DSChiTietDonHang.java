@@ -75,6 +75,8 @@ public class DSChiTietDonHang implements ThaoTac {
 			if (dsctdh[i].getDonHang_id().equalsIgnoreCase(id))
 				dsctdh[i].xuat();
 		}
+		System.out.printf(
+				"+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+%n");
 
 	}
 
@@ -111,6 +113,18 @@ public class DSChiTietDonHang implements ThaoTac {
 		size += slnv;
 		GhiFile();
 
+	}
+
+	public double tong(String id) {
+		DocFile();
+		double s = 0;
+		for (int i = 0; i < size; i++) {
+			System.out.println(dsctdh[i].getThanhTien());
+			s += dsctdh[i].getThanhTien();
+			if (dsctdh[i].getId().equalsIgnoreCase(id)) {
+			}
+		}
+		return s;
 	}
 
 	@Override

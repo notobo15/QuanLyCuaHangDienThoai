@@ -81,15 +81,16 @@ public class ChiTietDonHang {
 
 	@Override
 	public String toString() {
-		return "{" +
-				" id='" + getId() + "'" +
-				", donHang_id='" + getDonHang_id() + "'" +
-				", sanPham_id='" + getSanPham_id() + "'" +
-				", soLuong='" + getSoLuong() + "thanh tien " + getThanhTien();
+		return getId() + "san pham " + getSanPham_id() + "so luong " + getSoLuong() + "thanh tien " + getThanhTien();
 	}
 
 	public void xuat() {
-		System.out.println(toString());
+		System.out.printf("|\tID CTDH : %-10s", getId());
+		System.out.printf("TEN SAN PHAM : %-30s", getSanPham_id());
+		System.out.printf("SO LUONG : %-15s", getSoLuong());
+		System.out.printf("THANH TIEN : %,.3f      |%n", getThanhTien());
+
+		// System.out.println(toString());
 	}
 
 }

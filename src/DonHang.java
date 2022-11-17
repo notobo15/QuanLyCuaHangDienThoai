@@ -73,7 +73,8 @@ public class DonHang {
 
 	public void setTongTien() {
 		DSChiTietDonHang ds = new DSChiTietDonHang();
-		this.tongTien = ds.tongTien(id);
+		System.out.println(ds.tong(id));
+		this.tongTien = ds.tong(id);
 	}
 
 	public void setDate() {
@@ -100,7 +101,7 @@ public class DonHang {
 		setDate();
 		DSChiTietDonHang ctdh = new DSChiTietDonHang(getId());
 		ctdh.XuatMenu();
-
+		tongTien = ctdh.tong(id);
 		// DSChiTietDonHang dsctdh = new DSChiTietDonHang();
 		// dsctdh.nhap(getId());
 		// dsctdh.GhiFile();
