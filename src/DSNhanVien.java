@@ -32,7 +32,16 @@ public class DSNhanVien implements ThaoTac {
         }
         return 0;
     }
-
+    public String getTenNhanVien(String id) {
+    	timDodaiMang();
+    	DocFile();
+    	for(int i = 0; i < size; i++) {
+    		if(id.equalsIgnoreCase(nv[i].getId())) {
+    			return nv[i].getHoVaTen();
+    		}
+    	}
+    	return "err";
+    }
     @Override
     public void Tao() {
         System.out.println("Nhap so luong nhan vien can them: ");
@@ -98,6 +107,7 @@ public class DSNhanVien implements ThaoTac {
                 size--;
                 System.out.println("Da xoa thanh cong!");
                 GhiFile();
+                DocFile();
             }
         }
 

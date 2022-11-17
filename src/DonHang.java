@@ -35,6 +35,10 @@ public class DonHang {
 		this.id = "DH" + ++stt;
 	}
 
+	public void setId(int id) {
+
+		this.id = "DH" + ++id;
+	}
 	public String getHinhThucThanhToan() {
 		return hinhThucThanhToan;
 	}
@@ -89,7 +93,7 @@ public class DonHang {
 	}
 
 	public void nhap() {
-		setId();
+		//setId();
 		System.out.println("Nhap id cua khach hang: ");
 		setKhachHang_id(sc.nextLine());
 		System.out.println("Nhap id cua thu ngan: ");
@@ -133,12 +137,20 @@ public class DonHang {
 		return id + ", hinhThucThanhToan=" + hinhThucThanhToan + ", thuNgan_id=" + thuNgan_id + ", khachHang_id="
 				+ khachHang_id + ", cuaHang_id=" + cuaHang_id + ", date=" + date + "tong tien " + tongTien;
 	}
-
+	public String InTenKhachHang() {
+		DSSanPham ds = new DSSanPham();
+		return ds.getTenKhachHang(getKhachHang_id());
+	}
+	
+	public String InTenNhanVien() {
+		DSNhanVien ds = new DSNhanVien();
+		return ds.getTenNhanVien(getthuNgan_id());
+	}
 	public void xuat() {
 		// System.out.println(toString());
 		System.out.printf("|  %-10s", getId());
 		System.out.printf("%-20s", getKhachHang_id());
-		System.out.printf("%-20s", getthuNgan_id());
+		System.out.printf("%-20s", InTenNhanVien());
 		System.out.printf("%-20s", getCuaHang_id());
 		System.out.printf("%-15s", getHinhThucThanhToan());
 		System.out.printf("%-25s", getDate());

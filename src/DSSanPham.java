@@ -33,7 +33,15 @@ public class DSSanPham implements ThaoTac {
         }
 
     }
-
+    public String getTenKhachHang(String id) {
+    	DocFile();
+    	for(int i = 0; i <size; i++) {
+    		if(sp[i].getId().equalsIgnoreCase(id)) {
+    			return sp[i].getTen();
+    		}
+    	}
+    	return "";
+    }
     // @Override
     public void XuatMenu() {
         int select = 0;

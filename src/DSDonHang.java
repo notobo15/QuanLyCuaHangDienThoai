@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class DSDonHang implements ThaoTac {
 	private static int size = 0;
 	public DonHang[] dsdh;
+	private int idCuoiCung;
 	static Scanner sc = new Scanner(System.in);
 
 	public DSDonHang() {
@@ -58,26 +59,26 @@ public class DSDonHang implements ThaoTac {
 			System.out.print("Nhap thao tac: ");
 			select = sc.nextInt();
 			switch (select) {
-				case 1: {
-					Tao();
-					break;
-				}
-				case 2:
-					Xuat();
-					break;
-				case 3:
-					Xoa();
-					break;
-				case 4:
-					Sua();
-					break;
-				case 5:
-					TimKiem();
-					break;
-				case 0:
-					break;
-				default:
-					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+			case 1: {
+				Tao();
+				break;
+			}
+			case 2:
+				Xuat();
+				break;
+			case 3:
+				Xoa();
+				break;
+			case 4:
+				Sua();
+				break;
+			case 5:
+				TimKiem();
+				break;
+			case 0:
+				break;
+			default:
+				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 			}
 
@@ -101,6 +102,7 @@ public class DSDonHang implements ThaoTac {
 		for (int i = size; i < size + slnv; i++) {
 			dsdh[i] = new DonHang();
 			System.out.println("---------Nhap thong tin-----------");
+			dsdh[i].setId(idCuoiCung);
 			dsdh[i].nhap();
 			System.out.println("Them don hang thanh cong");
 		}
@@ -123,14 +125,12 @@ public class DSDonHang implements ThaoTac {
 
 	@Override
 	public void Xuat() {
-		System.out
-				.println(
-						"+---------------------------------------------------   DANH SACH DON HANG   ----------------------------------------------------+");
+		System.out.println(
+				"+---------------------------------------------------   DANH SACH DON HANG   ----------------------------------------------------+");
 		System.out.println(
 				"|  ID        TEN KHACH HANG      TEN THU NGAN        CUA HANG ID         HTTT           NGAY MUA HANG            TONG TIEN      |");
-		System.out
-				.println(
-						"+-------------------------------------------------------------------------------------------------------------------------------+");
+		System.out.println(
+				"+-------------------------------------------------------------------------------------------------------------------------------+");
 		for (int i = 0; i < size; i++) {
 			dsdh[i].xuat();
 		}
@@ -152,12 +152,8 @@ public class DSDonHang implements ThaoTac {
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
 			for (int i = 0; i < size; i++) {
-				pw.println(dsdh[i].getId() + "|"
-						+ dsdh[i].getKhachHang_id() + "|"
-						+ dsdh[i].getthuNgan_id() + "|"
-						+ dsdh[i].getCuaHang_id() + "|"
-						+ dsdh[i].getDate() + "|"
-						+ dsdh[i].getHinhThucThanhToan() + "|"
+				pw.println(dsdh[i].getId() + "|" + dsdh[i].getKhachHang_id() + "|" + dsdh[i].getthuNgan_id() + "|"
+						+ dsdh[i].getCuaHang_id() + "|" + dsdh[i].getDate() + "|" + dsdh[i].getHinhThucThanhToan() + "|"
 						+ dsdh[i].getTongTien());
 			}
 			bw.close();
@@ -188,6 +184,9 @@ public class DSDonHang implements ThaoTac {
 					String date = txt[4];
 					String hinhThucThanhToan = txt[5];
 					double thanhTien = Double.parseDouble(txt[6]);
+					
+					String catID = id.replaceAll("\\D+", "");
+                    idCuoiCung = Integer.parseInt(catID);
 					dsdh[i] = new DonHang(id, khachHang_id, thuNgan_id, cuaHang_id, date, hinhThucThanhToan, thanhTien);
 					i++;
 				}
