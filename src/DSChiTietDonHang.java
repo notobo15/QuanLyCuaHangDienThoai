@@ -26,34 +26,34 @@ public class DSChiTietDonHang implements ThaoTac {
 			System.out.println("+-------------- Chon thao tac --------------+");
 			System.out.println("|1. Them san pham vao gio                   |");
 			System.out.println("|2. Xuat danh sach san pham trong gio hang  |");
-			System.out.println("|3. Xoa don hang                            |");
+			System.out.println("|3. Xoa san pham vao gio                    |");
 			System.out.println("|4. Sua so luong san pham                   |");
 			System.out.println("|5. Tim san pham                            |");
-			System.out.println("|0. Quay lai                                |");
+			System.out.println("|0. Hoan Tat                                |");
 			System.out.println("+-------------------------------------------+");
 			System.out.print("Nhap thao tac: ");
 			select = sc.nextInt();
 			switch (select) {
-				case 1: {
-					Tao();
-					break;
-				}
-				case 2:
-					Xuat();
-					break;
-				case 3:
-					Xoa();
-					break;
-				case 4:
-					Sua();
-					break;
-				case 5:
-					TimKiem();
-					break;
-				case 0:
-					break;
-				default:
-					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+			case 1: {
+				Tao();
+				break;
+			}
+			case 2:
+				Xuat();
+				break;
+			case 3:
+				Xoa();
+				break;
+			case 4:
+				Sua();
+				break;
+			case 5:
+				TimKiem();
+				break;
+			case 0:
+				break;
+			default:
+				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 			}
 
@@ -82,7 +82,29 @@ public class DSChiTietDonHang implements ThaoTac {
 
 	@Override
 	public void Xoa() {
-		// TODO Auto-generated method stub
+		System.out.print("Nhap ID chi tiet don hang can xoa : ");
+		String id = sc.nextLine();
+		sc.nextLine();
+		id = id.toLowerCase();
+		boolean flag = false;
+
+		for (int i = 0; i < size; i++) {
+			if (id.equals(dsctdh[i].getId().toLowerCase())) {
+				dsctdh[i] = null;
+				for (int j = i; j < size; j++) {
+
+					dsctdh[j] = dsctdh[j + 1];
+				}
+				flag = true;
+				size--;
+				GhiFile();
+				System.out.println("Da xoa thanh cong!");
+			}
+		}
+
+		if (flag == false) {
+			System.out.println("Khong co don hang de xoa");
+		}
 
 	}
 
@@ -119,17 +141,30 @@ public class DSChiTietDonHang implements ThaoTac {
 		DocFile();
 		double s = 0;
 		for (int i = 0; i < size; i++) {
-			System.out.println(dsctdh[i].getThanhTien());
-			s += dsctdh[i].getThanhTien();
-			// if (dsctdh[i].getId().equalsIgnoreCase(id)) {
-			// }
+//			System.out.println(dsctdh[i].getThanhTien());
+			if (id.equalsIgnoreCase(dsctdh[i].getDonHang_id())) {
+				s += dsctdh[i].getThanhTien();
+			}
 		}
 		return s;
 	}
 
 	@Override
 	public void TimKiem() {
-		// TODO Auto-generated method stub
+		System.out.print("Nhap ID san pham can tim: ");
+		String id = sc.nextLine();
+		sc.nextLine();
+		boolean flag = false;
+		for (int i = 0; i < size; i++) {
+			if (id.equalsIgnoreCase(dsctdh[i].getSanPham_id())) {
+				dsctdh[i].xuat();
+				flag = true;
+
+			}
+		}
+		if (flag == false) {
+			System.out.println("Khong tim thay nhan vien");
+		}
 
 	}
 
@@ -140,13 +175,11 @@ public class DSChiTietDonHang implements ThaoTac {
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
 			for (int i = 0; i < size; i++) {
-				pw.println(dsctdh[i].getId() + "|"
-						+ dsctdh[i].getDonHang_id() + "|"
-						+ dsctdh[i].getSanPham_id() + "|"
-						+ dsctdh[i].getSoLuong() + "|"
-						+ dsctdh[i].getThanhTien());
+				pw.println(dsctdh[i].getId() + "|" + dsctdh[i].getDonHang_id() + "|" + dsctdh[i].getSanPham_id() + "|"
+						+ dsctdh[i].getSoLuong() + "|" + dsctdh[i].getThanhTien());
 			}
 			bw.close();
+			fw.close();
 		} catch (IOException e) {
 			System.out.println("Loi khong ghi dc file");
 		}
@@ -178,6 +211,7 @@ public class DSChiTietDonHang implements ThaoTac {
 			} finally {
 				size = i;
 				br.close();
+				fr.close();
 			}
 
 		} catch (Exception e) {
@@ -188,8 +222,23 @@ public class DSChiTietDonHang implements ThaoTac {
 
 	@Override
 	public void Sua() {
-		// TODO Auto-generated metho d stub
+		System.out.println("nhap id san pham can sua : ");
+		String id = sc.nextLine();
+		sc.nextLine();
+		boolean flag = false;
+		for (int i = 0; i < size; i++) {
+			if (id.equalsIgnoreCase(dsctdh[i].getSanPham_id())) {
+				int soLuongMoi = Integer.parseInt(sc.nextLine()) ;
+				
+				dsctdh[i].setSoLuong(soLuongMoi);
+				flag = true;
+			}
+		}
+		if (flag == false) {
+			System.out.println("sua khong thanh cong");
+		}
 
+		GhiFile();
 	}
 
 	public double thanhTien(String id) {
@@ -202,14 +251,14 @@ public class DSChiTietDonHang implements ThaoTac {
 		return s;
 	}
 
-	public double tongTien(String id) {
-		DocFile();
-		double s = 0;
-		for (int i = 0; i < size; i++) {
-			if (id.equalsIgnoreCase(dsctdh[i].getDonHang_id())) {
-				s += dsctdh[i].getThanhTien();
-			}
-		}
-		return s;
-	}
+//	public double tongTien(String id) {
+//		DocFile();
+//		double s = 0;
+//		for (int i = 0; i < size; i++) {
+//			if (id.equalsIgnoreCase(dsctdh[i].getDonHang_id())) {
+//				s += dsctdh[i].getThanhTien();
+//			}
+//		}
+//		return s;
+//	}
 }

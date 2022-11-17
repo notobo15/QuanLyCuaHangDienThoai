@@ -17,7 +17,7 @@ public class DSDonHang implements ThaoTac {
 	}
 
 	public void timDodaiMang() {
-		int n = 0;
+		int n = 1;
 		try {
 			FileReader fr = new FileReader(".\\database\\DSNhanVien.txt");
 			BufferedReader br = new BufferedReader(fr);
@@ -113,7 +113,40 @@ public class DSDonHang implements ThaoTac {
 
 	@Override
 	public void TimKiem() {
-		// TODO Auto-generated method stub
+		System.out.println("|------------------ Chon thao tac tim kiem ------------------|");
+        System.out.println("|1. Tim nhan vien theo ID                                    |");
+        //System.out.println("|2. Tim nhan vien theo ten khach hang                        |");
+        System.out.println("|0. Quay lai                                                 |");
+        System.out.println("|------------------------------------------------------------|");
+        System.out.print("Nhap thao tac : ");
+        int select = sc.nextInt();
+        switch (select) {
+            case 1: {
+                sc = new Scanner(System.in);
+                System.out.print("Nhap ID nhan vien can tim: ");
+                String id = sc.nextLine();
+                boolean flag = false;
+                for (int i = 0; i < size; i++) {
+                    if (id.equalsIgnoreCase(dsdh[i].getId())) {
+                    	dsdh[i].xuat();
+                        flag = true;
+
+                    }
+                }
+                if (flag == false) {
+                    System.out.println("Khong tim thay nhan vien");
+                }
+                break;
+            }
+            
+            case 0:
+                break;
+            default:
+                System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+
+        }
+
+           
 
 	}
 
@@ -141,7 +174,28 @@ public class DSDonHang implements ThaoTac {
 
 	@Override
 	public void Xoa() {
-		// TODO Auto-generated method stub
+        System.out.print("Nhap ID don hang can xoa : ");
+        String id = sc.nextLine();
+        id = id.toLowerCase();
+        boolean flag = false;
+
+        for (int i = 0; i < size; i++) {
+            if (id.equals(dsdh[i].getId().toLowerCase())) {
+                dsdh[i] = null;
+                for (int j = i; j < size; j++) {
+
+                	dsdh[j] = dsdh[j + 1];
+                }
+                flag = true;
+                size--;
+                GhiFile();
+                System.out.println("Da xoa thanh cong!");
+            }
+        }
+
+        if (flag == false) {
+            System.out.println("Khong co don hang de xoa");
+        }
 
 	}
 
@@ -191,8 +245,10 @@ public class DSDonHang implements ThaoTac {
 					i++;
 				}
 			} finally {
-				size = i;
+				//size = i;
+				System.out.println(size);
 				br.close();
+				fr.close();
 			}
 		}
 

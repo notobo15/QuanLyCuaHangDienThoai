@@ -77,7 +77,6 @@ public class DonHang {
 
 	public void setTongTien() {
 		DSChiTietDonHang ds = new DSChiTietDonHang();
-		System.out.println(ds.tong(id));
 		this.tongTien = ds.tong(id);
 	}
 
@@ -150,14 +149,18 @@ public class DonHang {
 		// System.out.println(toString());
 		System.out.printf("|  %-10s", getId());
 		System.out.printf("%-20s", getKhachHang_id());
-		System.out.printf("%-20s", InTenNhanVien());
+		System.out.printf("%-20s", getthuNgan_id());
+		//System.out.printf("%-20s", InTenNhanVien());
 		System.out.printf("%-20s", getCuaHang_id());
 		System.out.printf("%-15s", getHinhThucThanhToan());
 		System.out.printf("%-25s", getDate());
-		System.out.printf("%-15s|%n", getTongTien());
+		setTongTien();
+		System.out.printf("%-,15.2f|%n", getTongTien());
 
 		DSChiTietDonHang ds = new DSChiTietDonHang();
 		ds.XuatTronGDonHang(getId());
+		
+		
 	}
 
 }
