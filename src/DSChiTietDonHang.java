@@ -121,8 +121,8 @@ public class DSChiTietDonHang implements ThaoTac {
 		for (int i = 0; i < size; i++) {
 			System.out.println(dsctdh[i].getThanhTien());
 			s += dsctdh[i].getThanhTien();
-			if (dsctdh[i].getId().equalsIgnoreCase(id)) {
-			}
+			// if (dsctdh[i].getId().equalsIgnoreCase(id)) {
+			// }
 		}
 		return s;
 	}
