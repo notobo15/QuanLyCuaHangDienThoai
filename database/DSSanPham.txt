@@ -1,4 +1,9 @@
-SP1|Nokia|New|Black|12mb|2000|NCC1|5/2/2002
-SP1|Iphone|New|1280|12mb|2000|NCC1|6/2/2010
-SP1|Iphone|New|Black|256gb|2000|NCC1|11/12/2022
-SP2|Iphone|Likenew|Black|64mb|2500|NCC2|22/10/2003
+SP0|Redmi|New|Black|128gb|3500|NCC1|5/2/2002
+SP1|Iphone|New|Blue|64gb|2000|NCC2|6/2/2010
+SP2|Iphone|Old|White|256gb|4000|NCC3|11/12/2022
+SP3|Nokia|Likenew|Black|64mb|2500|NCC4|22/5/2014
+SP4|Samsung|Likenew|Black|32gb|2500|NCC5|22/11/2021
+SP5|Huawei|Likenew|White|32gb|2500|NCC6|22/2/2012
+SP6|Xperia|new|Black|1Tb|2500|NCC7|6/9/2013
+SP7|Bphone|new|Black|256gb|4500|NCC8|5/10/2002
+SP8|Nokia|Old|Black|128gb|2500|NCC9|2/10/2020

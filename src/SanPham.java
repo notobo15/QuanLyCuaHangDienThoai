@@ -166,8 +166,7 @@ public class SanPham {
 	
 	@Override
 	public String toString() {
-		return "SanPham [id=" + id + ", ten=" + ten + ", moTa=" + moTa + ", mau=" + mau + ", kichCo=" + kichCo
-				+ ", gia=" + gia + ", nhaCC_id=" + ncc_id +", ngayRaMat=" + ngayRaMat + "]";
+		return id+"\t"+ ten+"\t\t\t"+moTa+"\t\t"+mau+"\t\t"+kichCo+"\t\t"+gia+"\t\t"+ncc_id+"\t\t\t"+ngayRaMat;
 	}
 	public void Xuat() {
 		System.out.println(toString());

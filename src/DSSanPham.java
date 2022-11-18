@@ -56,7 +56,11 @@ public class DSSanPham implements ThaoTac {
                 }
 
                 case 2:
-
+                    System.out.println("ID\tTEN\t\t\tMO TA\t\tMAU\t\tKICH CO\t\tGIA\t\tID NHA CUNG CAP\t\tNGAY RA MAT");
+                    for (int i = 0; i <= 140; i++) {
+                        System.out.print("-");
+                    }
+                    System.out.println();
                     Xuat();
                     break;
                 case 3:
@@ -175,7 +179,7 @@ public class DSSanPham implements ThaoTac {
         
             String id = "";
     
-            System.out.println("Nhap ID cua NHAN VIEN ban muon sua?");
+            System.out.println("Nhap ID cua san pham ban muon sua?");
             System.out.println("0. Quay lai");
             System.out.print("Moi ban nhap: ");
             sc.nextLine();
@@ -199,24 +203,19 @@ public class DSSanPham implements ThaoTac {
             ;
             if (timThay == true) {
                 System.out.println(
-                        "ID\tHO VA TEN\t\t\tGIOI TINH\tDIA CHI\t\tNGAY SINH\tEMAIL\t\tSDT\t\tNhom\t\tLuong");
+                        "ID\tTEN\t\t\tMO TA\tMAU\t\tKICH CO\tGIA\t\tID NHA CUNG CAP\t\tNGAY RA MAT");
                 for (int i = 0; i <= 140; i++) {
                     System.out.print("-");
                 }
                 System.out.println();
                 tam.Xuat();
                 System.out.println("+------------- Chon thao tac ban muon sua ------------+");
-                System.out.println("|1. Sua ho va ten nhan vien                           |");
-                System.out.println("|2. Sua gioi tinh                                     |");
-                System.out.println("|3. Sua dia chi                                       |");
-                System.out.println("|4. Sua ngay sinh                                     |");
-                System.out.println("|5. Sua email                                         |");
-                System.out.println("|6. Sua so dien thoai                                 |");
-                System.out.println("|7. Sua chuc vu                                       |");
-                System.out.println("|8. Sua luong                                         |");
-                System.out.println("|9. Sua tat ca                                        |");
-                System.out.println("|0. Quay lai                                          |");
-                System.out.println("+-----------------------------------------------------+");
+                System.out.println("|1. Sua ten san pham                                  |");
+                System.out.println("|2. Sua mo ta                                         |");
+                System.out.println("|3. Sua mau                                           |");
+                System.out.println("|4. Sua kich co                                       |");
+                System.out.println("|5. Sua gia                                           |");
+                System.out.println("|6. Sua ngay ra mat                                   |");
                 System.out.print("Nhap thao tac : ");
                 try {
     
