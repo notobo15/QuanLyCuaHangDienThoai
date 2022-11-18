@@ -152,7 +152,94 @@ public class DSDonHang implements ThaoTac {
 
 	@Override
 	public void Sua() {
-		// TODO Auto-generated method stub
+		String id = "";
+
+        System.out.println("Nhap ID DON HANG ban muon sua?");
+        System.out.println("0. Quay lai");
+        System.out.print("Moi ban nhap: ");
+        sc.nextLine();
+        DonHang tam = null;
+        id = sc.nextLine();
+        boolean timThay = false;
+        for (;;) {
+            for (int i = 0; i < size; i++) {
+                if (dsdh[i].getId().equalsIgnoreCase(id)) {
+                    tam = dsdh[i];
+                    timThay = true;
+                    break;
+                }
+            }
+            if (timThay == true || id.equalsIgnoreCase("0"))
+                break;
+            System.out.println("ID KHONG TON TAI moi ban nhap lai!!!");
+            System.out.println("0. Quay lai");
+            id = sc.nextLine();
+        }
+        ;
+        if (timThay == true) {
+            
+            tam.xuat();
+            System.out.println("+------------- Chon thao tac ban muon sua ------------+");
+            System.out.println("|1. Sua id khach hang                                 |");
+            System.out.println("|2. Sua id thu ngan                                   |");
+            System.out.println("|3. Sua id cua hang                                   |");
+            System.out.println("|4. Sua hinh thuc thanh toan                          |");
+            System.out.println("|0. Quay lai                                          |");
+            System.out.println("+-----------------------------------------------------+");
+            System.out.print("Nhap thao tac : ");
+            try {
+
+                int select = Integer.parseInt(sc.nextLine());
+
+                switch (select) {
+
+                    case 1: {
+                        System.out.print("Nhap ho va ten nhan vien moi : ");
+                        String tenMoi = sc.nextLine();
+                        tam.setKhachHang_id(tenMoi);
+                        System.out.println("Da sua thanh cong!");
+                        tam.xuat();
+                        GhiFile();
+                        break;
+                    }
+                    case 2: {
+                        System.out.print("Nhap gioi tinh nhan vien moi: ");
+                        String tenMoi = sc.nextLine();
+                        tam.setthuNgan_id(tenMoi);
+                        System.out.println("Da sua thanh cong!");
+                        tam.xuat();
+                        GhiFile();
+                        break;
+                    }
+                    case 3: {
+                        System.out.print("Nhap dia chi nhan vien moi : ");
+                        String tenMoi = sc.nextLine();
+                        tam.setCuaHang_id(tenMoi);
+                        System.out.println("Da sua thanh cong!");
+                        tam.xuat();
+                        GhiFile();
+                        break;
+                    }
+                    case 4: {
+                        System.out.print("Nhap ngay sinh nhan vien moi : ");
+                        // String tenMoi = sc.nextLine();
+                        // tam.setNgaySinh(tenMoi);
+                        System.out.println("Da sua thanh cong!");
+                        tam.xuat();
+                        GhiFile();
+                        break;
+                    }
+                    
+                    case 0:
+                        break;
+                    default:
+                        System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+
+                }
+            } catch (Exception e) {
+                System.out.println("BAN CHI DUOC NHAP SO.\nMoi ban nhap lai...");
+            }
+        }
 
 	}
 
@@ -175,21 +262,26 @@ public class DSDonHang implements ThaoTac {
 	@Override
 	public void Xoa() {
         System.out.print("Nhap ID don hang can xoa : ");
+        sc.nextLine();
         String id = sc.nextLine();
-        id = id.toLowerCase();
         boolean flag = false;
 
         for (int i = 0; i < size; i++) {
-            if (id.equals(dsdh[i].getId().toLowerCase())) {
-                dsdh[i] = null;
-                for (int j = i; j < size; j++) {
+            if (id.equalsIgnoreCase(dsdh[i].getId())) {
 
-                	dsdh[j] = dsdh[j + 1];
+                if (i != size - 1) {
+                    for (int j = i; j < size - 1; j++) {
+                    	dsdh[j] = dsdh[j + 1];
+                    }
+
+                } else {
+                	dsdh[i] = null;
                 }
                 flag = true;
                 size--;
-                GhiFile();
                 System.out.println("Da xoa thanh cong!");
+                GhiFile();
+                DocFile();
             }
         }
 

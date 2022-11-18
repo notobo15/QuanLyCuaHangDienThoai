@@ -44,6 +44,13 @@ public class DonHang {
 	}
 
 	public void setHinhThucThanhToan(String hinhThucThanhToan) {
+		for (;;) {
+			if (hinhThucThanhToan.equalsIgnoreCase("cash")
+					|| hinhThucThanhToan.equalsIgnoreCase("card"))
+				break;
+			System.out.println("Moi nhap lai (cash / card):");
+			hinhThucThanhToan = sc.nextLine();
+		}
 		this.hinhThucThanhToan = hinhThucThanhToan;
 	}
 
@@ -52,6 +59,13 @@ public class DonHang {
 	}
 
 	public void setthuNgan_id(String thuNgan_id) {
+//		for (;;) {
+//			if (hinhThucThanhToan.equalsIgnoreCase("cash")
+//					|| hinhThucThanhToan.equalsIgnoreCase("card"))
+//				break;
+//			System.out.println("Moi nhap lai (cash / card):");
+//			hinhThucThanhToan = sc.nextLine();
+//		}
 		this.thuNgan_id = thuNgan_id;
 	}
 
@@ -60,6 +74,14 @@ public class DonHang {
 	}
 
 	public void setKhachHang_id(String khachHang_id) {
+		for (;;) {
+			DSKhachHang ds = new DSKhachHang();
+			boolean check = ds.checkKhachHangTonTai(khachHang_id);
+			if (check)
+				break;
+			System.out.println("Moi nhap lai (cash / card):");
+			hinhThucThanhToan = sc.nextLine();
+		}
 		this.khachHang_id = khachHang_id;
 	}
 
@@ -94,11 +116,14 @@ public class DonHang {
 	public void nhap() {
 		//setId();
 		System.out.println("Nhap id cua khach hang: ");
-		setKhachHang_id(sc.nextLine());
+		//setKhachHang_id(sc.nextLine());
+		khachHang_id =  sc.nextLine();
 		System.out.println("Nhap id cua thu ngan: ");
-		setthuNgan_id(sc.nextLine());
+		//setthuNgan_id(sc.nextLine());
+		thuNgan_id = sc.nextLine();
 		System.out.println("Nhap id cua cua hang: ");
-		setCuaHang_id(sc.nextLine());
+		//setCuaHang_id(sc.nextLine());
+		cuaHang_id =  sc.nextLine();
 		System.out.println("Nhap hanh thuc thanh toan: ");
 		setHinhThucThanhToan(sc.nextLine());
 		setDate();

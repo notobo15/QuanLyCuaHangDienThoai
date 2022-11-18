@@ -171,13 +171,15 @@ public class DSNhanVien implements ThaoTac {
         System.out.println("0. Quay lai");
         System.out.print("Moi ban nhap: ");
         sc.nextLine();
+        int pos = 0;
         NhanVien tam = null;
         id = sc.nextLine();
         boolean timThay = false;
         for (;;) {
             for (int i = 0; i < size; i++) {
                 if (nv[i].getId().equalsIgnoreCase(id)) {
-                    tam = nv[i];
+                    //tam = nv[i];
+                	pos = i;
                     timThay = true;
                     break;
                 }
@@ -196,7 +198,7 @@ public class DSNhanVien implements ThaoTac {
                 System.out.print("-");
             }
             System.out.println();
-            tam.xuat();
+            //tam.xuat();
             System.out.println("+------------- Chon thao tac ban muon sua ------------+");
             System.out.println("|1. Sua ho va ten nhan vien                           |");
             System.out.println("|2. Sua gioi tinh                                     |");
@@ -219,9 +221,10 @@ public class DSNhanVien implements ThaoTac {
                     case 1: {
                         System.out.print("Nhap ho va ten nhan vien moi : ");
                         String tenMoi = sc.nextLine();
-                        tam.setHoVaTen(tenMoi);
+                        nv[pos].setHoVaTen(tenMoi);
                         System.out.println("Da sua thanh cong!");
-                        tam.xuat();
+                        //tam.xuat();
+                        nv[pos].xuat();
                         GhiFile();
                         break;
                     }

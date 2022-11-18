@@ -440,7 +440,7 @@ public class DSKhachHang implements ThaoTac {
     public void DocFile() {
         int i = 0;
         try {
-            FileReader fr = new FileReader("D:\\QuanLyCuaHangDienThoai-dev\\src\\khachang.txt");
+            FileReader fr = new FileReader(".\\database\\DSKhachHang.txt");
             BufferedReader br = new BufferedReader(fr);
             try {
                 String line = "";
@@ -481,7 +481,7 @@ public class DSKhachHang implements ThaoTac {
     @Override
     public void GhiFile() {
         try {
-            FileWriter fw = new FileWriter("..\\database\\DSKhachHang.txt", false);
+            FileWriter fw = new FileWriter(".\\database\\DSKhachHang.txt", false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
             for (int i = 0; i < size; i++) {
@@ -500,6 +500,15 @@ public class DSKhachHang implements ThaoTac {
             System.out.println("Loi khong ghi dc file");
         }
 
+    }
+    
+    public boolean checkKhachHangTonTai(String id) {
+    	for(int i = 0; i < size; i++) {
+    		if(id.equalsIgnoreCase(Kh[i].getId())) {
+    			return true;
+    		}
+    	}
+    	return false;
     }
 
 }
