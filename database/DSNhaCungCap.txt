@@ -1,0 +1,6 @@
+NCC1|Apple|Cali, USA|0123456789
+NCC2|samsung|HCM, Viet Nam|0123456789
+NCC3|Xiaomi|China|0123456789
+NCC4|Oppo|Viet Nam|0123456789
+NCC5|nha cung cap 1|adf|af
+NCC6|nha cung cap 2|adf|adf
