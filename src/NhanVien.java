@@ -60,14 +60,15 @@ public class NhanVien extends ConNguoi {
 	public String toString() {
 		return super.toString();
 	}
-
+ 
+	@Override
 	public void xuat() {
 		super.xuat();
 		System.out.printf("%-15s", getChucVu());
 		System.out.printf("%-15s|%n", getLuong());
 		// System.out.print("\t" + chucVu + "\t\t" + luong + "\n");
 	}
-
+	@Override
 	public void nhap() {
 		super.nhap();
 		System.out.println("Moi nhap chuc vu:");
@@ -75,5 +76,4 @@ public class NhanVien extends ConNguoi {
 		System.out.println("Moi nhap luong:");
 		setLuong(Integer.parseInt(sc.nextLine()));
 	}
-
 }

@@ -29,7 +29,7 @@ public class ChiTietDonHang {
 	}
 
 	public void setId() {
-		this.id = "CCDH" + ++stt;
+		this.id = "CTDH" + ++stt;
 	}
 
 	public String getDonHang_id() {

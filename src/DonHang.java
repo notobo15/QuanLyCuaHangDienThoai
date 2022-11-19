@@ -171,7 +171,7 @@ public class DonHang {
 		return ds.getTenNhanVien(getthuNgan_id());
 	}
 	public void xuat() {
-		// System.out.println(toString());
+		 //System.out.println(toString());
 		System.out.printf("|  %-10s", getId());
 		System.out.printf("%-20s", getKhachHang_id());
 		System.out.printf("%-20s", getthuNgan_id());
@@ -181,7 +181,7 @@ public class DonHang {
 		System.out.printf("%-25s", getDate());
 		setTongTien();
 		System.out.printf("%-,15.2f|%n", getTongTien());
-
+		
 		DSChiTietDonHang ds = new DSChiTietDonHang();
 		ds.XuatTronGDonHang(getId());
 		

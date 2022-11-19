@@ -19,8 +19,10 @@ public class DSChiTietDonHang implements ThaoTac {
 		this.donHang_id = donHang_id;
 	}
 
+	
 	@Override
 	public void XuatMenu() {
+		DocFile();
 		int select = 0;
 		do {
 			System.out.println("+-------------- Chon thao tac --------------+");
@@ -79,18 +81,29 @@ public class DSChiTietDonHang implements ThaoTac {
 				"+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+%n");
 
 	}
+	public void XuatTronGHoaDon(String id) {
+		DocFile();
+		for (int i = 0; i < size; i++) {
+			if (dsctdh[i].getDonHang_id().equalsIgnoreCase(id)) {
+				System.out.print(dsctdh[i].getSanPham_id()+ "\t");
+				System.out.print(dsctdh[i].getSoLuong()+ "\t");
+				
+				System.out.println(dsctdh[i].getThanhTien());
+			}
+		}
+		
 
+	}
 	@Override
 	public void Xoa() {
 		System.out.print("Nhap ID chi tiet don hang can xoa : ");
-		String id = sc.nextLine();
 		sc.nextLine();
-		id = id.toLowerCase();
+		String id = sc.nextLine();
 		boolean flag = false;
 
 		for (int i = 0; i < size; i++) {
-			if (id.equals(dsctdh[i].getId().toLowerCase())) {
-				dsctdh[i] = null;
+			if (id.equalsIgnoreCase(dsctdh[i].getId())) {
+//				dsctdh[i] = null;
 				for (int j = i; j < size; j++) {
 
 					dsctdh[j] = dsctdh[j + 1];
@@ -126,7 +139,7 @@ public class DSChiTietDonHang implements ThaoTac {
 	public void Tao() {
 		System.out.println("Nhap so luong san pham: ");
 		int slnv = sc.nextInt();
-		for (int i = size; i < size + slnv; i++) {
+		for (int i = size; i < size+slnv; i++) {
 			dsctdh[i] = new ChiTietDonHang();
 			System.out.println("---------Nhap thong tin-----------");
 			dsctdh[i].nhap(donHang_id);
@@ -151,12 +164,12 @@ public class DSChiTietDonHang implements ThaoTac {
 
 	@Override
 	public void TimKiem() {
-		System.out.print("Nhap ID san pham can tim: ");
-		String id = sc.nextLine();
+		System.out.print("Nhap ID chi tiet don hang can tim: ");
 		sc.nextLine();
+		String id = sc.nextLine();
 		boolean flag = false;
 		for (int i = 0; i < size; i++) {
-			if (id.equalsIgnoreCase(dsctdh[i].getSanPham_id())) {
+			if (id.equalsIgnoreCase(dsctdh[i].getId())) {
 				dsctdh[i].xuat();
 				flag = true;
 
@@ -222,16 +235,18 @@ public class DSChiTietDonHang implements ThaoTac {
 
 	@Override
 	public void Sua() {
-		System.out.println("nhap id san pham can sua : ");
-		String id = sc.nextLine();
+		System.out.println("nhap id chi tiet don hang can sua : ");
 		sc.nextLine();
+		String id = sc.nextLine();
 		boolean flag = false;
 		for (int i = 0; i < size; i++) {
-			if (id.equalsIgnoreCase(dsctdh[i].getSanPham_id())) {
+			if (id.equalsIgnoreCase(dsctdh[i].getId())) {
+				System.out.println("nhap so luong can sua : ");
 				int soLuongMoi = Integer.parseInt(sc.nextLine()) ;
-				
 				dsctdh[i].setSoLuong(soLuongMoi);
+				dsctdh[i].setThanhTien();
 				flag = true;
+				System.out.println("Thay doi thanh cong");
 			}
 		}
 		if (flag == false) {

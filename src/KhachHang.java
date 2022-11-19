@@ -2,7 +2,6 @@
 public class KhachHang extends ConNguoi {
 	private String diaChiGiaohang;
 	private String thuocNhom;
-	private static int stt = 0;
 	public KhachHang() {
 	}
 	
@@ -11,8 +10,8 @@ public class KhachHang extends ConNguoi {
 		this.diaChiGiaohang = diaChiGiaohang;
 		this.thuocNhom = thuocNhom;
 	}
-	public void setId() {
-		super.id = "KH"+ ++stt;
+	public void setId(int stt) 	{
+		super.id = "KH"+ stt;
 	}
 	public String getId() {
 		return this.id;

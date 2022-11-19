@@ -1,33 +1,32 @@
 import java.util.Scanner;
 
-public class Cua_Hang {
+public class NhaCungCap {
     static Scanner sc = new Scanner(System.in);
     private String id;
-    private String TenCh;
+    private String TenNcc;
     private String diachi;
     private String sdt;
-    public static int stt= 1;
-    public Cua_Hang(){
+    public NhaCungCap(){
 
     }
-    public Cua_Hang(String id , String tenCh , String diachi,String sdt ){
+    public NhaCungCap(String id , String tenNcc , String diachi,String sdt ){
         this.id= id;
-        this.TenCh= tenCh;
+        this.TenNcc= tenNcc;
         this.diachi= diachi;
         this.sdt= sdt;
        
     }
-    public void setId(String id) {
-        this.id = "NV"+ ++stt;
+    public void setId(int stt) {
+        this.id = "NCC"+ stt;
     }
     public String getId() {
         return id;
     }
-    public void setTenCh(String tenCh){
-        this.TenCh = tenCh;
+    public void setTenNcc(String tenNcc){
+        this.TenNcc = tenNcc;
     }
-    public String getTenCh() {
-        return TenCh;
+    public String getTenNcc() {
+        return TenNcc;
     }
     public void setDiachi(String diachi) {
         this.diachi = diachi;
@@ -41,23 +40,25 @@ public class Cua_Hang {
     public String getSdt() {
         return sdt;
     }
+    
     @Override
     public String toString() {
-        return TenCh.toString();
+        return TenNcc.toString();
     }
     public void xuat() {
 
-		System.out.print("\t" + stt +"\t\t" + id +"\t\t" +TenCh+"\t\t\t" +diachi+"\t\t\t" +sdt+"\n");
+		System.out.print(id +"\t\t" +TenNcc+"\t\t\t" +diachi+"\t\t\t" +sdt+"\n");
 	}
     public void nhap()
     {
-        setId(id);
-        System.out.println("Nhap ten cua hang :");
-        TenCh= sc.nextLine();
-        System.out.println("Nhap dia chi cua hang :");
+        //setId(id);
+        System.out.println("Nhap ten nha cung cap vao :");
+        TenNcc= sc.nextLine();
+        System.out.println("Nhap dia chi nha cung cap :");
         diachi= sc.nextLine();
-        System.out.println("Nhap so dien thoai cua hang:");
+        System.out.println("Nhap so dien thoai nha cung cao:");
         sdt= sc.nextLine();
     }
+
 
 }

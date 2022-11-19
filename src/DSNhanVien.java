@@ -10,24 +10,17 @@ public class DSNhanVien implements ThaoTac {
     private static int size = 0;
     private int idCuoiCung;
     // public NhanVien[] nv = new NhanVien[1000];
-    public NhanVien[] nv;
+    public ConNguoi[] nv;
     static Scanner sc = new Scanner(System.in);
 
     public DSNhanVien() {
     }
 
-    public NhanVien[] getNv() {
-        return nv;
-    }
-
-    public void setNv(NhanVien[] nv) {
-        this.nv = nv;
-    }
 
     public double getGia(String id) {
         for (int i = 0; i < size; i++) {
             if (id.equalsIgnoreCase(nv[i].getId())) {
-                return nv[i].getLuong();
+                return ((NhanVien)nv[i]).getLuong();
             }
         }
         return 0;
@@ -46,7 +39,7 @@ public class DSNhanVien implements ThaoTac {
     public void Tao() {
         System.out.println("Nhap so luong nhan vien can them: ");
         int slnv = sc.nextInt();
-        NhanVien[] tam = new NhanVien[size];
+        ConNguoi[] tam = new NhanVien[size];
         for (int i = 0; i < size; i++) {
             tam[i] = nv[i];
         }
@@ -58,12 +51,12 @@ public class DSNhanVien implements ThaoTac {
 
             nv[i] = new NhanVien();
             System.out.println("------ Nhap thong tin nhan vien ------");
-            nv[i].setId(idCuoiCung++);
+            ((NhanVien)nv[i]).setId(idCuoiCung++);
             nv[i].nhap();
             System.out.println("Them nhan vien thanh cong");
         }
-        GhiFile();
         size += slnv;
+        GhiFile();
     }
 
     @Override
@@ -88,6 +81,7 @@ public class DSNhanVien implements ThaoTac {
 
     @Override
     public void Xoa() {
+    	DocFile();
         System.out.print("Nhap ID nhan vien can xoa : ");
         sc.nextLine();
         String id = sc.nextLine();
@@ -164,15 +158,13 @@ public class DSNhanVien implements ThaoTac {
 
     @Override
     public void Sua() {
-
+    	DocFile();
         String id = "";
-
         System.out.println("Nhap ID cua NHAN VIEN ban muon sua?");
         System.out.println("0. Quay lai");
         System.out.print("Moi ban nhap: ");
         sc.nextLine();
         int pos = 0;
-        NhanVien tam = null;
         id = sc.nextLine();
         boolean timThay = false;
         for (;;) {
@@ -231,18 +223,18 @@ public class DSNhanVien implements ThaoTac {
                     case 2: {
                         System.out.print("Nhap gioi tinh nhan vien moi: ");
                         String tenMoi = sc.nextLine();
-                        tam.setGioiTinh(tenMoi);
+                        nv[pos].setGioiTinh(tenMoi);
                         System.out.println("Da sua thanh cong!");
-                        tam.xuat();
+                        nv[pos].xuat();
                         GhiFile();
                         break;
                     }
                     case 3: {
                         System.out.print("Nhap dia chi nhan vien moi : ");
                         String tenMoi = sc.nextLine();
-                        tam.setDiaChi(tenMoi);
+                        nv[pos].setDiaChi(tenMoi);
                         System.out.println("Da sua thanh cong!");
-                        tam.xuat();
+                        nv[pos].xuat();
                         GhiFile();
                         break;
                     }
@@ -251,43 +243,43 @@ public class DSNhanVien implements ThaoTac {
                         // String tenMoi = sc.nextLine();
                         // tam.setNgaySinh(tenMoi);
                         System.out.println("Da sua thanh cong!");
-                        tam.xuat();
+                        nv[pos].xuat();
                         GhiFile();
                         break;
                     }
                     case 5: {
                         System.out.print("Nhap Email nhan vien moi : ");
                         String tenMoi = sc.nextLine();
-                        tam.setEmail(tenMoi);
+                        nv[pos].setEmail(tenMoi);
                         System.out.println("Da sua thanh cong!");
-                        tam.xuat();
+                        nv[pos].xuat();
                         GhiFile();
                         break;
                     }
                     case 6: {
                         System.out.print("Nhap so dien thoai nhan vien moi : ");
                         String tenMoi = sc.nextLine();
-                        tam.setSdt(tenMoi);
+                        nv[pos].setSdt(tenMoi);
                         System.out.println("Da sua thanh cong!");
-                        tam.xuat();
+                        nv[pos].xuat();
                         GhiFile();
                         break;
                     }
                     case 7: {
                         System.out.print("Nhap chuc vu nhan vien moi : ");
                         String tenMoi = sc.nextLine();
-                        tam.setChucVu(tenMoi);
+                        ((NhanVien) nv[pos]).setChucVu(tenMoi);
                         System.out.println("Da sua thanh cong!");
-                        tam.xuat();
+                        nv[pos].xuat();
                         GhiFile();
                         break;
                     }
                     case 8: {
                         System.out.print("Nhap luong nhan vien moi : ");
                         Double input = sc.nextDouble();
-                        tam.setLuong(input);
+                        ((NhanVien) nv[pos]).setLuong(input);
                         System.out.println("Da sua thanh cong!");
-                        tam.xuat();
+                        nv[pos].xuat();
                         GhiFile();
                         break;
                     }
@@ -295,7 +287,7 @@ public class DSNhanVien implements ThaoTac {
                         // System.out.print("Nhap ho va ten nhan vien moi : ");
                         // String tenMoi = sc.nextLine();
                         // tam.setHoVaTen(tenMoi);
-                        tam.nhap();
+                    	nv[pos].nhap();
                         System.out.println("Da sua thanh cong!");
                         System.out.println(
                                 "ID\tHO VA TEN\t\t\tGIOI TINH\tDIA CHI\t\tNGAY SINH\tEMAIL\t\tSDT\t\tNhom\t\tLuong");
@@ -303,7 +295,7 @@ public class DSNhanVien implements ThaoTac {
                             System.out.print("-");
                         }
                         System.out.println();
-                        tam.xuat();
+                        nv[pos].xuat();
                         GhiFile();
                         break;
                     }
@@ -321,6 +313,7 @@ public class DSNhanVien implements ThaoTac {
 
     @Override
     public void TimKiem() {
+    	DocFile();
         System.out.println("+-------------- Chon thao tac tim kiem -------------+");
         System.out.println("|1. Tim nhan vien theo ID                           |");
         System.out.println("|2. Tim nhan vien theo ten                          |");
@@ -483,16 +476,17 @@ public class DSNhanVien implements ThaoTac {
             FileWriter fw = new FileWriter(".\\database\\DSNhanVien.txt", false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
+            System.out.println(size);
             for (int i = 0; i < size; i++) {
-                pw.println(nv[i].getId() + "|"
-                        + nv[i].getHoVaTen() + "|"
-                        + nv[i].getGioiTinh() + "|"
-                        + nv[i].getDiaChi() + "|"
-                        + nv[i].ngaySinh.toString() + "|"
-                        + nv[i].getEmail() + "|"
-                        + nv[i].getSdt() + "|"
-                        + nv[i].getLuong() + "|"
-                        + nv[i].getChucVu());
+                pw.println((nv[i]).getId() + "|"
+                        + (nv[i]).getHoVaTen() + "|"
+                        + (nv[i]).getGioiTinh() + "|"
+                        + (nv[i]).getDiaChi() + "|"
+                        + (nv[i]).ngaySinh.toString() + "|"
+                        + (nv[i]).getEmail() + "|"
+                        + (nv[i]).getSdt() + "|"
+                        + ((NhanVien) nv[i]).getLuong() + "|"
+                        + ((NhanVien) nv[i]).getChucVu());
             }
             bw.close();
         } catch (IOException e) {

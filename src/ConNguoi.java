@@ -116,15 +116,15 @@ public abstract class ConNguoi {
 		final String regexPattern = "^\\d{10}$";
 		Pattern pattern = Pattern.compile(regexPattern);
 		Matcher matcher = pattern.matcher(sdt);
-		for (;;) {
-			if (matcher.matches()) {
-				break;
-			}
-			System.out.println("khong phai dinh dang cua so dien thoai");
-			System.out.println("Moi nhap lai so dien thoai:");
-			sc.nextLine();
-			sdt = sc.nextLine();
-		}
+//		for (;;) {
+//			if (matcher.matches()) {
+//				break;
+//			}
+//			System.out.println("khong phai dinh dang cua so dien thoai");
+//			System.out.println("Moi nhap lai so dien thoai:");
+//			sc.nextLine();
+//			sdt = sc.nextLine();
+//		}
 		this.sdt = sdt;
 	}
 
