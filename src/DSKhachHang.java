@@ -12,7 +12,7 @@ import javax.print.Doc;
 public class DSKhachHang implements ThaoTac {
     private static int size = 0;
     private int sttLast;
-    public KhachHang[] dskh = new KhachHang[1000];
+    public KhachHang[] dskh;
     static Scanner sc = new Scanner(System.in);
 
     public DSKhachHang() {
@@ -33,7 +33,7 @@ public class DSKhachHang implements ThaoTac {
 	public static void setSize() {
 		int n = 0;
 		try {
-			FileReader fr = new FileReader(".\\database\\DSCuaHang.txt");
+			FileReader fr = new FileReader(".\\database\\DSKhachHang.txt");
 			BufferedReader br = new BufferedReader(fr);
 			try {
 				String l = "";
@@ -47,7 +47,7 @@ public class DSKhachHang implements ThaoTac {
 				}
 
 			} finally {
-				size = n;
+				
 				br.close();
 				fr.close();
 
@@ -55,6 +55,7 @@ public class DSKhachHang implements ThaoTac {
 		} catch (Exception e) {
 			System.out.println("loi");
 		}
+		size = n;
 	}
 
 	@Override
@@ -86,7 +87,8 @@ public class DSKhachHang implements ThaoTac {
 
     @Override
     public void Xuat() {
-
+    	DocFile();
+    	System.out.println(size);
         for (int i = 0; i < size; i++) {
         	dskh[i].xuat();
         }
@@ -380,8 +382,7 @@ public class DSKhachHang implements ThaoTac {
                     Date ngaySinh = new Date(ngay, thang, nam);
                     String e = txt[5];
                     String sdt = txt[6];
-                    String diaChiGiaohang = txt[7];
-                    String thuocNhom = txt[8];
+                    String thuocNhom = txt[7];
                     
                     String idTam = id.replaceAll("\\D+", "");
 					sttLast = Integer.parseInt(idTam);
@@ -424,7 +425,12 @@ public class DSKhachHang implements ThaoTac {
     }
     
     public boolean checkKhachHangTonTai(String id) {
+    	setSize();
+    	dskh = new KhachHang[getSize()];
+    	DocFile();
+    	System.out.println(id);
     	for(int i = 0; i < size; i++) {
+    		System.out.println((dskh[i].getId()));
     		if(id.equalsIgnoreCase(dskh[i].getId())) {
     			return true;
     		}

@@ -46,8 +46,11 @@ public class NhaCungCap {
         return TenNcc.toString();
     }
     public void xuat() {
-
-		System.out.print(id +"\t\t" +TenNcc+"\t\t\t" +diachi+"\t\t\t" +sdt+"\n");
+    	System.out.printf("|%-15s", getId());
+    	System.out.printf("%-25s", getTenNcc());
+    	System.out.printf("%-25s", getDiachi());
+    	System.out.printf("%-15s|%n", getSdt());
+		//System.out.print(id +"\t\t" +TenNcc+"\t\t\t" +diachi+"\t\t\t" +sdt+"\n");
 	}
     public void nhap()
     {

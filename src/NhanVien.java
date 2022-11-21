@@ -76,13 +76,4 @@ public class NhanVien extends ConNguoi {
 		System.out.println("Moi nhap luong:");
 		setLuong(Integer.parseInt(sc.nextLine()));
 	}
-	
-	public static void main(String[] args) {
-		ConNguoi cn = new KhachHang();
-		cn.setEmail(sc.nextLine());
-		cn.setSdt(sc.nextLine());
-		System.out.println(cn.getEmail());
-		System.out.println(cn.getSdt());
-		
-	}
 }

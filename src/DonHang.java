@@ -59,12 +59,13 @@ public class DonHang {
 	}
 
 	public void setthuNgan_id(String thuNgan_id) {
+		DSNhanVien ds = new DSNhanVien();
 //		for (;;) {
-//			if (hinhThucThanhToan.equalsIgnoreCase("cash")
-//					|| hinhThucThanhToan.equalsIgnoreCase("card"))
+//			boolean check = ds.checkKhachHangTonTai(khachHang_id);
+//			if (check == true)
 //				break;
-//			System.out.println("Moi nhap lai (cash / card):");
-//			hinhThucThanhToan = sc.nextLine();
+//			System.out.println("Khach hang khong ton tai!\nMoi nhap lai:");
+//			khachHang_id = sc.nextLine();
 //		}
 		this.thuNgan_id = thuNgan_id;
 	}
@@ -74,13 +75,13 @@ public class DonHang {
 	}
 
 	public void setKhachHang_id(String khachHang_id) {
+		DSKhachHang ds = new DSKhachHang();
 		for (;;) {
-			DSKhachHang ds = new DSKhachHang();
 			boolean check = ds.checkKhachHangTonTai(khachHang_id);
-			if (check)
+			if (check == true)
 				break;
-			System.out.println("Moi nhap lai (cash / card):");
-			hinhThucThanhToan = sc.nextLine();
+			System.out.println("Khach hang khong ton tai!\nMoi nhap lai:");
+			khachHang_id = sc.nextLine();
 		}
 		this.khachHang_id = khachHang_id;
 	}
@@ -90,6 +91,14 @@ public class DonHang {
 	}
 
 	public void setCuaHang_id(String cuaHang_id) {
+		DSCuaHang ds = new DSCuaHang();
+		for (;;) {
+			boolean check = ds.checkTonTai(cuaHang_id);
+			if (check == true)
+				break;
+			System.out.println("cua hang khong ton tai!\nMoi nhap lai:");
+			cuaHang_id = sc.nextLine();
+		}
 		this.cuaHang_id = cuaHang_id;
 	}
 
@@ -114,16 +123,13 @@ public class DonHang {
 	}
 
 	public void nhap() {
-		//setId();
 		System.out.println("Nhap id cua khach hang: ");
-		//setKhachHang_id(sc.nextLine());
-		khachHang_id =  sc.nextLine();
+		setKhachHang_id(sc.nextLine());
 		System.out.println("Nhap id cua thu ngan: ");
 		//setthuNgan_id(sc.nextLine());
 		thuNgan_id = sc.nextLine();
 		System.out.println("Nhap id cua cua hang: ");
-		//setCuaHang_id(sc.nextLine());
-		cuaHang_id =  sc.nextLine();
+		setCuaHang_id(sc.nextLine());
 		System.out.println("Nhap hanh thuc thanh toan: ");
 		setHinhThucThanhToan(sc.nextLine());
 		setDate();

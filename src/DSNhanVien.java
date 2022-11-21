@@ -476,8 +476,8 @@ public class DSNhanVien implements ThaoTac {
             FileWriter fw = new FileWriter(".\\database\\DSNhanVien.txt", false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            System.out.println(size);
-            for (int i = 0; i < size; i++) {
+            
+            for (int i = 0; i < nv.length; i++) {
                 pw.println((nv[i]).getId() + "|"
                         + (nv[i]).getHoVaTen() + "|"
                         + (nv[i]).getGioiTinh() + "|"

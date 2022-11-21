@@ -94,6 +94,22 @@ public class DSChiTietDonHang implements ThaoTac {
 		
 
 	}
+	public ChiTietDonHang[] dsChiTietDonHang(String id) {
+		DocFile();
+		ChiTietDonHang ds[] = new ChiTietDonHang[3];
+		int j = 0;
+		for (int i = 0; i < size; i++) {
+			if (dsctdh[i].getDonHang_id().equalsIgnoreCase(id)) {
+				ChiTietDonHang tem = new ChiTietDonHang();
+				tem = dsctdh[i];
+				ds[j++] = tem;
+			}
+		}
+		return ds;
+	}
+	
+	
+	
 	@Override
 	public void Xoa() {
 		System.out.print("Nhap ID chi tiet don hang can xoa : ");

@@ -83,9 +83,13 @@ public class DSNhaCungCap {
 
 	public void Xuat() {
 		DocFile();
+		System.out.println("+---------------------------- DANH SACH NHA CUNG CAP ----------------------------+");
+		System.out.println("|ID             TEN                      DIA CHI                 SDT             |");
+		System.out.println("+--------------------------------------------------------------------------------+");
 		for (int i = 0; i < size; i++) {
 			dsncc[i].xuat();
 		}
+		System.out.println("+--------------------------------------------------------------------------------+");
 	}
 
 	public void XuatMenu() {
