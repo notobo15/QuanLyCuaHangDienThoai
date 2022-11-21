@@ -386,7 +386,7 @@ public class DSKhachHang implements ThaoTac {
                     String idTam = id.replaceAll("\\D+", "");
 					sttLast = Integer.parseInt(idTam);
                     
-                    dskh[i] = new KhachHang(id, ten, diachi, gioiTinh, ngaySinh, thuocNhom, diaChiGiaohang, e, sdt);
+                    dskh[i] = new KhachHang(id, ten, diachi, gioiTinh, ngaySinh, thuocNhom, e, sdt);
                     i++;
                 }
             } finally {
@@ -414,7 +414,6 @@ public class DSKhachHang implements ThaoTac {
                         + dskh[i].ngaySinh.toString() + "|"
                         + dskh[i].getEmail() + "|"
                         + dskh[i].getSdt() + "|"
-                        + dskh[i].getdiaChiGiaohang() + "|"
                         + dskh[i].getthuocNhom());
             }
             bw.close();

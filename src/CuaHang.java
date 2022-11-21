@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CuaHang {
     static Scanner sc = new Scanner(System.in);
@@ -36,7 +38,17 @@ public class CuaHang {
         return diachi;
     }
     public void setSdt(String sdt) {
-        this.sdt = sdt;
+    	Pattern p = Pattern.compile("^\\d{10}$");
+		for (;;) {
+			Matcher m = p.matcher(sdt);
+			if (m.find() == true) {
+				break;
+			}
+			System.out.println("khong phai dinh dang cua so dien thoai");
+			System.out.println("Moi nhap lai so dien thoai:");
+			sdt = sc.nextLine();
+		}
+		this.sdt = sdt;
     }
     public String getSdt() {
         return sdt;
