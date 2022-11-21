@@ -1,24 +1,23 @@
 import java.util.Scanner;
 
-public class Nha_Cung_Cap {
+public class NhaCungCap {
     static Scanner sc = new Scanner(System.in);
     private String id;
     private String TenNcc;
     private String diachi;
     private String sdt;
-    public static int stt= 1;
-    public Nha_Cung_Cap(){
+    public NhaCungCap(){
 
     }
-    public Nha_Cung_Cap(String id , String tenNcc , String diachi,String sdt ){
+    public NhaCungCap(String id , String tenNcc , String diachi,String sdt ){
         this.id= id;
         this.TenNcc= tenNcc;
         this.diachi= diachi;
         this.sdt= sdt;
        
     }
-    public void setId(String id) {
-        this.id = "NV"+ ++stt;
+    public void setId(int stt) {
+        this.id = "NCC"+ stt;
     }
     public String getId() {
         return id;
@@ -41,17 +40,18 @@ public class Nha_Cung_Cap {
     public String getSdt() {
         return sdt;
     }
+    
     @Override
     public String toString() {
         return TenNcc.toString();
     }
     public void xuat() {
 
-		System.out.print("\t" + stt +"\t\t" + id +"\t\t" +TenNcc+"\t\t\t" +diachi+"\t\t\t" +sdt+"\n");
+		System.out.print(id +"\t\t" +TenNcc+"\t\t\t" +diachi+"\t\t\t" +sdt+"\n");
 	}
     public void nhap()
     {
-        setId(id);
+        //setId(id);
         System.out.println("Nhap ten nha cung cap vao :");
         TenNcc= sc.nextLine();
         System.out.println("Nhap dia chi nha cung cap :");

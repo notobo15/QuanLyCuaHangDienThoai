@@ -1,29 +1,31 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class Cua_Hang {
+public class CuaHang {
     static Scanner sc = new Scanner(System.in);
     private String id;
     private String TenCh;
     private String diachi;
     private String sdt;
-    public static int stt= 1;
-    public Cua_Hang(){
+    public CuaHang(){
 
     }
-    public Cua_Hang(String id , String tenCh , String diachi,String sdt ){
+    public CuaHang(String id , String tenCh , String diachi,String sdt ){
         this.id= id;
         this.TenCh= tenCh;
         this.diachi= diachi;
         this.sdt= sdt;
        
     }
-    public void setId(String id) {
-        this.id = "NV"+ ++stt;
-    }
+
     public String getId() {
-        return id;
-    }
-    public void setTenCh(String tenCh){
+		return id;
+	}
+	public void setId(int stt) {
+		this.id = "CH" + ++stt;
+	}
+	public void setTenCh(String tenCh){
         this.TenCh = tenCh;
     }
     public String getTenCh() {
@@ -36,7 +38,17 @@ public class Cua_Hang {
         return diachi;
     }
     public void setSdt(String sdt) {
-        this.sdt = sdt;
+    	Pattern p = Pattern.compile("^\\d{10}$");
+		for (;;) {
+			Matcher m = p.matcher(sdt);
+			if (m.find() == true) {
+				break;
+			}
+			System.out.println("khong phai dinh dang cua so dien thoai");
+			System.out.println("Moi nhap lai so dien thoai:");
+			sdt = sc.nextLine();
+		}
+		this.sdt = sdt;
     }
     public String getSdt() {
         return sdt;
@@ -46,18 +58,21 @@ public class Cua_Hang {
         return TenCh.toString();
     }
     public void xuat() {
-
-		System.out.print("\t" + stt +"\t\t" + id +"\t\t" +TenCh+"\t\t\t" +diachi+"\t\t\t" +sdt+"\n");
+    	System.out.printf("|  %-10s", getId());
+		System.out.printf("%-25s", getTenCh());
+		System.out.printf("%-25s", getDiachi());
+		System.out.printf("%-15s|%n", getSdt());
+		//System.out.print(id +"\t\t" +TenCh+"\t\t\t" +diachi+"\t\t\t" +sdt+"\n");
 	}
+    
     public void nhap()
     {
-        setId(id);
         System.out.println("Nhap ten cua hang :");
-        TenCh= sc.nextLine();
+        setTenCh(sc.nextLine());
         System.out.println("Nhap dia chi cua hang :");
-        diachi= sc.nextLine();
+        setDiachi(sc.nextLine());
         System.out.println("Nhap so dien thoai cua hang:");
-        sdt= sc.nextLine();
+        setSdt(sc.nextLine());
     }
 
 }

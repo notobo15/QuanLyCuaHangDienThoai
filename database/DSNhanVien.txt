@@ -1,9 +1,6 @@
-NV1|Nguyen Van B|nam|HCM|29/2/2000|binh@gmail.com|0123456789|123.0|admin
-NV2|Nhan Vien 2|nam|LA|28/2/2001|a@gmail.com|0123456789|534.0|admin
-NV3|Nguyen Van D|nu|HCM|11/2/2002|a@gmail.com|0123456788|534.0|quan ly
-NV4|Nguyen Van E|nam|LA|15/1/2003|a@gmail.com|0123456789|534.0|admin
-NV5|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|534.0|quan ly
-NV6|Nguyen Van X|nam|LA|15/1/2003|a@gmail.com|0123456789|534.0|admin
-NV7|Nguyen Van Y|nu|HCM|11/2/2002|a@gmail.com|0123456789|534.0|quan ly
-NV8|Nguyen Van T|nam|LA|15/1/2003|a@gmail.com|0123456789|534.0|admin
-NV9|Nguyen Van W|nu|HCM|11/2/2002|a@gmail.com|0123456789|534.0|quan ly
+NV3|Nguyen Van Moi|nu|HCM|11/2/2002|a@gmail.com|0123456788|123.0|thu ngan
+NV5|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|123.0|thu ngan
+NV6|Nguyen Van X|nam|LA|15/1/2003|a@gmail.com|0123456789|123.0|thu ngan
+NV7|Nguyen Van Y|nu|HCM|11/2/2002|a@gmail.com|0123456789|123.0|thu ngan
+NV8|Nguyen Van Loc|nam|LA|15/1/2003|a@gmail.com|0123456789|123.0|thu ngan
+NV9|Ad|nam|adf|1/1/2000|adf|0123456789|123.0|thu ngan

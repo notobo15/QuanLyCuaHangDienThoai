@@ -94,17 +94,15 @@ public abstract class ConNguoi {
 	}
 
 	public void setEmail(String email) {
-		// final String regexPattern = "^[A-Za-z0-9+._-]+@(.+)$";
-		// Pattern pattern = Pattern.compile(regexPattern);
-		// Matcher matcher = pattern.matcher(email);
-		// for(;;){
-		// System.out.println(matcher.matches());
-		// if(matcher.matches()) {
-		// break;
-		// }
-		// System.out.println("Moi nhap lai email:");
-		// email=sc.nextLine();
-		// }
+		Pattern p = Pattern.compile("^[A-Za-z0-9+._-]+@(.+)$");
+		for (;;) {
+			Matcher m = p.matcher(email);
+			if (m.find() == true) {
+				break;
+			}
+			System.out.println("Moi nhap lai email:");
+			email = sc.nextLine();
+		}
 		this.email = email;
 	}
 
@@ -113,16 +111,14 @@ public abstract class ConNguoi {
 	}
 
 	public void setSdt(String sdt) {
-		final String regexPattern = "^\\d{10}$";
-		Pattern pattern = Pattern.compile(regexPattern);
-		Matcher matcher = pattern.matcher(sdt);
+		Pattern p = Pattern.compile("^\\d{10}$");
 		for (;;) {
-			if (matcher.matches()) {
+			Matcher m = p.matcher(sdt);
+			if (m.find() == true) {
 				break;
 			}
 			System.out.println("khong phai dinh dang cua so dien thoai");
 			System.out.println("Moi nhap lai so dien thoai:");
-			sc.nextLine();
 			sdt = sc.nextLine();
 		}
 		this.sdt = sdt;
@@ -145,12 +141,19 @@ public abstract class ConNguoi {
 
 	@Override
 	public String toString() {
-		return id + "\t" + hoVaTen + "\t\t\t" + gioiTinh + "\t\t" + diaChi + "\t\t" + ngaySinh.toString()
-				+ "\t" + email + "\t" + sdt;
+		return id + "\t" + hoVaTen + "\t\t\t" + gioiTinh + "\t\t" + diaChi + "\t\t" + ngaySinh.toString() + "\t" + email
+				+ "\t" + sdt;
 	}
 
 	public void xuat() {
-		System.out.print(toString());
+		System.out.printf("|  %-10s", getId());
+		System.out.printf("%-25s", getHoVaTen());
+		System.out.printf("%-15s", getGioiTinh());
+		System.out.printf("%-15s", getDiaChi());
+		System.out.printf("%-15s", getNgaySinh());
+		System.out.printf("%-15s", getEmail());
+		System.out.printf("%-15s", getSdt());
+		// System.out.println("'%15s' %n", "baeldung");
 	}
 
 }

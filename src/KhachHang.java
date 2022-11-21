@@ -1,18 +1,15 @@
 
 public class KhachHang extends ConNguoi {
-	private String diaChiGiaohang;
 	private String thuocNhom;
-	private static int stt = 0;
 	public KhachHang() {
 	}
 	
-	public KhachHang(String id, String hoVaTen,  String gioiTinh,String diaChi,Date ngaySinh, String thuocNhom, String diaChiGiaohang,String e,String sdt) {
+	public KhachHang(String id, String hoVaTen,  String gioiTinh,String diaChi,Date ngaySinh, String thuocNhom,String e,String sdt) {
 		super(id, hoVaTen, gioiTinh, diaChi, ngaySinh, e, sdt);
-		this.diaChiGiaohang = diaChiGiaohang;
 		this.thuocNhom = thuocNhom;
 	}
-	public void setId() {
-		super.id = "KH"+ ++stt;
+	public void setId(int stt) 	{
+		super.id = "KH"+ stt;
 	}
 	public String getId() {
 		return this.id;
@@ -32,12 +29,7 @@ public class KhachHang extends ConNguoi {
         }
 		this.thuocNhom = thuocNhom;
 	}
-	public String getdiaChiGiaohang() {
-		return diaChiGiaohang;
-	}
-	public void setdiaChiGiaohang(String diaChiGiaohang) {
-		this.diaChiGiaohang = diaChiGiaohang;
-	}
+
 
 
 	@Override
@@ -47,15 +39,13 @@ public class KhachHang extends ConNguoi {
 	public void xuat() {
 		
 		super.xuat();
-		System.out.print("\t" + thuocNhom +"\t\t" + diaChiGiaohang+"\n");
+		System.out.print("\t" + thuocNhom +"\t\t");
 	}
     public void nhap() {
     	super.nhap();
     	setId();
         System.out.println("Moi nhap Nhom:");
         setthuocNhom(sc.nextLine());
-        System.out.println("Moi nhap diaChiGiaohang:");
-        setdiaChiGiaohang(sc.nextLine());
     }
 	
 }
