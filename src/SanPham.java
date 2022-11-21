@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.Random;
+//import java.util.Random;
 // import javax.print.Doc;
 // import java.io.BufferedReader;
 // // import java.io.BufferedWriter;
@@ -17,8 +17,8 @@ public class SanPham {
 	private String ncc_id; 
 	private Date ngayRaMat = new Date(); 
 	// private int soLuongSanPham;
-	// private static int stt=100;
-	// private static int stt_ncc=200;
+	 private static int stt=0;
+	private static int stt_ncc=0;
 	public SanPham[] sp = new SanPham[100];
 	// // public void DocFile() {
     //     int i = 0;
@@ -76,10 +76,10 @@ public class SanPham {
 	public String getId() {
 		return id;
 	}
-	public void setId(int stt) {
-		// DocFile();
+	public void setId() {
+		//DSSanPham.DocFile();
 		
-		this.id = "SP" + stt ;
+		this.id = "SP" + ++stt ;
 	}
 	public String getTen() {
 		return ten;
@@ -114,9 +114,9 @@ public class SanPham {
 	public String getNCC_ID(){
 		return ncc_id;
 	}
-	public void setNCC_ID(int stt_ncc){
+	public void setNCC_ID(){
 		// DocFile();
-		this.ncc_id="NCC" + stt_ncc ;
+		this.ncc_id="NCC" + ++stt_ncc ;
 	}
 	
 	public Date getNgayRaMat() {
@@ -126,23 +126,19 @@ public class SanPham {
 		this.ngayRaMat.setTime();
 	}
 	public void Tao() {
-		Random rd=new Random();
-		int stt=1000+ rd.nextInt(999);
-		setId(stt);
-		Random rand=new Random();
-		int stt_ncc=2000 + rand.nextInt(999);
-		sc.nextLine();
+		
+		setId();
 		System.out.print("Moi nhap ten san pham:");
-        setTen(sc.nextLine());
+        setTen(sc.nextLine());sc.nextLine();
         System.out.print("Moi nhap mau:");
         setMau(sc.nextLine());
         System.out.print("Moi nhap kich co:");
         setKichCo(sc.nextLine());
         System.out.println("Moi nhap loai hang:");
 		System.out.println("||============ Chon thao tac ===============||");
-		System.out.println("||1. Hang New                         		||");
-		System.out.println("||2. Hang Likenew                			||");
-		System.out.println("||2. Hang Old                			||");
+		System.out.println("||1. Hang New                         	   ||");
+		System.out.println("||2. Hang Likenew                		   ||");
+		System.out.println("||2. Hang Old                			   ||");
 		System.out.println("||==========================================||");
 		System.out.print("Nhap mo ta: ");
 		int select = sc.nextInt();
@@ -162,7 +158,7 @@ public class SanPham {
 		}
 		System.out.print("Nhap gia ban:");
 		setGia(sc.nextInt());		
-		setNCC_ID(stt_ncc);
+		setNCC_ID();
         setNgayRaMat();
 	}
 
@@ -170,8 +166,7 @@ public class SanPham {
 	
 	@Override
 	public String toString() {
-		return "SanPham [id=" + id + ", ten=" + ten + ", moTa=" + moTa + ", mau=" + mau + ", kichCo=" + kichCo
-				+ ", gia=" + gia + ", nhaCC_id=" + ncc_id +", ngayRaMat=" + ngayRaMat + "]";
+		return id+"\t"+ ten+"\t\t\t"+moTa+"\t\t"+mau+"\t\t"+kichCo+"\t\t"+gia+"\t\t"+ncc_id+"\t\t\t"+ngayRaMat;
 	}
 	public void Xuat() {
 		System.out.println(toString());
