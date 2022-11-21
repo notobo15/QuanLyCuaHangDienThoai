@@ -4,8 +4,10 @@ public class Menu {
 	static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
 		
+
+		DSNVThuNgan dsnvtn = new DSNVThuNgan();
+		DSNVBanHang dsnvbh = new DSNVBanHang();
 		DSSanPham dssp = new DSSanPham();
-		DSNhanVien dsnv = new DSNhanVien();
 		DSKhachHang dskh = new DSKhachHang();
 		DSDonHang dsdh = new DSDonHang();
 		DSNhaCungCap dsncc = new DSNhaCungCap();
@@ -17,21 +19,21 @@ public class Menu {
 
 			do {
 				System.out.format("+---+--------------- MENU -----------------+%n");
-				System.out.format("| 1 | Chon cac thao tac nhan vien          |%n");
+				System.out.format("| 1 | Chon cac thao tac nhan vien ban hang |%n");
 				// System.out.format("+---+--------------------------------------+%n");
-//				System.out.format("| 2 | Chon cac thao tac nhan vien          |%n");
+				System.out.format("| 2 | Chon cac thao tac nhan vien thu ngan |%n");
 				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 2 | Chon cac thao tac khach hang         |%n");
+				System.out.format("| 3 | Chon cac thao tac khach hang         |%n");
 				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 3 | Chon cac thao tac nha cung cap       |%n");
+				System.out.format("| 4 | Chon cac thao tac nha cung cap       |%n");
 				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 4 | Chon cac thao tac san pham           |%n");
+				System.out.format("| 5 | Chon cac thao tac san pham           |%n");
 				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 5 | Chon cac thao tac don hang           |%n");
+				System.out.format("| 6 | Chon cac thao tac don hang           |%n");
 				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 6 | Chon cac thao tac cua hang           |%n");
+				System.out.format("| 7 | Chon cac thao tac cua hang           |%n");
 				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 7 | Thong ke                             |%n");
+				System.out.format("| 8 | Thong ke                             |%n");
 				System.out.format("+---+--------------------------------------+%n");
 				System.out.format("| 0 | Thoat chuong trinh                   |%n");
 				System.out.format("+---+--------------------------------------+%n");
@@ -40,25 +42,26 @@ public class Menu {
 				select = sc.nextInt();
 				switch (select) {
 					case 1:
-						dsnv.XuatMenu();
+						dsnvtn.XuatMenu();
 						break;
 					case 2:
-						dskh.XuatMenu();
+						dsnvbh.XuatMenu();
 						break;
 					case 3:
-						dsncc.XuatMenu();
+						dskh.XuatMenu();
 						break;
 					case 4:
-						dssp.XuatMenu();
+						dsncc.XuatMenu();
 						break;
 
 					case 5:
-						dsdh.XuatMenu();
+						dssp.XuatMenu();
 						break;
 					case 6:
-						dsch.XuatMenu();
+						dsdh.XuatMenu();
 						break;
 					case 7:
+						dsch.XuatMenu();
 						break;
 					case 0:
 						break;

@@ -1,0 +1,4 @@
+NVTN3|Nguyen Van Moi|nu|HCM|11/2/2002|a@gmail.com|0123456788|123.0|25.0
+NVTN5|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|123.0|26.0
+NVTN6|Nguyen Van X|nam|LA|15/1/2003|a@gmail.com|0123456789|123.0|27.0
+NVTN7|Nguyen Van Binh|nam|hcm|1/1/2000|a@gmail.com|0123456789|20000.0|30.0

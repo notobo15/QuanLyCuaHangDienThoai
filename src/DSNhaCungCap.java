@@ -261,11 +261,11 @@ public class DSNhaCungCap {
 		DocFile();
 		int select;
 //			try {
-			System.out.println("||============ Chon thao tac tim kiem ===============||");
-			System.out.println("||1. Tim cua hang theo ID                            ||");
-			System.out.println("||2. Tim cua  hang theo ten                          ||");
-			System.out.println("||0. Quay lai                                        ||");
-			System.out.println("||===================================================||");
+			System.out.println("+------------- Chon thao tac tim kiem -------------+");
+			System.out.println("|1. Tim cua hang theo ID                           |");
+			System.out.println("|2. Tim cua  hang theo ten                         |");
+			System.out.println("|0. Quay lai                                       |");
+			System.out.println("+--------------------------------------------------+");
 			System.out.print("Nhap thao tac : ");
 
 			select = sc.nextInt();

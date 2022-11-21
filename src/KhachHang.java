@@ -38,11 +38,29 @@ public class KhachHang extends ConNguoi {
     }
 	public void xuat() {
 		
-		super.xuat();
+		System.out.printf("|  %-10s", getId());
+		System.out.printf("%-25s", getHoVaTen());
+		System.out.printf("%-15s", getGioiTinh());
+		System.out.printf("%-15s", getDiaChi());
+		System.out.printf("%-15s", getNgaySinh());
+		System.out.printf("%-15s", getEmail());
+		System.out.printf("%-15s", getSdt());
+		
 		System.out.print("\t" + thuocNhom +"\n");
 	}
     public void nhap() {
-    	super.nhap();
+    	System.out.println("Moi nhap ho ten:");
+		setHoVaTen(sc.nextLine());
+		System.out.println("Moi nhap gioi tinh:");
+		setGioiTinh(sc.nextLine());
+		System.out.println("Moi nhap dia chi:");
+		setDiaChi(sc.nextLine());
+		System.out.println("Moi nhap ngay sinh:");
+		ngaySinh.setTime();
+		System.out.println("Moi nhap email:");
+		setEmail(sc.nextLine());
+		System.out.println("Moi nhap sdt:");
+		setSdt(sc.nextLine());
     	setId();
         System.out.println("Moi nhap Nhom:");
         setthuocNhom(sc.nextLine());

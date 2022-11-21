@@ -1,0 +1,3 @@
+NVBH3|Nguyen Van Moi|nu|HCM|11/2/2002|a@gmail.com|0123456788|123.0|200|1000
+NVBH5|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|123.0|300|2000
+NVBH6|Nguyen Van X|nam|LA|15/1/2003|a@gmail.com|0123456789|123.0|260|1000

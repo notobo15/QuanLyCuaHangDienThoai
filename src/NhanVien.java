@@ -1,22 +1,18 @@
 
 public class NhanVien extends ConNguoi {
-	private String chucVu;
-	private double luong;
-	private static int stt = 0;
+	private double luongCB;
+	
 
 	public NhanVien() {
 	}
 
-	public NhanVien(String id, String hoVaTen, String gioiTinh, String diaChi, Date ngaySinh, double luong,
-			String chucVu, String e, String sdt) {
+	public NhanVien(String id, String hoVaTen, String gioiTinh, String diaChi, Date ngaySinh, double luongCB,
+		 String e, String sdt) {
 		super(id, hoVaTen, gioiTinh, diaChi, ngaySinh, e, sdt);
-		this.chucVu = chucVu;
-		this.luong = luong;
+		this.luongCB = luongCB;
 	}
 
-	public void setId() {
-		super.id = "NV" + ++stt;
-	}
+
 
 	public void setId(int stt) {
 		super.id = "NV" + ++stt;
@@ -26,54 +22,55 @@ public class NhanVien extends ConNguoi {
 		return this.id;
 	}
 
-	public String getChucVu() {
-		return chucVu;
+
+
+	public double getluongCB() {
+		return luongCB;
 	}
 
-	public void setChucVu(String chucVu) {
+	public void setluongCB(double luongCB) {
 		for (;;) {
-			if (chucVu.equalsIgnoreCase("ban hang")
-					|| chucVu.equalsIgnoreCase("thu ngan")
-					|| chucVu.equalsIgnoreCase("quan ly"))
-				break;
-			System.out.println("Moi nhap lai (ban hang/ thu ngan/quan ly):");
-			chucVu = sc.nextLine();
-		}
-		this.chucVu = chucVu;
-	}
-
-	public double getLuong() {
-		return luong;
-	}
-
-	public void setLuong(double luong) {
-		for (;;) {
-			if (luong >= 0)
+			if (luongCB >= 0)
 				break;
 			System.out.println("Moi nhap lai:");
-			luong = sc.nextDouble();
+			luongCB = sc.nextDouble();
 		}
-		this.luong = luong;
+		this.luongCB = luongCB;
 	}
 
-	@Override
-	public String toString() {
-		return super.toString();
-	}
- 
-	@Override
 	public void xuat() {
-		super.xuat();
-		System.out.printf("%-15s", getChucVu());
-		System.out.printf("%-15s|%n", getLuong());
+
+		System.out.printf("|  %-10s", getId());
+		System.out.printf("%-25s", getHoVaTen());
+		System.out.printf("%-15s", getGioiTinh());
+		System.out.printf("%-15s", getDiaChi());
+		System.out.printf("%-15s", getNgaySinh());
+		System.out.printf("%-15s", getEmail());
+		System.out.printf("%-15s", getSdt());
+		// System.out.println("'%15s' %n", "baeldung");
+
+		System.out.printf("%-15s", getluongCB());
 		// System.out.print("\t" + chucVu + "\t\t" + luong + "\n");
 	}
-	@Override
+
 	public void nhap() {
-		super.nhap();
-		System.out.println("Moi nhap chuc vu:");
-		setChucVu(sc.nextLine());
-		System.out.println("Moi nhap luong:");
-		setLuong(Integer.parseInt(sc.nextLine()));
+		System.out.println("Moi nhap ho ten:");
+		setHoVaTen(sc.nextLine());
+		System.out.println("Moi nhap gioi tinh:");
+		setGioiTinh(sc.nextLine());
+		System.out.println("Moi nhap dia chi:");
+		setDiaChi(sc.nextLine());
+		System.out.println("Moi nhap ngay sinh:");
+		ngaySinh.setTime();
+		System.out.println("Moi nhap email:");
+		setEmail(sc.nextLine());
+		System.out.println("Moi nhap sdt:");
+		setSdt(sc.nextLine());
+		System.out.println("Moi nhap luong co ban:");
+		setluongCB(Integer.parseInt(sc.nextLine()));
+	}
+	
+	public double tinhLuong () {
+		return luongCB + 1;
 	}
 }

@@ -124,20 +124,8 @@ public abstract class ConNguoi {
 		this.sdt = sdt;
 	}
 
-	public void nhap() {
-		System.out.println("Moi nhap ho ten:");
-		setHoVaTen(sc.nextLine());
-		System.out.println("Moi nhap gioi tinh:");
-		setGioiTinh(sc.nextLine());
-		System.out.println("Moi nhap dia chi:");
-		setDiaChi(sc.nextLine());
-		System.out.println("Moi nhap ngay sinh:");
-		ngaySinh.setTime();
-		System.out.println("Moi nhap email:");
-		setEmail(sc.nextLine());
-		System.out.println("Moi nhap sdt:");
-		setSdt(sc.nextLine());
-	}
+	public abstract void nhap();
+	public abstract void xuat() ;
 
 	@Override
 	public String toString() {
@@ -145,15 +133,5 @@ public abstract class ConNguoi {
 				+ "\t" + sdt;
 	}
 
-	public void xuat() {
-		System.out.printf("|  %-10s", getId());
-		System.out.printf("%-25s", getHoVaTen());
-		System.out.printf("%-15s", getGioiTinh());
-		System.out.printf("%-15s", getDiaChi());
-		System.out.printf("%-15s", getNgaySinh());
-		System.out.printf("%-15s", getEmail());
-		System.out.printf("%-15s", getSdt());
-		// System.out.println("'%15s' %n", "baeldung");
-	}
 
 }
