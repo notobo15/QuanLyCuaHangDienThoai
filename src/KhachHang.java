@@ -39,7 +39,7 @@ public class KhachHang extends ConNguoi {
 	public void xuat() {
 		
 		super.xuat();
-		System.out.print("\t" + thuocNhom +"\t\t");
+		System.out.print("\t" + thuocNhom +"\n");
 	}
     public void nhap() {
     	super.nhap();

@@ -53,9 +53,9 @@ public class DSCuaHang {
 		for (int i = 0; i < size; i++) {
 			tam[i] = dsch[i];
 		}
-		
+
 		dsch = new CuaHang[size + sl];
-		
+
 		for (int i = 0; i < size; i++) {
 			dsch[i] = tam[i];
 		}
@@ -72,32 +72,29 @@ public class DSCuaHang {
 	public void Xuat() {
 
 		DocFile();
-		System.out.println(
-				"+--------------------------   DANH SACH CUA HANG   ---------------------------+");
-		System.out.println(
-				"|  ID        TEN CUA HANG             DIA CHI                  SDT            |");
-		System.out.println(
-				"+-----------------------------------------------------------------------------+");
+		System.out.println("+--------------------------   DANH SACH CUA HANG   ---------------------------+");
+		System.out.println("|  ID        TEN CUA HANG             DIA CHI                  SDT            |");
+		System.out.println("+-----------------------------------------------------------------------------+");
 		for (int i = 0; i < size; i++) {
 			dsch[i].xuat();
 		}
-		System.out.println(
-				"+-----------------------------------------------------------------------------+");
+		System.out.println("+-----------------------------------------------------------------------------+");
 	}
+
 	public void XuatMenu() {
 		setSize();
 		dsch = new CuaHang[getSize()];
-		 DocFile();
+		DocFile();
 		int select = 0;
 		do {
-			System.out.println("||============ Chon thao tac ===============||");
-			System.out.println("||1. Them cua hang                          ||");
-			System.out.println("||2. Xuat danh sach cua hang                ||");
-			System.out.println("||3. Xoa cua hang                           ||");
-			System.out.println("||4. Sua cua hang                           ||");
-			System.out.println("||5. Tim cua hang                           ||");
-			System.out.println("||0. Quay lai                               ||");
-			System.out.println("||==========================================||");
+			System.out.println("+-------------- Chon thao tac --------------+");
+			System.out.println("|1. Them cua hang                           |");
+			System.out.println("|2. Xuat danh sach cua hang                 |");
+			System.out.println("|3. Xoa cua hang                            |");
+			System.out.println("|4. Sua cua hang                            |");
+			System.out.println("|5. Tim cua hang                            |");
+			System.out.println("|0. Quay lai                                |");
+			System.out.println("+-------------------------------------------+");
 			System.out.print("Nhap thao tac: ");
 			select = sc.nextInt();
 			switch (select) {
@@ -131,89 +128,89 @@ public class DSCuaHang {
 	public void Sua() {
 		DocFile();
 		String id = "";
-        System.out.println("Nhap ID CUA HANG ban muon sua?");
-        System.out.println("0. Quay lai");
-        System.out.print("Moi ban nhap: ");
-        sc.nextLine();
-        int pos = 0;
-        id = sc.nextLine();
-        boolean timThay = false;
-        for (;;) {
-            for (int i = 0; i < size; i++) {
-                if (dsch[i].getId().equalsIgnoreCase(id)) {
-                	pos = i;
-                    timThay = true;
-                    break;
-                }
-            }
-            if (timThay == true || id.equalsIgnoreCase("0"))
-                break;
-            System.out.println("ID KHONG TON TAI moi ban nhap lai!!!");
-            System.out.println("0. Quay lai");
-            id = sc.nextLine();
-        }
-        ;
-        if (timThay == true) {
-            dsch[pos].xuat();
-            System.out.println("+------------- Chon thao tac ban muon sua ------------+");
-            System.out.println("|1. Sua ten cua hang                                  |");
-            System.out.println("|2. Sua dia chi cua hang                              |");
-            System.out.println("|3. Sua so dien thoai cua hang                        |");
-            System.out.println("|4. Sua tat ca                                        |");
-            System.out.println("|0. Quay lai                                          |");
-            System.out.println("+-----------------------------------------------------+");
-            System.out.print("Nhap thao tac : ");
-            try {
+		System.out.println("Nhap ID CUA HANG ban muon sua?");
+		System.out.println("0. Quay lai");
+		System.out.print("Moi ban nhap: ");
+		sc.nextLine();
+		int pos = 0;
+		id = sc.nextLine();
+		boolean timThay = false;
+		for (;;) {
+			for (int i = 0; i < size; i++) {
+				if (dsch[i].getId().equalsIgnoreCase(id)) {
+					pos = i;
+					timThay = true;
+					break;
+				}
+			}
+			if (timThay == true || id.equalsIgnoreCase("0"))
+				break;
+			System.out.println("ID KHONG TON TAI moi ban nhap lai!!!");
+			System.out.println("0. Quay lai");
+			id = sc.nextLine();
+		}
+		;
+		if (timThay == true) {
+			dsch[pos].xuat();
+			System.out.println("+------------- Chon thao tac ban muon sua ------------+");
+			System.out.println("|1. Sua ten cua hang                                  |");
+			System.out.println("|2. Sua dia chi cua hang                              |");
+			System.out.println("|3. Sua so dien thoai cua hang                        |");
+			System.out.println("|4. Sua tat ca                                        |");
+			System.out.println("|0. Quay lai                                          |");
+			System.out.println("+-----------------------------------------------------+");
+			System.out.print("Nhap thao tac : ");
+			try {
 
-                int select = Integer.parseInt(sc.nextLine());
+				int select = Integer.parseInt(sc.nextLine());
 
-                switch (select) {
+				switch (select) {
 
-                    case 1: {
-                        System.out.print("Nhap ho va ten nhan vien moi : ");
-                        String tenMoi = sc.nextLine();
-                        dsch[pos].setTenCh(tenMoi);
-                        System.out.println("Da sua thanh cong!");
-                        dsch[pos].xuat();
-                        GhiFile();
-                        break;
-                    }
-                    case 2: {
-                        System.out.print("Nhap gioi tinh nhan vien moi: ");
-                        String tenMoi = sc.nextLine();
-                        dsch[pos].setDiachi(tenMoi);
-                        System.out.println("Da sua thanh cong!");
-                        dsch[pos].xuat();
-                        GhiFile();
-                        break;
-                    }
-                    case 3: {
-                        System.out.print("Nhap dia chi nhan vien moi : ");
-                        String tenMoi = sc.nextLine();
-                        dsch[pos].setSdt(tenMoi);
-                        System.out.println("Da sua thanh cong!");
-                        dsch[pos].xuat();
-                        GhiFile();
-                        break;
-                    }
-                    case 4: {
-                        System.out.print("Nhap dia chi nhan vien moi : ");
-                        dsch[pos].nhap();
-                        System.out.println("Da sua thanh cong!");
-                        dsch[pos].xuat();
-                        GhiFile();
-                        break;
-                    }
-                    case 0:
-                        break;
-                    default:
-                        System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+				case 1: {
+					System.out.print("Nhap ho va ten nhan vien moi : ");
+					String tenMoi = sc.nextLine();
+					dsch[pos].setTenCh(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					dsch[pos].xuat();
+					GhiFile();
+					break;
+				}
+				case 2: {
+					System.out.print("Nhap gioi tinh nhan vien moi: ");
+					String tenMoi = sc.nextLine();
+					dsch[pos].setDiachi(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					dsch[pos].xuat();
+					GhiFile();
+					break;
+				}
+				case 3: {
+					System.out.print("Nhap dia chi nhan vien moi : ");
+					String tenMoi = sc.nextLine();
+					dsch[pos].setSdt(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					dsch[pos].xuat();
+					GhiFile();
+					break;
+				}
+				case 4: {
+					System.out.print("Nhap dia chi nhan vien moi : ");
+					dsch[pos].nhap();
+					System.out.println("Da sua thanh cong!");
+					dsch[pos].xuat();
+					GhiFile();
+					break;
+				}
+				case 0:
+					break;
+				default:
+					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
-                }
-            } catch (Exception e) {
-                System.out.println("Error...\nMoi ban nhap lai...");
-            }
-        }
+				}
+			} catch (Exception e) {
+				System.out.println("Error...\nMoi ban nhap lai...");
+			}
+		}
 	}
 
 	public void Xoa() {
@@ -251,11 +248,11 @@ public class DSCuaHang {
 
 	public void TimKiem() {
 		DocFile();
-		System.out.println("||============ Chon thao tac tim kiem ===============||");
-		System.out.println("||1. Tim cua hang theo ID                            ||");
-		System.out.println("||2. Tim cua  hang theo ten                          ||");
-		System.out.println("||0. Quay lai                                        ||");
-		System.out.println("||===================================================||");
+		System.out.println("+--------------- Chon thao tac tim kiem ---------------+");
+		System.out.println("|1. Tim cua hang theo ID                               |");
+		System.out.println("|2. Tim cua  hang theo ten                             |");
+		System.out.println("|0. Quay lai                                           |");
+		System.out.println("+------------------------------------------------------+");
 		System.out.print("Nhap thao tac : ");
 		int select = sc.nextInt();
 		switch (select) {
@@ -265,7 +262,7 @@ public class DSCuaHang {
 			String id = sc.nextLine();
 			boolean flag = false;
 			for (int i = 0; i < size; i++) {
-				if (id.equalsIgnoreCase( dsch[i].getId())) {
+				if (id.equalsIgnoreCase(dsch[i].getId())) {
 					dsch[i].xuat();
 					flag = true;
 
@@ -349,6 +346,33 @@ public class DSCuaHang {
 		} catch (IOException e) {
 			System.out.println("Loi khong ghi dc file");
 		}
+	}
 
+	
+	public boolean checkTonTai( String id) {
+		setSize();
+		dsch = new CuaHang[getSize()];
+		DocFile();
+		for (int i = 0; i < size; i++) {
+			if (dsch[i].getId().equalsIgnoreCase(id)) {
+				return true;
+			}
+		}
+		return false;
+
+	}
+	public CuaHang timCuaHang(String id) {
+		setSize();
+		dsch = new CuaHang[getSize()];
+		DocFile();
+		for (int i = 0; i < size; i++) {
+			if (dsch[i].getId().equalsIgnoreCase(id)) {
+				CuaHang ch = new CuaHang();
+				ch = dsch[i];
+				return ch;
+			}
+		}
+			
+		return null;
 	}
 }

@@ -281,16 +281,35 @@ public class DSDonHang implements ThaoTac {
 		String id = sc.nextLine();
 		for(int i = 0; i < size; i++) {
 			if(id.equalsIgnoreCase(dsdh[i].getId())) { 
-				System.out.println("----------------- PHIEU THANH TOAN -----------------+");
-				System.out.println("ID : " + dsdh[i].getId());
-				System.out.println("Ngay tao don : " + dsdh[i].getDate());
-				System.out.println("Nhan vien thu ngan : " + dsdh[i].getthuNgan_id());
-				System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - -");
-				System.out.println("Ten SP     So Luong       Gia ban     Thanh Tien");
+				DSCuaHang dsch = new DSCuaHang();
+				CuaHang ch = dsch.timCuaHang(dsdh[i].getCuaHang_id());
+				System.out.printf("+----------------- PHIEU THANH TOAN -----------------+%n");
+				System.out.printf("| Ten cua hang  : %-35s|%n",ch.getTenCh().toUpperCase());
+				System.out.printf("| Dia chi       : %-35s|%n", ch.getDiachi());
+				System.out.printf("| SDT           : %-35s|%n", ch.getSdt());
+				System.out.printf("| ID            : %-35s|%n", dsdh[i].getId());
+				System.out.printf("| Ngay tao don  : %-35s|%n", dsdh[i].getDate());
+				System.out.printf("| NV thu ngan   : %-35s|%n", dsdh[i].getthuNgan_id());
+				System.out.printf("+- - - - - - - - - - - - - - - - - - - - - - - - - - +%n");
+				System.out.printf("| Ten SP          So Luong   Gia ban     Thanh Tien  |%n");
+				System.out.printf("+- - - - - - - - - - - - - - - - - - - - - - - - - - +%n");
 				DSChiTietDonHang ds = new DSChiTietDonHang();
-				ds.XuatTronGHoaDon(dsdh[i].getId());
+				ChiTietDonHang dsctdh[];
+				dsctdh = ds.dsChiTietDonHang(dsdh[i].getId());
+				
+				for(ChiTietDonHang x : dsctdh) {
+					System.out.printf("| %-16s", x.getSanPham_id());
+					System.out.printf("%-11s", x.getSoLuong());
+					System.out.printf("%-12s",x.getThanhTien()/x.getSoLuong());
+					System.out.printf("%-12s|%n", x.getThanhTien());
+				}
+				System.out.printf("+- - - - - - - - - - - - - - - - - - - - - - - - - - +%n");
 				dsdh[i].setTongTien();
-				System.out.println("Tong tien : " + dsdh[i].getTongTien());
+				
+				//ds.XuatTronGHoaDon(dsdh[i].getId());
+				//dsdh[i].setTongTien();
+				System.out.printf("| TONG TIEN : %35s    |%n", dsdh[i].getTongTien());
+				System.out.printf("+----------------------------------------------------+%n");
 			}
 			
 		}
