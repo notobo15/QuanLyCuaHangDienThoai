@@ -7,13 +7,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
-
-import javax.print.Doc;
-
 import Function.Check;
 
 public class DSKhachHang implements ThaoTac {
-    private static int size = 0;
     private int sttLast;
     private KhachHang[] dskh = new KhachHang[0];
     static Scanner sc = new Scanner(System.in);
@@ -28,71 +24,35 @@ public class DSKhachHang implements ThaoTac {
     public void setKh(KhachHang[] Kh) {
         this.dskh = Kh;
     }
-    
-    public static int getSize() {
-		return size;
-	}
 
-	public static void setSize() {
-		int n = 0;
-		try {
-			FileReader fr = new FileReader(".\\database\\DSKhachHang.txt");
-			BufferedReader br = new BufferedReader(fr);
-			try {
-				String l = "";
-				while (true) {
-					l = br.readLine();
-
-					if (l == null) {
-						break;
-					}
-					n++;
-				}
-
-			} finally {
-				
-				br.close();
-				fr.close();
-
-			}
-		} catch (Exception e) {
-			System.out.println("loi");
-		}
-		size = n;
-	}
-
-	@Override
+    @Override
     public void Tao() {
         System.out.println("Nhap so luong khach hang can them: ");
-        int slKh = sc.nextInt();
-        
-        KhachHang[] tam = new KhachHang[size];
-		for (int i = 0; i < size; i++) {
-			tam[i] = dskh[i];
-		}
-		
-		dskh = new KhachHang[size + slKh];
-		
-		for (int i = 0; i < size; i++) {
-			dskh[i] = tam[i];
-		}
-        
-        for (int i = size; i < size + slKh; i++) {
-        	dskh[i] = new KhachHang();
-            System.out.println("Nhap thong tin khach hang");
+        int sl = 0;
+        for (;;) {
+            if (sl > 0) {
+                break;
+            }
+            sl = Check.checkInputDigit();
+        }
+        int arrLength = dskh.length;
+        dskh = Arrays.copyOf(dskh, dskh.length + sl);
+
+        for (int i = arrLength; i < arrLength + sl; i++) {
+            dskh[i] = new KhachHang();
+            System.out.println("---------Nhap thong tin-----------");
             dskh[i].setId(sttLast++);
             dskh[i].nhap();
             System.out.println("Them khach hang thanh cong");
         }
-        size += slKh;
         GhiFile();
     }
 
     @Override
     public void Xuat() {
-    	System.out.println(dskh.length);
+        System.out.println(dskh.length);
         for (int i = 0; i < dskh.length; i++) {
-        	dskh[i].xuat();
+            dskh[i].xuat();
         }
 
     }
@@ -100,25 +60,23 @@ public class DSKhachHang implements ThaoTac {
     @Override
     public void Xoa() {
         System.out.print("Nhap ID nhan vien can xoa : ");
-        sc.nextLine();
         String id = sc.nextLine();
         boolean flag = false;
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < dskh.length; i++) {
             if (id.equalsIgnoreCase(dskh[i].getId())) {
 
-                if (i != size - 1) {
-                    for (int j = i; j < size - 1; j++) {
-                    	dskh[j] = dskh[j + 1];
+                if (i != dskh.length - 1) {
+                    for (int j = i; j < dskh.length - 1; j++) {
+                        dskh[j] = dskh[j + 1];
                     }
 
                 } else {
-                	dskh[i] = null;
+                    dskh[i] = null;
                 }
+                dskh = Arrays.copyOf(dskh, dskh.length - 1);
                 flag = true;
-                size--;
                 System.out.println("Da xoa thanh cong!");
                 GhiFile();
-                DocFile();
             }
         }
 
@@ -130,9 +88,8 @@ public class DSKhachHang implements ThaoTac {
 
     @Override
     public void XuatMenu() {
-		DocFile();
+        DocFile();
         int select = 0;
-        String luaChon = null;
         do {
             System.out.println("+------------ Chon thao tac -------------+");
             System.out.println("|1. Them khach hang moi                  |");
@@ -143,7 +100,7 @@ public class DSKhachHang implements ThaoTac {
             System.out.println("|0. Quay lai                             |");
             System.out.println("+----------------------------------------+");
             System.out.print("Nhap thao tac: ");
-            select = Check.checkInput(luaChon);
+            select = Check.checkInputDigit();
             switch (select) {
                 case 1: {
                     Tao();
@@ -174,7 +131,7 @@ public class DSKhachHang implements ThaoTac {
 
     @Override
     public void Sua() {
-    	DocFile();
+        DocFile();
         String id = "";
         System.out.println("Nhap ID cua NHAN VIEN ban muon sua?");
         System.out.println("0. Quay lai");
@@ -184,9 +141,9 @@ public class DSKhachHang implements ThaoTac {
         id = sc.nextLine();
         boolean timThay = false;
         for (;;) {
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < dskh.length; i++) {
                 if (dskh[i].getId().equalsIgnoreCase(id)) {
-                	pos = i;
+                    pos = i;
                     timThay = true;
                     break;
                 }
@@ -205,7 +162,7 @@ public class DSKhachHang implements ThaoTac {
                 System.out.print("-");
             }
             System.out.println();
-            //tam.xuat();
+            // tam.xuat();
             System.out.println("+------------- Chon thao tac ban muon sua ------------+");
             System.out.println("|1. Sua ho va ten nhan vien                           |");
             System.out.println("|2. Sua gioi tinh                                     |");
@@ -230,7 +187,7 @@ public class DSKhachHang implements ThaoTac {
                         String tenMoi = sc.nextLine();
                         dskh[pos].setHoVaTen(tenMoi);
                         System.out.println("Da sua thanh cong!");
-                        //tam.xuat();
+                        // tam.xuat();
                         dskh[pos].xuat();
                         GhiFile();
                         break;
@@ -283,7 +240,7 @@ public class DSKhachHang implements ThaoTac {
                     case 7: {
                         System.out.print("Nhap chuc vu nhan vien moi : ");
                         String tenMoi = sc.nextLine();
-                        ((KhachHang) dskh[pos]).setthuocNhom(id);
+                        ((KhachHang) dskh[pos]).setthuocNhom(tenMoi);
                         System.out.println("Da sua thanh cong!");
                         dskh[pos].xuat();
                         GhiFile();
@@ -298,59 +255,59 @@ public class DSKhachHang implements ThaoTac {
             } catch (Exception e) {
                 System.out.println("BAN CHI DUOC NHAP SO.\nMoi ban nhap lai...");
             }
-        } 
-          
+        }
+
     }
 
     @Override
     public void TimKiem() {
-		System.out.println("||============ Chon thao tac tim kiem ===============||");
-		System.out.println("||1. Tim cua hang theo ID                            ||");
-		System.out.println("||2. Tim cua  hang theo ten                          ||");
-		System.out.println("||0. Quay lai                                        ||");
-		System.out.println("||===================================================||");
-		System.out.print("Nhap thao tac : ");
-		int select = sc.nextInt();
-		switch (select) {
-		case 1: {
-			System.out.print("Nhap ID cua hang can tim: ");
-			sc.nextLine();
-			String id = sc.nextLine();
-			boolean flag = false;
-			for (int i = 0; i < size; i++) {
-				if (id.equalsIgnoreCase( dskh[i].getId())) {
-					dskh[i].xuat();
-					flag = true;
+        System.out.println("||============ Chon thao tac tim kiem ===============||");
+        System.out.println("||1. Tim cua hang theo ID                            ||");
+        System.out.println("||2. Tim cua  hang theo ten                          ||");
+        System.out.println("||0. Quay lai                                        ||");
+        System.out.println("||===================================================||");
+        System.out.print("Nhap thao tac : ");
+        int select = sc.nextInt();
+        switch (select) {
+            case 1: {
+                System.out.print("Nhap ID cua hang can tim: ");
+                sc.nextLine();
+                String id = sc.nextLine();
+                boolean flag = false;
+                for (int i = 0; i < dskh.length; i++) {
+                    if (id.equalsIgnoreCase(dskh[i].getId())) {
+                        dskh[i].xuat();
+                        flag = true;
 
-				}
-			}
-			if (flag == false) {
-				System.out.println("Khong tim thay cua hang");
-			}
-			break;
-		}
-		case 2: {
-			System.out.print("Nhap ten cua hang can tim: ");
-			sc.nextLine();
-			String input = sc.nextLine();
-			boolean flag = false;
-			for (int i = 0; i < size; i++) {
-				if ((dskh[i].getHoVaTen().toLowerCase().contains(input.toLowerCase()))) {
-					dskh[i].xuat();
-					flag = true;
+                    }
+                }
+                if (flag == false) {
+                    System.out.println("Khong tim thay cua hang");
+                }
+                break;
+            }
+            case 2: {
+                System.out.print("Nhap ten cua hang can tim: ");
+                sc.nextLine();
+                String input = sc.nextLine();
+                boolean flag = false;
+                for (int i = 0; i < dskh.length; i++) {
+                    if ((dskh[i].getHoVaTen().toLowerCase().contains(input.toLowerCase()))) {
+                        dskh[i].xuat();
+                        flag = true;
 
-				}
-			}
-			if (flag == false) {
-				System.out.println("Khong tim thay cua hang");
-			}
-		}
-		case 0:
-			break;
-		default:
-			System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+                    }
+                }
+                if (flag == false) {
+                    System.out.println("Khong tim thay cua hang");
+                }
+            }
+            case 0:
+                break;
+            default:
+                System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
-		}
+        }
 
     }
 
@@ -360,39 +317,35 @@ public class DSKhachHang implements ThaoTac {
         try {
             FileReader fr = new FileReader(".\\database\\DSKhachHang.txt");
             BufferedReader br = new BufferedReader(fr);
-            try {
-                String line = "";
-                while (true) {
-                    line = br.readLine();
-                    if (line == null) {
-                        break;
-                    }
-                    String txt[] = line.split("\\|");
-                    String id = txt[0];
-                    String ten = txt[1];
-                    String gioiTinh = txt[2];
-                    String diachi = txt[3];
-                    String date = txt[4];
-                    String tam[] = date.split("\\/");
-                    int ngay = Integer.parseInt(tam[0]);
-                    int thang = Integer.parseInt(tam[1]);
-                    int nam = Integer.parseInt(tam[2]);
-                    Date ngaySinh = new Date(ngay, thang, nam);
-                    String e = txt[5];
-                    String sdt = txt[6];
-                    String thuocNhom = txt[7];
-                    
-                    String idTam = id.replaceAll("\\D+", "");
-					sttLast = Integer.parseInt(idTam);
-                    dskh = Arrays.copyOf(dskh, dskh.length + 1);
-                    dskh[i] = new KhachHang(id, ten, diachi, gioiTinh, ngaySinh, thuocNhom, e, sdt);
-                    i++;
+            String line = "";
+            while (true) {
+                line = br.readLine();
+                if (line == null) {
+                    break;
                 }
-            } finally {
-                size = i;
-                br.close();
-            }
+                String txt[] = line.split("\\|");
+                String id = txt[0];
+                String ten = txt[1];
+                String gioiTinh = txt[2];
+                String diachi = txt[3];
+                String date = txt[4];
+                String tam[] = date.split("\\/");
+                int ngay = Integer.parseInt(tam[0]);
+                int thang = Integer.parseInt(tam[1]);
+                int nam = Integer.parseInt(tam[2]);
+                Date ngaySinh = new Date(ngay, thang, nam);
+                String e = txt[5];
+                String sdt = txt[6];
+                String thuocNhom = txt[7];
 
+                String idTam = id.replaceAll("\\D+", "");
+                sttLast = Integer.parseInt(idTam);
+                dskh = Arrays.copyOf(dskh, dskh.length + 1);
+                dskh[i] = new KhachHang(id, ten, diachi, gioiTinh, ngaySinh, thuocNhom, e, sdt);
+                i++;
+            }
+            br.close();
+            fr.close();
         } catch (Exception e) {
             System.out.println("Loi khong doc dc file");
         }
@@ -405,7 +358,7 @@ public class DSKhachHang implements ThaoTac {
             FileWriter fw = new FileWriter(".\\database\\DSKhachHang.txt", false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < dskh.length; i++) {
                 pw.println(dskh[i].getId() + "|"
                         + dskh[i].getHoVaTen() + "|"
                         + dskh[i].getGioiTinh() + "|"
@@ -415,25 +368,24 @@ public class DSKhachHang implements ThaoTac {
                         + dskh[i].getSdt() + "|"
                         + dskh[i].getthuocNhom());
             }
+            fw.close();
             bw.close();
+            pw.close();
         } catch (IOException e) {
             System.out.println("Loi khong ghi dc file");
         }
 
     }
-    
+
     public boolean checkKhachHangTonTai(String id) {
-    	setSize();
-    	dskh = new KhachHang[getSize()];
-    	DocFile();
-    	System.out.println(id);
-    	for(int i = 0; i < size; i++) {
-    		System.out.println((dskh[i].getId()));
-    		if(id.equalsIgnoreCase(dskh[i].getId())) {
-    			return true;
-    		}
-    	}
-    	return false;
+        DocFile();
+        for (int i = 0; i < dskh.length; i++) {
+            System.out.println((dskh[i].getId()));
+            if (id.equalsIgnoreCase(dskh[i].getId())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

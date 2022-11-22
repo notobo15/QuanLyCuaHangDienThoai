@@ -15,7 +15,6 @@ public class Menu {
 		DSCuaHang dsch = new DSCuaHang();
 		// DSChiTietDonHang dsctdh = new DSChiTietDonHang();
 
-		String select = null;
 		int luaChon = 0;
 
 		do {
@@ -40,34 +39,34 @@ public class Menu {
 			System.out.format("+---+--------------------------------------+%n");
 			System.out.print("Vui long chon: ");
 
-			luaChon = Check.checkInput(select);
+			luaChon = Check.checkInputDigit();
 			switch (luaChon) {
-			case 1:
-				dsnvbh.XuatMenu();
-				break;
-			case 2:
-				dsnvtn.XuatMenu();
-				break;
-			case 3:
-				dskh.XuatMenu();
-				break;
-			case 4:
-				dsncc.XuatMenu();
-				break;
-			case 5:
-				dssp.XuatMenu();
-				break;
-			case 6:
-				dsdh.XuatMenu();
-				break;
-			case 7:
-				dsch.XuatMenu();
-				break;
-			case 0:
-				break;
+				case 1:
+					dsnvbh.XuatMenu();
+					break;
+				case 2:
+					dsnvtn.XuatMenu();
+					break;
+				case 3:
+					dskh.XuatMenu();
+					break;
+				case 4:
+					dsncc.XuatMenu();
+					break;
+				case 5:
+					dssp.XuatMenu();
+					break;
+				case 6:
+					dsdh.XuatMenu();
+					break;
+				case 7:
+					dsch.XuatMenu();
+					break;
+				case 0:
+					break;
 
-			default:
-				System.out.println("Ban da nhap sai thao tac !!!\nMoi ban nhap lai : ");
+				default:
+					System.out.println("Ban da nhap sai thao tac !!!\nMoi ban nhap lai : ");
 			}
 		} while (luaChon != 0);
 

@@ -125,13 +125,13 @@ public abstract class ConNguoi {
 	}
 
 	public abstract void nhap();
-	public abstract void xuat() ;
+
+	public abstract void xuat();
 
 	@Override
 	public String toString() {
 		return id + "\t" + hoVaTen + "\t\t\t" + gioiTinh + "\t\t" + diaChi + "\t\t" + ngaySinh.toString() + "\t" + email
 				+ "\t" + sdt;
 	}
-
 
 }

@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Check {
-	
+
 	public static int checkInput(String select) {
 		Scanner sc = new Scanner(System.in);
 		boolean isSuccess = false;
@@ -21,10 +21,11 @@ public class Check {
 			}
 			System.out.print("Chi duoc nhap chu so !!!\nMoi ban nhap lai : ");
 			select = sc.nextLine();
-		} while(isSuccess != true);
+		} while (isSuccess != true);
 		return -1;
 	}
-	public static int checkInput2() {
+
+	public static int checkInputDigit() {
 		String select = null;
 		Scanner sc = new Scanner(System.in);
 		boolean isSuccess = false;
@@ -40,7 +41,7 @@ public class Check {
 			}
 			System.out.print("Chi duoc nhap chu so !!!\nMoi ban nhap lai : ");
 			select = sc.nextLine();
-		} while(isSuccess != true);
+		} while (isSuccess != true);
 		return -1;
 	}
 }

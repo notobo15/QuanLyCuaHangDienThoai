@@ -16,25 +16,26 @@ public class DSNhanVien implements ThaoTac {
     public DSNhanVien() {
     }
 
-
     public double getGia(String id) {
         for (int i = 0; i < size; i++) {
             if (id.equalsIgnoreCase(nv[i].getId())) {
-                return ((NhanVien)nv[i]).getLuong();
+                return ((NhanVien) nv[i]).getLuong();
             }
         }
         return 0;
     }
+
     public String getTenNhanVien(String id) {
-    	timDodaiMang();
-    	DocFile();
-    	for(int i = 0; i < size; i++) {
-    		if(id.equalsIgnoreCase(nv[i].getId())) {
-    			return nv[i].getHoVaTen();
-    		}
-    	}
-    	return "err";
+        timDodaiMang();
+        DocFile();
+        for (int i = 0; i < size; i++) {
+            if (id.equalsIgnoreCase(nv[i].getId())) {
+                return nv[i].getHoVaTen();
+            }
+        }
+        return "err";
     }
+
     @Override
     public void Tao() {
         System.out.println("Nhap so luong nhan vien can them: ");
@@ -51,7 +52,7 @@ public class DSNhanVien implements ThaoTac {
 
             nv[i] = new NhanVien();
             System.out.println("------ Nhap thong tin nhan vien ------");
-            ((NhanVien)nv[i]).setId(idCuoiCung++);
+            ((NhanVien) nv[i]).setId(idCuoiCung++);
             nv[i].nhap();
             System.out.println("Them nhan vien thanh cong");
         }
@@ -81,7 +82,7 @@ public class DSNhanVien implements ThaoTac {
 
     @Override
     public void Xoa() {
-    	DocFile();
+        DocFile();
         System.out.print("Nhap ID nhan vien can xoa : ");
         sc.nextLine();
         String id = sc.nextLine();
@@ -158,7 +159,7 @@ public class DSNhanVien implements ThaoTac {
 
     @Override
     public void Sua() {
-    	DocFile();
+        DocFile();
         String id = "";
         System.out.println("Nhap ID cua NHAN VIEN ban muon sua?");
         System.out.println("0. Quay lai");
@@ -170,8 +171,8 @@ public class DSNhanVien implements ThaoTac {
         for (;;) {
             for (int i = 0; i < size; i++) {
                 if (nv[i].getId().equalsIgnoreCase(id)) {
-                    //tam = nv[i];
-                	pos = i;
+                    // tam = nv[i];
+                    pos = i;
                     timThay = true;
                     break;
                 }
@@ -190,7 +191,7 @@ public class DSNhanVien implements ThaoTac {
                 System.out.print("-");
             }
             System.out.println();
-            //tam.xuat();
+            // tam.xuat();
             System.out.println("+------------- Chon thao tac ban muon sua ------------+");
             System.out.println("|1. Sua ho va ten nhan vien                           |");
             System.out.println("|2. Sua gioi tinh                                     |");
@@ -215,7 +216,7 @@ public class DSNhanVien implements ThaoTac {
                         String tenMoi = sc.nextLine();
                         nv[pos].setHoVaTen(tenMoi);
                         System.out.println("Da sua thanh cong!");
-                        //tam.xuat();
+                        // tam.xuat();
                         nv[pos].xuat();
                         GhiFile();
                         break;
@@ -287,7 +288,7 @@ public class DSNhanVien implements ThaoTac {
                         // System.out.print("Nhap ho va ten nhan vien moi : ");
                         // String tenMoi = sc.nextLine();
                         // tam.setHoVaTen(tenMoi);
-                    	nv[pos].nhap();
+                        nv[pos].nhap();
                         System.out.println("Da sua thanh cong!");
                         System.out.println(
                                 "ID\tHO VA TEN\t\t\tGIOI TINH\tDIA CHI\t\tNGAY SINH\tEMAIL\t\tSDT\t\tNhom\t\tLuong");
@@ -313,7 +314,7 @@ public class DSNhanVien implements ThaoTac {
 
     @Override
     public void TimKiem() {
-    	DocFile();
+        DocFile();
         System.out.println("+-------------- Chon thao tac tim kiem -------------+");
         System.out.println("|1. Tim nhan vien theo ID                           |");
         System.out.println("|2. Tim nhan vien theo ten                          |");
@@ -440,6 +441,7 @@ public class DSNhanVien implements ThaoTac {
 
                     String catID = id.replaceAll("\\D+", "");
                     idCuoiCung = Integer.parseInt(catID);
+
                     nv[i] = new NhanVien(id, ten, diachi, gioiTinh, ngaySinh, luong, chucVu, e, sdt);
                     i++;
                 }
@@ -476,7 +478,7 @@ public class DSNhanVien implements ThaoTac {
             FileWriter fw = new FileWriter(".\\database\\DSNhanVien.txt", false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            
+
             for (int i = 0; i < nv.length; i++) {
                 pw.println((nv[i]).getId() + "|"
                         + (nv[i]).getHoVaTen() + "|"

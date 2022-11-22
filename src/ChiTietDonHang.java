@@ -6,7 +6,6 @@ public class ChiTietDonHang {
 	private String sanPham_id;
 	private float soLuong = 1;
 	private double thanhTien;
-	private static int stt = 0;
 	Scanner sc = new Scanner(System.in);
 
 	public ChiTietDonHang() {
@@ -28,7 +27,7 @@ public class ChiTietDonHang {
 		return id;
 	}
 
-	public void setId() {
+	public void setId(int stt) {
 		this.id = "CTDH" + ++stt;
 	}
 
@@ -67,8 +66,8 @@ public class ChiTietDonHang {
 		this.thanhTien = soLuong * dssp.xuatGia(sanPham_id);
 	}
 
-	public void nhap(String id) {
-		setId();
+	public void nhap() {
+		// setId();
 		setDonHang_id(id);
 		System.out.println("nhap id san pham: ");
 		setSanPham_id(sc.nextLine());
