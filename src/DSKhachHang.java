@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 import javax.print.Doc;
 
+import Function.Check;
+
 public class DSKhachHang implements ThaoTac {
     private static int size = 0;
     private int sttLast;
@@ -133,6 +135,7 @@ public class DSKhachHang implements ThaoTac {
     	dskh = new KhachHang[getSize()];
 		DocFile();
         int select = 0;
+        String luaChon = null;
         DocFile();
         do {
             System.out.println("+------------ Chon thao tac -------------+");
@@ -144,7 +147,7 @@ public class DSKhachHang implements ThaoTac {
             System.out.println("|0. Quay lai                             |");
             System.out.println("+----------------------------------------+");
             System.out.print("Nhap thao tac: ");
-            select = sc.nextInt();
+            select = Check.checkInput(luaChon);
             switch (select) {
                 case 1: {
                     Tao();

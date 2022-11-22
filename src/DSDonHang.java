@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import Function.Check;
+
 public class DSDonHang implements ThaoTac {
 	private static int size = 0;
 	public DonHang[] dsdh;
@@ -59,6 +61,7 @@ public class DSDonHang implements ThaoTac {
 		dsdh= new DonHang[getSize()];
 		DocFile();
 		int select = 0;
+		String luaChon = null;
 		do {
 			System.out.println("+-------------- Chon thao tac --------------+");
 			System.out.println("|1. Them don hang moi                       |");
@@ -70,7 +73,7 @@ public class DSDonHang implements ThaoTac {
 			System.out.println("|0. Quay lai                                |");
 			System.out.println("+-------------------------------------------+");
 			System.out.print("Nhap thao tac: ");
-			select = sc.nextInt();
+			select = Check.checkInput(luaChon);
 			switch (select) {
 			case 1: {
 				Tao();

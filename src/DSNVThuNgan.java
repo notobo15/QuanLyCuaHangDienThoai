@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import Function.Check;
+
 public class DSNVThuNgan implements ThaoTac {
 	private static int size = 0;
 	private int idCuoiCung;
@@ -53,8 +55,8 @@ public class DSNVThuNgan implements ThaoTac {
 		setSize();
 		dsnvtn = new NVThuNgan[getSize()];
 		DocFile();
-		int select;
-		try {
+		int select = 0;
+		String luaChon = null;
 			do {
 				System.out.println("+------------ Chon thao tac -------------+");
 				System.out.println("1. Them nhan vien moi                    |");
@@ -66,7 +68,9 @@ public class DSNVThuNgan implements ThaoTac {
 				System.out.println("0. Quay lai                              |");
 				System.out.println("+----------------------------------------+");
 				System.out.print("Nhap thao tac: ");
-				select = sc.nextInt();
+
+				select = Check.checkInput(luaChon);
+				
 				switch (select) {
 				case 1: {
 					Tao();
@@ -93,9 +97,6 @@ public class DSNVThuNgan implements ThaoTac {
 					System.out.println("Ban da nhap sai thao tac!!!\nXIN VUI LONG NHAP LAI");
 				}
 			} while (select != 0);
-		} catch (Exception e) {
-			System.out.println("BAN CHI DUOC NHAP SO!!!\nXIN VUI LONG NHAP LAI");
-		}
 
 	}
 

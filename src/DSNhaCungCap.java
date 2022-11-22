@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import Function.Check;
+
 public class DSNhaCungCap {
 	private static int size = 0;
 	private int sttLast;
@@ -97,6 +99,7 @@ public class DSNhaCungCap {
 		dsncc = new NhaCungCap[getSize()];
 		DocFile();
 		int select = 0;
+		String luaChon = null;
 		do {
 			System.out.println("+----------------- Chon thao tac ----------+");
 			System.out.println("|1. Them nha cung cap moi                  |");
@@ -107,7 +110,7 @@ public class DSNhaCungCap {
 			System.out.println("|0. Quay lai                               |");
 			System.out.println("+------------------------------------------+");
 			System.out.print("Nhap thao tac: ");
-			select = sc.nextInt();
+			select = Check.checkInput(luaChon);
 			switch (select) {
 			case 1: {
 				Tao();

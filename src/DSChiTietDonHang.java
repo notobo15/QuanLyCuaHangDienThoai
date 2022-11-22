@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import Function.Check;
+
 public class DSChiTietDonHang implements ThaoTac {
 	private static int size = 0;
 	public ChiTietDonHang[] dsctdh = new ChiTietDonHang[1000];
@@ -24,6 +26,7 @@ public class DSChiTietDonHang implements ThaoTac {
 	public void XuatMenu() {
 		DocFile();
 		int select = 0;
+		String luaChon = null;
 		do {
 			System.out.println("+-------------- Chon thao tac --------------+");
 			System.out.println("|1. Them san pham vao gio                   |");
@@ -34,7 +37,7 @@ public class DSChiTietDonHang implements ThaoTac {
 			System.out.println("|0. Hoan Tat                                |");
 			System.out.println("+-------------------------------------------+");
 			System.out.print("Nhap thao tac: ");
-			select = sc.nextInt();
+			select = Check.checkInput(luaChon);
 			switch (select) {
 			case 1: {
 				Tao();

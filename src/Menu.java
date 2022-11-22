@@ -1,11 +1,13 @@
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import Function.Check;
+
 public class Menu {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-
 		DSNVThuNgan dsnvtn = new DSNVThuNgan();
 		DSNVBanHang dsnvbh = new DSNVBanHang();
 		DSSanPham dssp = new DSSanPham();
@@ -15,9 +17,8 @@ public class Menu {
 		DSCuaHang dsch = new DSCuaHang();
 		// DSChiTietDonHang dsctdh = new DSChiTietDonHang();
 
-		String select;
+		String select = null;
 		int luaChon = 0;
-		// try {
 
 		do {
 			System.out.format("+---+--------------- MENU -----------------+%n");
@@ -40,26 +41,14 @@ public class Menu {
 			System.out.format("| 0 | Thoat chuong trinh                   |%n");
 			System.out.format("+---+--------------------------------------+%n");
 			System.out.print("Vui long chon: ");
-			boolean isSuccess = false;
-			Pattern p = Pattern.compile("^[0-9]*$");
-			select = sc.nextLine();
-			do {
-				Matcher m = p.matcher(select);
-				if (m.find() == true) {
-					luaChon = Integer.parseInt(select);
-					isSuccess = true;
-					break;
-				}
-				System.out.print("Chi duoc nhap chu so !!!\nMoi ban nhap lai : ");
-				select = sc.nextLine();
-			} while(isSuccess != true);
 
+			luaChon = Check.checkInput(select);
 			switch (luaChon) {
 			case 1:
-				dsnvtn.XuatMenu();
+				dsnvbh.XuatMenu();
 				break;
 			case 2:
-				dsnvbh.XuatMenu();
+				dsnvtn.XuatMenu();
 				break;
 			case 3:
 				dskh.XuatMenu();
@@ -83,10 +72,7 @@ public class Menu {
 				System.out.println("Ban da nhap sai thao tac !!!\nMoi ban nhap lai : ");
 			}
 		} while (luaChon != 0);
-//		} catch (Exception e) {
-//			System.out.println("BAN CHI DUOC NHAP SO!!!\nXIN VUI LONG NHAP LAI");
-//
-//		}
+
 	}
 
 }

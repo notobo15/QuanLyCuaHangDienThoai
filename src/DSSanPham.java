@@ -6,23 +6,72 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import Function.Check;
+
 public class DSSanPham implements ThaoTac {
     private static int size;
-    public SanPham[] sp = new SanPham[100];
+    private SanPham[] sp;
+    private static int stt = 0;
     static Scanner sc = new Scanner(System.in);
+    
+    
+    public DSSanPham() {
+		super();
+	}
 
-    @Override
+	public static int getSize() {
+		return size;
+	}
+
+	public static void setSize() {
+		int n = 0;
+		try {
+			FileReader fr = new FileReader(".\\database\\DSSanPham.txt");
+			BufferedReader br = new BufferedReader(fr);
+			try {
+				String l = "";
+				while (true) {
+					l = br.readLine();
+
+					if (l == null) {
+						break;
+					}
+					n++;
+				}
+
+			} finally {
+				size = n;
+				br.close();
+				fr.close();
+
+			}
+		} catch (Exception e) {
+			System.out.println("loi");
+		}
+	}
+
+	@Override
     public void Tao() {
-        DocFile();
-        System.out.println("Nhap so luong san pham can them: ");
-        int sl = Integer.valueOf(sc.nextInt());
-      
-        for (int i = size; i < size + sl; i++) {
-            sp[i] = new SanPham();
-            sp[i].Tao();
-        }
-        size += sl;
-        GhiFile();
+		System.out.println("Nhap so luong cua hang can them: ");
+		int sl = sc.nextInt();
+		SanPham[] tam = new SanPham[size];
+		for (int i = 0; i < size; i++) {
+			tam[i] = sp[i];
+		}
+
+		sp = new SanPham[size + sl];
+
+		for (int i = 0; i < size; i++) {
+			sp[i] = tam[i];
+		}
+		for (int i = size; i < size + sl; i++) {
+			sp[i] = new SanPham();
+			System.out.println("Nhap thong tin cua hang");
+			sp[i].setId(stt++);
+			sp[i].nhap();
+		}
+		size += sl;
+		GhiFile();
     }
 
     @Override
@@ -45,18 +94,21 @@ public class DSSanPham implements ThaoTac {
     // @Override
     public void XuatMenu() {
         int select = 0;
+        String luaChon = null;
+        setSize();
+        sp = new SanPham[getSize()];
         DocFile();
         do {
-            System.out.println("||============ Chon thao tac ===============||");
-            System.out.println("||1. Them san pham                          ||");
-            System.out.println("||2. Xuat danh sach san pham                ||");
-            System.out.println("||3. Xoa san pham                           ||");
-            System.out.println("||4. Sua san pham                           ||");
-            System.out.println("||5. Tim san pham                           ||");
-            System.out.println("||0. Quay lai                               ||");
-            System.out.println("||==========================================||");
+            System.out.println("+------------- Chon thao tac -------------+");
+            System.out.println("|1. Them san pham                         |");
+            System.out.println("|2. Xuat danh sach san pham               |");
+            System.out.println("|3. Xoa san pham                          |");
+            System.out.println("|4. Sua san pham                          |");
+            System.out.println("|5. Tim san pham                          |");
+            System.out.println("|0. Quay lai                              |");
+            System.out.println("+-----------------------------------------+");
             System.out.print("Nhap thao tac: ");
-            select = sc.nextInt();
+            select = Check.checkInput(luaChon);
             switch (select) {
                 case 1: {
                     Tao();
@@ -139,11 +191,15 @@ public class DSSanPham implements ThaoTac {
                     int thang = Integer.parseInt(temp[1]);
                     int nam = Integer.parseInt(temp[2]);
                     Date ngayRaMat = new Date(ngay, thang, nam);
+                    
+                    String idTam = id.replaceAll("\\D+", "");
+					stt = Integer.parseInt(idTam);
+                   
+                    
                     sp[i] = new SanPham(id, Ten, moTa, Mau, kichCo, Gia, NCC_ID, ngayRaMat);
                     i++;
                 }
             } finally {
-                size = i;
                 br.close();
             }
 
@@ -156,30 +212,34 @@ public class DSSanPham implements ThaoTac {
 
     @Override
     public void Xoa() {
-        sc = new Scanner(System.in);
-        System.out.println(" Xoa san pham ");
+    	DocFile();
+		System.out.print("Nhap ID cua hang can xoa : ");
+		String id = sc.nextLine();
 
-        System.out.print("Nhap ID san pham can xoa theo kieu SP1xxx : ");
-        String id = sc.nextLine();
-        id = id.toLowerCase();
-        boolean flag = false;
-        for (int i = 0; i < size; i++) {
-            if (id.equals(sp[i].getId().toLowerCase())) {
-                sp[i] = null;
-                for (int j = i; j < size; j++) {
+		boolean flag = false;
 
-                    sp[j] = sp[j + 1];
-                }
-                flag = true;
-                size--;
-                GhiFile();
-                System.out.println("Da xoa thanh cong!");
-            }
-        }
+		for (int i = 0; i < size; i++) {
+			if (id.equalsIgnoreCase(sp[i].getId())) {
 
-        if (flag == false) {
-            System.out.println("Khong co san pham de xoa");
-        }
+				if (i != size - 1) {
+					for (int j = i; j < size - 1; j++) {
+						sp[j] = sp[j + 1];
+					}
+
+				} else {
+					sp[i] = null;
+				}
+				flag = true;
+				size--;
+				System.out.println("Da xoa thanh cong!");
+				GhiFile();
+				DocFile();
+			}
+		}
+
+		if (flag == false) {
+			System.out.println("Khong co cua hang de xoa");
+		}
 
     }
 

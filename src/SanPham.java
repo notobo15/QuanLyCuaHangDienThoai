@@ -76,7 +76,7 @@ public class SanPham {
 	public String getId() {
 		return id;
 	}
-	public void setId() {
+	public void setId(int stt) {
 		//DSSanPham.DocFile();
 		
 		this.id = "SP" + ++stt ;
@@ -125,11 +125,11 @@ public class SanPham {
 	public void setNgayRaMat() {
 		this.ngayRaMat.setTime();
 	}
-	public void Tao() {
+	public void nhap() {
 		
-		setId();
+		//setId();
 		System.out.print("Moi nhap ten san pham:");
-        setTen(sc.nextLine());sc.nextLine();
+        setTen(sc.nextLine());
         System.out.print("Moi nhap mau:");
         setMau(sc.nextLine());
         System.out.print("Moi nhap kich co:");
