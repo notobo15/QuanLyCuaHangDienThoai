@@ -1,4 +1,4 @@
-
+ 
 public class NVBanHang extends NhanVien {
 	private float soGioLam;
 	private double phuCap;
@@ -20,6 +20,12 @@ public class NVBanHang extends NhanVien {
 	}
 
 	public void setSoGioLam(float soGioLam) {
+		for (;;) {
+			if (soGioLam > 0)
+				break;
+			System.out.println("Moi nhap lai so gio lam viec :");
+			gioiTinh = sc.nextLine();
+		}
 		this.soGioLam = soGioLam;
 	}
 	

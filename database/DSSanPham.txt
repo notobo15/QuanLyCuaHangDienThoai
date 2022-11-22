@@ -7,3 +7,4 @@ SP5|Huawei|Likenew|White|32gb|2500|NCC6|22/2/2012
 SP6|Xperia|new|Black|1Tb|2500|NCC7|6/9/2013
 SP7|Bphone|new|Black|256gb|4500|NCC8|5/10/2002
 SP8|Nokia|Old|Black|128gb|2500|NCC9|2/10/2020
+SP9|Iphone 14|New|Red|128GB|99990|NCC1|1/5/2022

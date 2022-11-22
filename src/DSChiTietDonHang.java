@@ -10,7 +10,8 @@ import Function.Check;
 
 public class DSChiTietDonHang implements ThaoTac {
 	private static int size = 0;
-	public ChiTietDonHang[] dsctdh = new ChiTietDonHang[1000];
+	public ChiTietDonHang[] dsctdh;
+	private static int stt = 0;
 	static Scanner sc = new Scanner(System.in);
 	private String donHang_id;
 
@@ -22,8 +23,41 @@ public class DSChiTietDonHang implements ThaoTac {
 	}
 
 	
+	public static int getSize() {
+		return size;
+	}
+
+	public static void setSize() {
+		int n = 0;
+		try {
+			FileReader fr = new FileReader(".\\database\\DSChiTietDonHang.txt");
+			BufferedReader br = new BufferedReader(fr);
+			try {
+				String l = "";
+				while (true) {
+					l = br.readLine();
+
+					if (l == null) {
+						break;
+					}
+					n++;
+				}
+
+			} finally {
+				size = n;
+				br.close();
+				fr.close();
+
+			}
+		} catch (Exception e) {
+			System.out.println("loi");
+		}
+	}
+
 	@Override
 	public void XuatMenu() {
+		setSize();
+		dsctdh = new ChiTietDonHang[getSize()];
 		DocFile();
 		int select = 0;
 		String luaChon = null;
@@ -75,6 +109,8 @@ public class DSChiTietDonHang implements ThaoTac {
 	}
 
 	public void XuatTronGDonHang(String id) {
+		setSize();
+		dsctdh = new ChiTietDonHang[getSize()];
 		DocFile();
 		for (int i = 0; i < size; i++) {
 			if (dsctdh[i].getDonHang_id().equalsIgnoreCase(id))
@@ -98,8 +134,16 @@ public class DSChiTietDonHang implements ThaoTac {
 
 	}
 	public ChiTietDonHang[] dsChiTietDonHang(String id) {
+		setSize();
+		dsctdh = new ChiTietDonHang[getSize()];
 		DocFile();
-		ChiTietDonHang ds[] = new ChiTietDonHang[3];
+		int  n= 0;
+		for (int k = 0; k < size; k++) {
+			if (dsctdh[k].getDonHang_id().equalsIgnoreCase(id)) {
+				n++;
+			}
+		}
+		ChiTietDonHang ds[] = new ChiTietDonHang[n];
 		int j = 0;
 		for (int i = 0; i < size; i++) {
 			if (dsctdh[i].getDonHang_id().equalsIgnoreCase(id)) {
@@ -170,6 +214,8 @@ public class DSChiTietDonHang implements ThaoTac {
 	}
 
 	public double tong(String id) {
+		setSize();
+		dsctdh = new ChiTietDonHang[getSize()];
 		DocFile();
 		double s = 0;
 		for (int i = 0; i < size; i++) {
@@ -241,7 +287,7 @@ public class DSChiTietDonHang implements ThaoTac {
 					i++;
 				}
 			} finally {
-				size = i;
+				//size = i;
 				br.close();
 				fr.close();
 			}

@@ -11,21 +11,16 @@ import Function.Check;
 
 public class DSDonHang implements ThaoTac {
 	private static int size = 0;
-	public DonHang[] dsdh;
+	private DonHang[] dsdh;
 	private int idCuoiCung;
 	static Scanner sc = new Scanner(System.in);
 
 	public DSDonHang() {
 	}
 
-	
-
 	public static int getSize() {
 		return size;
 	}
-
-
-
 	public static void setSize() {
 		int n = 0;
 		try {
@@ -280,7 +275,6 @@ public class DSDonHang implements ThaoTac {
 	public void xuatHoaDon() {
 		DocFile();
 		System.out.println("Nhap id don hang : ");
-		sc.nextLine();
 		String id = sc.nextLine();
 		for(int i = 0; i < size; i++) {
 			if(id.equalsIgnoreCase(dsdh[i].getId())) { 
@@ -321,7 +315,6 @@ public class DSDonHang implements ThaoTac {
 	@Override
 	public void Xoa() {
         System.out.print("Nhap ID don hang can xoa : ");
-        sc.nextLine();
         String id = sc.nextLine();
         boolean flag = false;
 

@@ -19,7 +19,6 @@ public class SanPham {
 	// private int soLuongSanPham;
 	 private static int stt=0;
 	private static int stt_ncc=0;
-	public SanPham[] sp = new SanPham[100];
 	// // public void DocFile() {
     //     int i = 0;
     //     try {
