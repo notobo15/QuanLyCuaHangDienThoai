@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import javax.print.Doc;
@@ -14,7 +15,7 @@ import Function.Check;
 public class DSKhachHang implements ThaoTac {
     private static int size = 0;
     private int sttLast;
-    public KhachHang[] dskh;
+    private KhachHang[] dskh = new KhachHang[0];
     static Scanner sc = new Scanner(System.in);
 
     public DSKhachHang() {
@@ -89,9 +90,8 @@ public class DSKhachHang implements ThaoTac {
 
     @Override
     public void Xuat() {
-    	DocFile();
-    	System.out.println(size);
-        for (int i = 0; i < size; i++) {
+    	System.out.println(dskh.length);
+        for (int i = 0; i < dskh.length; i++) {
         	dskh[i].xuat();
         }
 
@@ -99,7 +99,6 @@ public class DSKhachHang implements ThaoTac {
 
     @Override
     public void Xoa() {
-    	DocFile();
         System.out.print("Nhap ID nhan vien can xoa : ");
         sc.nextLine();
         String id = sc.nextLine();
@@ -131,12 +130,9 @@ public class DSKhachHang implements ThaoTac {
 
     @Override
     public void XuatMenu() {
-    	setSize();
-    	dskh = new KhachHang[getSize()];
 		DocFile();
         int select = 0;
         String luaChon = null;
-        DocFile();
         do {
             System.out.println("+------------ Chon thao tac -------------+");
             System.out.println("|1. Them khach hang moi                  |");
@@ -308,7 +304,6 @@ public class DSKhachHang implements ThaoTac {
 
     @Override
     public void TimKiem() {
-    	DocFile();
 		System.out.println("||============ Chon thao tac tim kiem ===============||");
 		System.out.println("||1. Tim cua hang theo ID                            ||");
 		System.out.println("||2. Tim cua  hang theo ten                          ||");
@@ -389,12 +384,12 @@ public class DSKhachHang implements ThaoTac {
                     
                     String idTam = id.replaceAll("\\D+", "");
 					sttLast = Integer.parseInt(idTam);
-                    
+                    dskh = Arrays.copyOf(dskh, dskh.length + 1);
                     dskh[i] = new KhachHang(id, ten, diachi, gioiTinh, ngaySinh, thuocNhom, e, sdt);
                     i++;
                 }
             } finally {
-                //size = i;
+                size = i;
                 br.close();
             }
 

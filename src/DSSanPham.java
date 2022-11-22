@@ -4,13 +4,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import Function.Check;
 
 public class DSSanPham implements ThaoTac {
     private static int size;
-    private SanPham[] sp;
+    private SanPham[] sp = new SanPham[0];
     private static int stt = 0;
     static Scanner sc = new Scanner(System.in);
     
@@ -77,7 +78,7 @@ public class DSSanPham implements ThaoTac {
     @Override
     public void Xuat() {
 
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < sp.length; i++) {
             sp[i].Xuat();
         }
 
@@ -95,8 +96,6 @@ public class DSSanPham implements ThaoTac {
     public void XuatMenu() {
         int select = 0;
         String luaChon = null;
-        setSize();
-        sp = new SanPham[getSize()];
         DocFile();
         do {
             System.out.println("+------------- Chon thao tac -------------+");
@@ -195,7 +194,7 @@ public class DSSanPham implements ThaoTac {
                     String idTam = id.replaceAll("\\D+", "");
 					stt = Integer.parseInt(idTam);
                    
-                    
+                    sp = Arrays.copyOf(sp, sp.length + 1);
                     sp[i] = new SanPham(id, Ten, moTa, Mau, kichCo, Gia, NCC_ID, ngayRaMat);
                     i++;
                 }
@@ -212,7 +211,6 @@ public class DSSanPham implements ThaoTac {
 
     @Override
     public void Xoa() {
-    	DocFile();
 		System.out.print("Nhap ID cua hang can xoa : ");
 		String id = sc.nextLine();
 
@@ -233,7 +231,6 @@ public class DSSanPham implements ThaoTac {
 				size--;
 				System.out.println("Da xoa thanh cong!");
 				GhiFile();
-				DocFile();
 			}
 		}
 

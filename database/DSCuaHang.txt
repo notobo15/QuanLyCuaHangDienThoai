@@ -4,4 +4,5 @@ CH3|Cua Hang So 2|Q1, HCM|0123456789
 CH4|Cua Hang So 4|Q1, HCM|0123456789
 CH5|Cua Hang So 10|Thu Duc, HCM|0123456789
 CH6|cua hang 6|Q1, HCM|adf
-CH7|cua hang 7|adf|adf
+CH8|cua hang 7|hcm|0123456789
+CH9|cua hang 8|hcm|0123456789

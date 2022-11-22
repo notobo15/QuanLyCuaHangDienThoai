@@ -4,88 +4,53 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import Function.Check;
 
 public class DSCuaHang {
 	private static int size = 0;
-	private CuaHang[] dsch;
+	private CuaHang[] dsch = new CuaHang[0];
 	private int sttLast;
 	static Scanner sc = new Scanner(System.in);
 
 	public DSCuaHang() {
 	}
 
-	public static int getSize() {
-		return size;
-	}
-
-	public static void setSize() {
-		int n = 0;
-		try {
-			FileReader fr = new FileReader(".\\database\\DSCuaHang.txt");
-			BufferedReader br = new BufferedReader(fr);
-			try {
-				String l = "";
-				while (true) {
-					l = br.readLine();
-
-					if (l == null) {
-						break;
-					}
-					n++;
-				}
-
-			} finally {
-				size = n;
-				br.close();
-				fr.close();
-
-			}
-		} catch (Exception e) {
-			System.out.println("loi");
-		}
-	}
 
 	public void Tao() {
+		System.out.println(dsch.length);
 		System.out.println("Nhap so luong cua hang can them: ");
-		int sl = sc.nextInt();
-		CuaHang[] tam = new CuaHang[size];
-		for (int i = 0; i < size; i++) {
-			tam[i] = dsch[i];
+		int sl = 0;
+		for(;;) {
+			if(sl > 0) {
+				break;
+			}
+			sl = Check.checkInput2();
 		}
-
-		dsch = new CuaHang[size + sl];
-
-		for (int i = 0; i < size; i++) {
-			dsch[i] = tam[i];
-		}
-		for (int i = size; i < size + sl; i++) {
+		int arrLength = dsch.length;
+		dsch = Arrays.copyOf(dsch, dsch.length + sl);
+		for (int i = arrLength; i < arrLength + sl; i++) {
 			dsch[i] = new CuaHang();
 			System.out.println("Nhap thong tin cua hang");
 			dsch[i].setId(sttLast++);
 			dsch[i].nhap();
 		}
-		size += sl;
 		GhiFile();
 	}
 
 	public void Xuat() {
-
-		DocFile();
 		System.out.println("+--------------------------   DANH SACH CUA HANG   ---------------------------+");
 		System.out.println("|  ID        TEN CUA HANG             DIA CHI                  SDT            |");
 		System.out.println("+-----------------------------------------------------------------------------+");
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < dsch.length; i++) {
 			dsch[i].xuat();
 		}
 		System.out.println("+-----------------------------------------------------------------------------+");
 	}
 
 	public void XuatMenu() {
-		setSize();
-		dsch = new CuaHang[getSize()];
 		DocFile();
 		int select = 0;
 		String luaChon = null;
@@ -217,35 +182,32 @@ public class DSCuaHang {
 	}
 
 	public void Xoa() {
-		DocFile();
 		System.out.print("Nhap ID cua hang can xoa : ");
-		sc.nextLine();
 		String id = sc.nextLine();
 
 		boolean flag = false;
 
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < dsch.length; i++) {
 			if (id.equalsIgnoreCase(dsch[i].getId())) {
 
-				if (i != size - 1) {
-					for (int j = i; j < size - 1; j++) {
+				if (i != dsch.length - 1) {
+					for (int j = i; j < dsch.length - 1; j++) {
 						dsch[j] = dsch[j + 1];
 					}
 
 				} else {
 					dsch[i] = null;
 				}
+				dsch = Arrays.copyOf(dsch, dsch.length - 1);
 				flag = true;
-				size--;
 				System.out.println("Da xoa thanh cong!");
-				GhiFile();
-				DocFile();
 			}
 		}
 
 		if (flag == false) {
 			System.out.println("Khong co cua hang de xoa");
 		}
+		GhiFile();
 
 	}
 
@@ -321,7 +283,7 @@ public class DSCuaHang {
 
 					String idTam = id.replaceAll("\\D+", "");
 					sttLast = Integer.parseInt(idTam);
-
+					dsch = Arrays.copyOf(dsch, dsch.length + 1);
 					dsch[i] = new CuaHang(id, ten, diachi, sdt);
 					i++;
 				}
@@ -341,7 +303,7 @@ public class DSCuaHang {
 			FileWriter fw = new FileWriter(".\\database\\DSCuaHang.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
-			for (int i = 0; i < size; i++) {
+			for (int i = 0; i < dsch.length; i++) {
 				pw.println(dsch[i].getId() + "|" + dsch[i].getTenCh() + "|" + dsch[i].getDiachi() + "|"
 						+ dsch[i].getSdt());
 			}
@@ -353,8 +315,6 @@ public class DSCuaHang {
 
 	
 	public boolean checkTonTai( String id) {
-		setSize();
-		dsch = new CuaHang[getSize()];
 		DocFile();
 		for (int i = 0; i < size; i++) {
 			if (dsch[i].getId().equalsIgnoreCase(id)) {
@@ -365,8 +325,6 @@ public class DSCuaHang {
 
 	}
 	public CuaHang timCuaHang(String id) {
-		setSize();
-		dsch = new CuaHang[getSize()];
 		DocFile();
 		for (int i = 0; i < size; i++) {
 			if (dsch[i].getId().equalsIgnoreCase(id)) {

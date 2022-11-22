@@ -5,55 +5,22 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import Function.Check;
 
 public class DSDonHang implements ThaoTac {
 	private static int size = 0;
-	private DonHang[] dsdh;
+	private DonHang[] dsdh = new DonHang[0];
 	private int idCuoiCung;
 	static Scanner sc = new Scanner(System.in);
 
 	public DSDonHang() {
 	}
 
-	public static int getSize() {
-		return size;
-	}
-	public static void setSize() {
-		int n = 0;
-		try {
-			FileReader fr = new FileReader(".\\database\\DSNhaCungCap.txt");
-			BufferedReader br = new BufferedReader(fr);
-			try {
-				String l = "";
-				while (true) {
-					l = br.readLine();
-
-					if (l == null) {
-						break;
-					}
-					n++;
-				}
-
-			} finally {
-				size = n;
-				br.close();
-				fr.close();
-
-			}
-		} catch (Exception e) {
-			System.out.println("loi");
-		}
-	}
-
-
-
 	@Override
 	public void XuatMenu() {
-		setSize();
-		dsdh= new DonHang[getSize()];
 		DocFile();
 		int select = 0;
 		String luaChon = null;
@@ -264,7 +231,7 @@ public class DSDonHang implements ThaoTac {
 				"|  ID        TEN KHACH HANG      TEN THU NGAN        CUA HANG ID         HTTT           NGAY MUA HANG            TONG TIEN      |");
 		System.out.println(
 				"+-------------------------------------------------------------------------------------------------------------------------------+");
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < dsdh.length; i++) {
 			dsdh[i].xuat();
 		}
 		// System.out
@@ -273,7 +240,6 @@ public class DSDonHang implements ThaoTac {
 	}
 	
 	public void xuatHoaDon() {
-		DocFile();
 		System.out.println("Nhap id don hang : ");
 		String id = sc.nextLine();
 		for(int i = 0; i < size; i++) {
@@ -385,6 +351,8 @@ public class DSDonHang implements ThaoTac {
 					
 					String catID = id.replaceAll("\\D+", "");
                     idCuoiCung = Integer.parseInt(catID);
+                    
+                    dsdh = Arrays.copyOf(dsdh, dsdh.length + 1);
 					dsdh[i] = new DonHang(id, khachHang_id, thuNgan_id, cuaHang_id, date, hinhThucThanhToan, thanhTien);
 					i++;
 				}

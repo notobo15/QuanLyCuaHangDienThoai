@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import Function.Check;
@@ -11,43 +12,13 @@ import Function.Check;
 public class DSNhaCungCap {
 	private static int size = 0;
 	private int sttLast;
-	public NhaCungCap[] dsncc = new NhaCungCap[1000];
+	public NhaCungCap[] dsncc = new NhaCungCap[0];
 	static Scanner sc = new Scanner(System.in);
 
 	public DSNhaCungCap() {
 	}
 
-	public static int getSize() {
-		return size;
-	}
-
-	public static void setSize() {
-		int n = 0;
-		try {
-			FileReader fr = new FileReader(".\\database\\DSNhaCungCap.txt");
-			BufferedReader br = new BufferedReader(fr);
-			try {
-				String l = "";
-				while (true) {
-					l = br.readLine();
-
-					if (l == null) {
-						break;
-					}
-					n++;
-				}
-
-			} finally {
-				size = n;
-				br.close();
-				fr.close();
-
-			}
-		} catch (Exception e) {
-			System.out.println("loi");
-		}
-	}
-
+	
 	public int getSttLast() {
 		return sttLast;
 	}
@@ -57,7 +28,6 @@ public class DSNhaCungCap {
 	}
 
 	public void Tao() {
-		DocFile();
 		System.out.println("Nhap so luong nha cung cap can them: ");
 		int sldsncc = sc.nextInt();
 
@@ -84,19 +54,17 @@ public class DSNhaCungCap {
 	}
 
 	public void Xuat() {
-		DocFile();
+		System.out.println(dsncc.length);
 		System.out.println("+---------------------------- DANH SACH NHA CUNG CAP ----------------------------+");
 		System.out.println("|ID             TEN                      DIA CHI                 SDT             |");
 		System.out.println("+--------------------------------------------------------------------------------+");
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < dsncc.length; i++) {
 			dsncc[i].xuat();
 		}
 		System.out.println("+--------------------------------------------------------------------------------+");
 	}
 
 	public void XuatMenu() {
-		setSize();
-		dsncc = new NhaCungCap[getSize()];
 		DocFile();
 		int select = 0;
 		String luaChon = null;
@@ -140,7 +108,6 @@ public class DSNhaCungCap {
 	}
 
 	public void Sua() {
-		DocFile();
 		String id = "";
 		System.out.println("Nhap ID NHA CUNG CAP ban muon sua?");
 		System.out.println("0. Quay lai");
@@ -228,7 +195,6 @@ public class DSNhaCungCap {
 	}
 
 	public void Xoa() {
-		DocFile();
 		System.out.print("Nhap ID cua hang can xoa : ");
 		sc.nextLine();
 		String id = sc.nextLine();
@@ -261,7 +227,6 @@ public class DSNhaCungCap {
 	}
 
 	public void TimKiem() {
-		DocFile();
 		int select;
 //			try {
 			System.out.println("+------------- Chon thao tac tim kiem -------------+");
@@ -323,29 +288,27 @@ public class DSNhaCungCap {
 		try {
 			FileReader fr = new FileReader(".\\database\\DSNhaCungCap.txt");
 			BufferedReader br = new BufferedReader(fr);
-			try {
-				String line = "";
-				while (true) {
-					line = br.readLine();
-					if (line == null) {
-						break;
-					}
-					String txt[] = line.split("\\|");
-					String id = txt[0];
-					String ten = txt[1];
-					String diachi = txt[2];
-					String sdt = txt[3];
-
-					String idTam = id.replaceAll("\\D+", "");
-					sttLast = Integer.parseInt(idTam);
-
-					dsncc[i] = new NhaCungCap(id, ten, diachi, sdt);
-					i++;
+			String line = "";
+			while (true) {
+				line = br.readLine();
+				if (line == null) {
+					break;
 				}
-			} finally {
-				// size = i;
-				br.close();
-			}
+				String txt[] = line.split("\\|");
+				String id = txt[0];
+				String ten = txt[1];
+				String diachi = txt[2];
+				String sdt = txt[3];
+
+				String idTam = id.replaceAll("\\D+", "");
+				sttLast = Integer.parseInt(idTam);
+				dsncc = Arrays.copyOf(dsncc, dsncc.length + 1);
+				dsncc[i] = new NhaCungCap(id, ten, diachi, sdt);
+				i++;
+			} 
+			br.close();
+			fr.close();
+			
 
 		} catch (Exception e) {
 			System.out.println("Loi khong doc dc file");

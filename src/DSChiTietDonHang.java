@@ -4,13 +4,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import Function.Check;
 
 public class DSChiTietDonHang implements ThaoTac {
 	private static int size = 0;
-	public ChiTietDonHang[] dsctdh;
+	public ChiTietDonHang[] dsctdh = new ChiTietDonHang[0];
 	private static int stt = 0;
 	static Scanner sc = new Scanner(System.in);
 	private String donHang_id;
@@ -23,41 +24,10 @@ public class DSChiTietDonHang implements ThaoTac {
 	}
 
 	
-	public static int getSize() {
-		return size;
-	}
-
-	public static void setSize() {
-		int n = 0;
-		try {
-			FileReader fr = new FileReader(".\\database\\DSChiTietDonHang.txt");
-			BufferedReader br = new BufferedReader(fr);
-			try {
-				String l = "";
-				while (true) {
-					l = br.readLine();
-
-					if (l == null) {
-						break;
-					}
-					n++;
-				}
-
-			} finally {
-				size = n;
-				br.close();
-				fr.close();
-
-			}
-		} catch (Exception e) {
-			System.out.println("loi");
-		}
-	}
-
+	
 	@Override
 	public void XuatMenu() {
-		setSize();
-		dsctdh = new ChiTietDonHang[getSize()];
+	
 		DocFile();
 		int select = 0;
 		String luaChon = null;
@@ -102,15 +72,13 @@ public class DSChiTietDonHang implements ThaoTac {
 
 	@Override
 	public void Xuat() {
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < dsctdh.length; i++) {
 			dsctdh[i].xuat();
 		}
 
 	}
 
 	public void XuatTronGDonHang(String id) {
-		setSize();
-		dsctdh = new ChiTietDonHang[getSize()];
 		DocFile();
 		for (int i = 0; i < size; i++) {
 			if (dsctdh[i].getDonHang_id().equalsIgnoreCase(id))
@@ -134,8 +102,6 @@ public class DSChiTietDonHang implements ThaoTac {
 
 	}
 	public ChiTietDonHang[] dsChiTietDonHang(String id) {
-		setSize();
-		dsctdh = new ChiTietDonHang[getSize()];
 		DocFile();
 		int  n= 0;
 		for (int k = 0; k < size; k++) {
@@ -214,8 +180,6 @@ public class DSChiTietDonHang implements ThaoTac {
 	}
 
 	public double tong(String id) {
-		setSize();
-		dsctdh = new ChiTietDonHang[getSize()];
 		DocFile();
 		double s = 0;
 		for (int i = 0; i < size; i++) {
@@ -283,6 +247,8 @@ public class DSChiTietDonHang implements ThaoTac {
 					String sanPham_id = txt[2];
 					float soLuong = Float.parseFloat(txt[3]);
 					double thanhTien = Double.parseDouble(txt[4]);
+					dsctdh = Arrays.copyOf(dsctdh, dsctdh.length + 1);
+					
 					dsctdh[i] = new ChiTietDonHang(id, donHang_id, sanPham_id, soLuong, thanhTien);
 					i++;
 				}
@@ -330,15 +296,4 @@ public class DSChiTietDonHang implements ThaoTac {
 		}
 		return s;
 	}
-
-//	public double tongTien(String id) {
-//		DocFile();
-//		double s = 0;
-//		for (int i = 0; i < size; i++) {
-//			if (id.equalsIgnoreCase(dsctdh[i].getDonHang_id())) {
-//				s += dsctdh[i].getThanhTien();
-//			}
-//		}
-//		return s;
-//	}
 }
