@@ -1,9 +1,10 @@
 import java.util.Scanner;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 public class Menu {
 	static Scanner sc = new Scanner(System.in);
+
 	public static void main(String[] args) {
-		
 
 		DSNVThuNgan dsnvtn = new DSNVThuNgan();
 		DSNVBanHang dsnvbh = new DSNVBanHang();
@@ -14,62 +15,74 @@ public class Menu {
 		DSCuaHang dsch = new DSCuaHang();
 		// DSChiTietDonHang dsctdh = new DSChiTietDonHang();
 
-		int select = 0;
-		//try {
+		String select;
+		int luaChon = 0;
+		// try {
 
+		do {
+			System.out.format("+---+--------------- MENU -----------------+%n");
+			System.out.format("| 1 | Chon cac thao tac nhan vien ban hang |%n");
+			// System.out.format("+---+--------------------------------------+%n");
+			System.out.format("| 2 | Chon cac thao tac nhan vien thu ngan |%n");
+			// System.out.format("+---+--------------------------------------+%n");
+			System.out.format("| 3 | Chon cac thao tac khach hang         |%n");
+			// System.out.format("+---+--------------------------------------+%n");
+			System.out.format("| 4 | Chon cac thao tac nha cung cap       |%n");
+			// System.out.format("+---+--------------------------------------+%n");
+			System.out.format("| 5 | Chon cac thao tac san pham           |%n");
+			// System.out.format("+---+--------------------------------------+%n");
+			System.out.format("| 6 | Chon cac thao tac don hang           |%n");
+			// System.out.format("+---+--------------------------------------+%n");
+			System.out.format("| 7 | Chon cac thao tac cua hang           |%n");
+			// System.out.format("+---+--------------------------------------+%n");
+			System.out.format("| 8 | Thong ke                             |%n");
+			System.out.format("+---+--------------------------------------+%n");
+			System.out.format("| 0 | Thoat chuong trinh                   |%n");
+			System.out.format("+---+--------------------------------------+%n");
+			System.out.print("Vui long chon: ");
+			boolean isSuccess = false;
+			Pattern p = Pattern.compile("^[0-9]*$");
+			select = sc.nextLine();
 			do {
-				System.out.format("+---+--------------- MENU -----------------+%n");
-				System.out.format("| 1 | Chon cac thao tac nhan vien ban hang |%n");
-				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 2 | Chon cac thao tac nhan vien thu ngan |%n");
-				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 3 | Chon cac thao tac khach hang         |%n");
-				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 4 | Chon cac thao tac nha cung cap       |%n");
-				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 5 | Chon cac thao tac san pham           |%n");
-				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 6 | Chon cac thao tac don hang           |%n");
-				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 7 | Chon cac thao tac cua hang           |%n");
-				// System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 8 | Thong ke                             |%n");
-				System.out.format("+---+--------------------------------------+%n");
-				System.out.format("| 0 | Thoat chuong trinh                   |%n");
-				System.out.format("+---+--------------------------------------+%n");
-				System.out.print("Vui long chon: ");
-
-				select = sc.nextInt();
-				switch (select) {
-					case 1:
-						dsnvtn.XuatMenu();
-						break;
-					case 2:
-						dsnvbh.XuatMenu();
-						break;
-					case 3:
-						dskh.XuatMenu();
-						break;
-					case 4:
-						dsncc.XuatMenu();
-						break;
-
-					case 5:
-						dssp.XuatMenu();
-						break;
-					case 6:
-						dsdh.XuatMenu();
-						break;
-					case 7:
-						dsch.XuatMenu();
-						break;
-					case 0:
-						break;
-
-					default:
-						System.out.println("Ban da nhap sai thao tac !!!\nXIN VUI LONG NHAP LAI");
+				Matcher m = p.matcher(select);
+				if (m.find() == true) {
+					luaChon = Integer.parseInt(select);
+					isSuccess = true;
+					break;
 				}
-			} while (select != 0);
+				System.out.print("Chi duoc nhap chu so !!!\nMoi ban nhap lai : ");
+				select = sc.nextLine();
+			} while(isSuccess != true);
+
+			switch (luaChon) {
+			case 1:
+				dsnvtn.XuatMenu();
+				break;
+			case 2:
+				dsnvbh.XuatMenu();
+				break;
+			case 3:
+				dskh.XuatMenu();
+				break;
+			case 4:
+				dsncc.XuatMenu();
+				break;
+			case 5:
+				dssp.XuatMenu();
+				break;
+			case 6:
+				dsdh.XuatMenu();
+				break;
+			case 7:
+				dsch.XuatMenu();
+				break;
+			case 0:
+				break;
+
+			default:
+				System.out.println("Ban da nhap sai thao tac !!!\nMoi ban nhap lai : ");
+			}
+		} while (luaChon != 0);
 //		} catch (Exception e) {
 //			System.out.println("BAN CHI DUOC NHAP SO!!!\nXIN VUI LONG NHAP LAI");
 //
