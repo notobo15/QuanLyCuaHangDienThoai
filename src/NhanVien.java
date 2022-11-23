@@ -1,15 +1,16 @@
 
 public class NhanVien extends ConNguoi {
 	private double luongCB;
-	
+	private String tenChucVu;
 
 	public NhanVien() {
 	}
 
-	public NhanVien(String id, String hoVaTen, String gioiTinh, String diaChi, Date ngaySinh, double luongCB,
-		 String e, String sdt) {
+	public NhanVien(String id, String hoVaTen, String gioiTinh, String diaChi, Date ngaySinh, 
+			String e,String sdt,  String tenChucVu, double luongCB) {
 		super(id, hoVaTen, gioiTinh, diaChi, ngaySinh, e, sdt);
 		this.luongCB = luongCB;
+		this.tenChucVu =tenChucVu;
 	}
 
 
@@ -22,7 +23,15 @@ public class NhanVien extends ConNguoi {
 		return this.id;
 	}
 
+	
 
+	public String getTenChucVu() {
+		return tenChucVu;
+	}
+
+	public void setTenChucVu(String tenChucVu) {
+		this.tenChucVu = tenChucVu;
+	}
 
 	public double getluongCB() {
 		return luongCB;
@@ -39,7 +48,6 @@ public class NhanVien extends ConNguoi {
 	}
 
 	public void xuat() {
-
 		System.out.printf("|  %-10s", getId());
 		System.out.printf("%-25s", getHoVaTen());
 		System.out.printf("%-15s", getGioiTinh());
@@ -47,10 +55,15 @@ public class NhanVien extends ConNguoi {
 		System.out.printf("%-15s", getNgaySinh());
 		System.out.printf("%-15s", getEmail());
 		System.out.printf("%-15s", getSdt());
-		// System.out.println("'%15s' %n", "baeldung");
-
+		System.out.printf("%-15s", getTenChucVu());
 		System.out.printf("%-15s", getluongCB());
 		// System.out.print("\t" + chucVu + "\t\t" + luong + "\n");
+	}
+	
+
+	@Override
+	public String toString() {
+		return "NhanVien [luongCB=" + luongCB + ", tenChucVu=" + tenChucVu + "]";
 	}
 
 	public void nhap() {

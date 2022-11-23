@@ -1,4 +1,4 @@
- 
+
 public class NVBanHang extends NhanVien {
 	private float soGioLam;
 	private double phuCap;
@@ -6,14 +6,12 @@ public class NVBanHang extends NhanVien {
 	public NVBanHang() {
 	}
 
-	public NVBanHang(String id, String hoVaTen, String gioiTinh, String diaChi, Date ngaySinh, double luong,
-		 String e, String sdt, float soGioLam, double phuCap) {
-		super(id, hoVaTen, gioiTinh, diaChi, ngaySinh, luong, e, sdt);
+	public NVBanHang(String id, String hoVaTen, String gioiTinh, String diaChi, Date ngaySinh, String e,
+			 String sdt,String tenChucVu, double luong, float soGioLam, double phuCap) {
+		super(id, hoVaTen, diaChi, gioiTinh, ngaySinh, e, sdt, tenChucVu, luong);
 		this.soGioLam = soGioLam;
 		this.phuCap = phuCap;
 	}
-	
-
 
 	public float getSoGioLam() {
 		return soGioLam;
@@ -28,7 +26,6 @@ public class NVBanHang extends NhanVien {
 		}
 		this.soGioLam = soGioLam;
 	}
-	
 
 	public double getPhuCap() {
 		return phuCap;
@@ -37,19 +34,21 @@ public class NVBanHang extends NhanVien {
 	public void setPhuCap() {
 		this.phuCap = 9000;
 	}
+	
+	public void setPhuCap(double phuCap) {
+		this.phuCap = phuCap;
+	}
 
 	@Override
 	public void nhap() {
 		super.nhap();
+		super.setTenChucVu("Ban Hang");
 		System.out.println("Nhap so gio lam viec:");
 		setSoGioLam(Integer.parseInt(sc.nextLine()));
 		setPhuCap();
-		
+
 	}
-	@Override
-	public void setId(int stt) {
-		super.id = "NVBH" + ++stt;
-	}
+
 	@Override
 	public void xuat() {
 		super.xuat();
@@ -57,9 +56,9 @@ public class NVBanHang extends NhanVien {
 		System.out.printf("%-10s|%n", getPhuCap());
 		// System.out.print("\t" + chucVu + "\t\t" + luong + "\n");
 	}
-	
+
 	@Override
-	public double tinhLuong () {
-		return super.getluongCB() /  208 * getSoGioLam() + getPhuCap();
+	public double tinhLuong() {
+		return super.getluongCB() / 208 * getSoGioLam() + getPhuCap();
 	}
 }

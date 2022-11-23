@@ -2,13 +2,29 @@
 public class NVThuNgan extends NhanVien {
 	private float soNgayLam;
 
+	public NVThuNgan(String id, String ten, String diachi, String gioiTinh, Date ngaySinh, String e, String sdt, String tenCV, double luong, float soNgayLam) {
+		super(id, ten, diachi, gioiTinh, ngaySinh, e, sdt, tenCV, luong);
+		this.soNgayLam = soNgayLam;
+	}
+
+//	public NVThuNgan(String id, String hoVaTen, String gioiTinh, String diaChi, Date ngaySinh, double luong,
+//			String tenChucVu, String e, String sdt, float soNgayLam) {
+//		super(id, hoVaTen, gioiTinh, diaChi, ngaySinh, luong,tenChucVu,  e, sdt);
+//		this.soNgayLam = soNgayLam;
+//	}
+
+
+
+
 	public NVThuNgan() {
 	}
 
-	public NVThuNgan(String id, String hoVaTen, String gioiTinh, String diaChi, Date ngaySinh, double luong,
-			String e, String sdt, float soNgayLam) {
-		super(id, hoVaTen, gioiTinh, diaChi, ngaySinh, luong, e, sdt);
-		this.soNgayLam = soNgayLam;
+	@Override
+	public void nhap() {
+		super.nhap();
+		super.setTenChucVu("Thu Ngan");
+		System.out.println("Nhap so ngay lam viec:");
+		setSoNgayLam(Integer.parseInt(sc.nextLine()));
 	}
 
 	public float getSoNgayLam() {
@@ -17,18 +33,6 @@ public class NVThuNgan extends NhanVien {
 
 	public void setSoNgayLam(float soNgayLam) {
 		this.soNgayLam = soNgayLam;
-	}
-
-	@Override
-	public void setId(int stt) {
-		super.id = "NVTN" + ++stt;
-	}
-
-	@Override
-	public void nhap() {
-		super.nhap();
-		System.out.println("Nhap so ngay lam viec:");
-		setSoNgayLam(Integer.parseInt(sc.nextLine()));
 	}
 
 	@Override

@@ -209,7 +209,6 @@ public class DSCuaHang {
 	}
 
 	public void TimKiem() {
-		DocFile();
 		System.out.println("+--------------- Chon thao tac tim kiem ---------------+");
 		System.out.println("|1. Tim cua hang theo ID                               |");
 		System.out.println("|2. Tim cua  hang theo ten                             |");
