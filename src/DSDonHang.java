@@ -35,29 +35,29 @@ public class DSDonHang implements ThaoTac {
 			System.out.print("Nhap thao tac: ");
 			select = Check.checkInputDigit();
 			switch (select) {
-				case 1: {
-					Tao();
-					break;
-				}
-				case 2:
-					Xuat();
-					break;
-				case 3:
-					Xoa();
-					break;
-				case 4:
-					Sua();
-					break;
-				case 5:
-					TimKiem();
-					break;
-				case 6:
-					xuatHoaDon();
-					break;
-				case 0:
-					break;
-				default:
-					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+			case 1: {
+				Tao();
+				break;
+			}
+			case 2:
+				Xuat();
+				break;
+			case 3:
+				Xoa();
+				break;
+			case 4:
+				Sua();
+				break;
+			case 5:
+				TimKiem();
+				break;
+			case 6:
+				xuatHoaDon();
+				break;
+			case 0:
+				break;
+			default:
+				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 			}
 
@@ -100,28 +100,28 @@ public class DSDonHang implements ThaoTac {
 		System.out.print("Nhap thao tac : ");
 		int select = sc.nextInt();
 		switch (select) {
-			case 1: {
-				sc = new Scanner(System.in);
-				System.out.print("Nhap ID nhan vien can tim: ");
-				String id = sc.nextLine();
-				boolean flag = false;
-				for (int i = 0; i < dsdh.length; i++) {
-					if (id.equalsIgnoreCase(dsdh[i].getId())) {
-						dsdh[i].xuat();
-						flag = true;
+		case 1: {
+			sc = new Scanner(System.in);
+			System.out.print("Nhap ID nhan vien can tim: ");
+			String id = sc.nextLine();
+			boolean flag = false;
+			for (int i = 0; i < dsdh.length; i++) {
+				if (id.equalsIgnoreCase(dsdh[i].getId())) {
+					dsdh[i].xuat();
+					flag = true;
 
-					}
 				}
-				if (flag == false) {
-					System.out.println("Khong tim thay nhan vien");
-				}
-				break;
 			}
+			if (flag == false) {
+				System.out.println("Khong tim thay nhan vien");
+			}
+			break;
+		}
 
-			case 0:
-				break;
-			default:
-				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+		case 0:
+			break;
+		default:
+			System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 		}
 
@@ -168,47 +168,47 @@ public class DSDonHang implements ThaoTac {
 
 				switch (select) {
 
-					case 1: {
-						System.out.print("Nhap id khach hang moi : ");
-						String tenMoi = sc.nextLine();
-						dsdh[index].setKhachHang_id(tenMoi);
-						System.out.println("Da sua thanh cong!");
-						dsdh[index].xuat();
-						GhiFile();
-						break;
-					}
-					case 2: {
-						System.out.print("Nhap id thu ngan moi : ");
-						String tenMoi = sc.nextLine();
-						dsdh[index].setthuNgan_id(tenMoi);
-						System.out.println("Da sua thanh cong!");
-						dsdh[index].xuat();
-						GhiFile();
-						break;
-					}
-					case 3: {
-						System.out.print("Nhap id cua hang moi : ");
-						String tenMoi = sc.nextLine();
-						dsdh[index].setCuaHang_id(tenMoi);
-						System.out.println("Da sua thanh cong!");
-						dsdh[index].xuat();
-						GhiFile();
-						break;
-					}
-					case 4: {
-						System.out.print("Nhap hinh thuc thanh toan moi : ");
-						String tenMoi = sc.nextLine();
-						dsdh[index].setHinhThucThanhToan(tenMoi);
-						System.out.println("Da sua thanh cong!");
-						dsdh[index].xuat();
-						GhiFile();
-						break;
-					}
+				case 1: {
+					System.out.print("Nhap id khach hang moi : ");
+					String tenMoi = sc.nextLine();
+					dsdh[index].setKhachHang_id(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					dsdh[index].xuat();
+					GhiFile();
+					break;
+				}
+				case 2: {
+					System.out.print("Nhap id thu ngan moi : ");
+					String tenMoi = sc.nextLine();
+					dsdh[index].setthuNgan_id(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					dsdh[index].xuat();
+					GhiFile();
+					break;
+				}
+				case 3: {
+					System.out.print("Nhap id cua hang moi : ");
+					String tenMoi = sc.nextLine();
+					dsdh[index].setCuaHang_id(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					dsdh[index].xuat();
+					GhiFile();
+					break;
+				}
+				case 4: {
+					System.out.print("Nhap hinh thuc thanh toan moi : ");
+					String tenMoi = sc.nextLine();
+					dsdh[index].setHinhThucThanhToan(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					dsdh[index].xuat();
+					GhiFile();
+					break;
+				}
 
-					case 0:
-						break;
-					default:
-						System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+				case 0:
+					break;
+				default:
+					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 				}
 			} catch (Exception e) {
@@ -309,14 +309,18 @@ public class DSDonHang implements ThaoTac {
 			FileWriter fw = new FileWriter(".\\database\\DSDonHang.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
-			for (int i = 0; i < dsdh.length; i++) {
-				pw.println(dsdh[i].getId() + "|" + dsdh[i].getKhachHang_id() + "|" + dsdh[i].getthuNgan_id() + "|"
-						+ dsdh[i].getCuaHang_id() + "|" + dsdh[i].getDate() + "|" + dsdh[i].getHinhThucThanhToan() + "|"
-						+ dsdh[i].getTongTien());
+			try {
+				for (int i = 0; i < dsdh.length; i++) {
+					pw.println(dsdh[i].getId() + "|" + dsdh[i].getKhachHang_id() + "|" + dsdh[i].getthuNgan_id() + "|"
+							+ dsdh[i].getCuaHang_id() + "|" + dsdh[i].getDate() + "|" + dsdh[i].getHinhThucThanhToan()
+							+ "|" + dsdh[i].getTongTien());
+				}
+			} finally {
+				fw.close();
+				bw.close();
+				pw.close();
 			}
-			fw.close();
-			bw.close();
-			pw.close();
+
 		} catch (IOException e) {
 			System.out.println("Loi khong ghi dc file");
 		}

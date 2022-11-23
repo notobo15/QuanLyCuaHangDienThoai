@@ -63,26 +63,26 @@ public class DSCuaHang {
 			System.out.print("Nhap thao tac: ");
 			select = Check.checkInput(luaChon);
 			switch (select) {
-				case 1: {
-					Tao();
-					break;
-				}
-				case 2:
-					Xuat();
-					break;
-				case 3:
-					Xoa();
-					break;
-				case 4:
-					Sua();
-					break;
-				case 5:
-					TimKiem();
-					break;
-				case 0:
-					break;
-				default:
-					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+			case 1: {
+				Tao();
+				break;
+			}
+			case 2:
+				Xuat();
+				break;
+			case 3:
+				Xoa();
+				break;
+			case 4:
+				Sua();
+				break;
+			case 5:
+				TimKiem();
+				break;
+			case 0:
+				break;
+			default:
+				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 			}
 
@@ -131,45 +131,45 @@ public class DSCuaHang {
 
 				switch (select) {
 
-					case 1: {
-						System.out.print("Nhap ho va ten nhan vien moi : ");
-						String tenMoi = sc.nextLine();
-						dsch[pos].setTenCh(tenMoi);
-						System.out.println("Da sua thanh cong!");
-						dsch[pos].xuat();
-						GhiFile();
-						break;
-					}
-					case 2: {
-						System.out.print("Nhap gioi tinh nhan vien moi: ");
-						String tenMoi = sc.nextLine();
-						dsch[pos].setDiachi(tenMoi);
-						System.out.println("Da sua thanh cong!");
-						dsch[pos].xuat();
-						GhiFile();
-						break;
-					}
-					case 3: {
-						System.out.print("Nhap dia chi nhan vien moi : ");
-						String tenMoi = sc.nextLine();
-						dsch[pos].setSdt(tenMoi);
-						System.out.println("Da sua thanh cong!");
-						dsch[pos].xuat();
-						GhiFile();
-						break;
-					}
-					case 4: {
-						System.out.print("Nhap dia chi nhan vien moi : ");
-						dsch[pos].nhap();
-						System.out.println("Da sua thanh cong!");
-						dsch[pos].xuat();
-						GhiFile();
-						break;
-					}
-					case 0:
-						break;
-					default:
-						System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+				case 1: {
+					System.out.print("Nhap ho va ten nhan vien moi : ");
+					String tenMoi = sc.nextLine();
+					dsch[pos].setTenCh(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					dsch[pos].xuat();
+					GhiFile();
+					break;
+				}
+				case 2: {
+					System.out.print("Nhap gioi tinh nhan vien moi: ");
+					String tenMoi = sc.nextLine();
+					dsch[pos].setDiachi(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					dsch[pos].xuat();
+					GhiFile();
+					break;
+				}
+				case 3: {
+					System.out.print("Nhap dia chi nhan vien moi : ");
+					String tenMoi = sc.nextLine();
+					dsch[pos].setSdt(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					dsch[pos].xuat();
+					GhiFile();
+					break;
+				}
+				case 4: {
+					System.out.print("Nhap dia chi nhan vien moi : ");
+					dsch[pos].nhap();
+					System.out.println("Da sua thanh cong!");
+					dsch[pos].xuat();
+					GhiFile();
+					break;
+				}
+				case 0:
+					break;
+				default:
+					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 				}
 			} catch (Exception e) {
@@ -197,7 +197,7 @@ public class DSCuaHang {
 				dsch = Arrays.copyOf(dsch, dsch.length - 1);
 				flag = true;
 				System.out.println("Da xoa thanh cong!");
-				
+
 			}
 		}
 		GhiFile();
@@ -218,43 +218,43 @@ public class DSCuaHang {
 		System.out.print("Nhap thao tac : ");
 		int select = sc.nextInt();
 		switch (select) {
-			case 1: {
-				System.out.print("Nhap ID cua hang can tim: ");
-				sc.nextLine();
-				String id = sc.nextLine();
-				boolean flag = false;
-				for (int i = 0; i < dsch.length; i++) {
-					if (id.equalsIgnoreCase(dsch[i].getId())) {
-						dsch[i].xuat();
-						flag = true;
+		case 1: {
+			System.out.print("Nhap ID cua hang can tim: ");
+			sc.nextLine();
+			String id = sc.nextLine();
+			boolean flag = false;
+			for (int i = 0; i < dsch.length; i++) {
+				if (id.equalsIgnoreCase(dsch[i].getId())) {
+					dsch[i].xuat();
+					flag = true;
 
-					}
-				}
-				if (flag == false) {
-					System.out.println("Khong tim thay cua hang");
-				}
-				break;
-			}
-			case 2: {
-				System.out.print("Nhap ten cua hang can tim: ");
-				sc.nextLine();
-				String input = sc.nextLine();
-				boolean flag = false;
-				for (int i = 0; i < dsch.length; i++) {
-					if ((dsch[i].getTenCh().toLowerCase().contains(input.toLowerCase()))) {
-						dsch[i].xuat();
-						flag = true;
-
-					}
-				}
-				if (flag == false) {
-					System.out.println("Khong tim thay cua hang");
 				}
 			}
-			case 0:
-				break;
-			default:
-				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+			if (flag == false) {
+				System.out.println("Khong tim thay cua hang");
+			}
+			break;
+		}
+		case 2: {
+			System.out.print("Nhap ten cua hang can tim: ");
+			sc.nextLine();
+			String input = sc.nextLine();
+			boolean flag = false;
+			for (int i = 0; i < dsch.length; i++) {
+				if ((dsch[i].getTenCh().toLowerCase().contains(input.toLowerCase()))) {
+					dsch[i].xuat();
+					flag = true;
+
+				}
+			}
+			if (flag == false) {
+				System.out.println("Khong tim thay cua hang");
+			}
+		}
+		case 0:
+			break;
+		default:
+			System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 		}
 
@@ -296,19 +296,22 @@ public class DSCuaHang {
 	}
 
 	public void GhiFile() {
-		
+
 		try {
 			FileWriter fw = new FileWriter(".\\database\\DSCuaHang.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
-			try (PrintWriter pw = new PrintWriter(bw)) {
+			PrintWriter pw = new PrintWriter(bw);
+			try {
 				for (int i = 0; i < dsch.length; i++) {
-					pw.println(dsch[i].getId() + "|"
-							+ dsch[i].getTenCh() + "|"
-							+ dsch[i].getDiachi() + "|"
+					pw.println(dsch[i].getId() + "|" + dsch[i].getTenCh() + "|" + dsch[i].getDiachi() + "|"
 							+ dsch[i].getSdt());
 				}
+			} finally {
+				fw.close();
+				bw.close();
+				pw.close();
 			}
-			
+
 		} catch (IOException e) {
 			System.out.println("Loi khong ghi dc file");
 		}

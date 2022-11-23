@@ -38,26 +38,26 @@ public class DSChiTietDonHang implements ThaoTac {
 			System.out.print("Nhap thao tac: ");
 			select = Check.checkInputDigit();
 			switch (select) {
-				case 1: {
-					Tao();
-					break;
-				}
-				case 2:
-					Xuat();
-					break;
-				case 3:
-					Xoa();
-					break;
-				case 4:
-					Sua();
-					break;
-				case 5:
-					TimKiem();
-					break;
-				case 0:
-					break;
-				default:
-					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+			case 1: {
+				Tao();
+				break;
+			}
+			case 2:
+				Xuat();
+				break;
+			case 3:
+				Xoa();
+				break;
+			case 4:
+				Sua();
+				break;
+			case 5:
+				TimKiem();
+				break;
+			case 0:
+				break;
+			default:
+				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 			}
 
@@ -201,13 +201,16 @@ public class DSChiTietDonHang implements ThaoTac {
 			FileWriter fw = new FileWriter(".\\database\\DSChiTietDonHang.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
-			for (int i = 0; i < dsctdh.length; i++) {
-				pw.println(dsctdh[i].getId() + "|" + dsctdh[i].getDonHang_id() + "|" + dsctdh[i].getSanPham_id() + "|"
-						+ dsctdh[i].getSoLuong() + "|" + dsctdh[i].getThanhTien());
+			try {
+				for (int i = 0; i < dsctdh.length; i++) {
+					pw.println(dsctdh[i].getId() + "|" + dsctdh[i].getDonHang_id() + "|" + dsctdh[i].getSanPham_id()
+							+ "|" + dsctdh[i].getSoLuong() + "|" + dsctdh[i].getThanhTien());
+				}
+			} finally {
+				fw.close();
+				bw.close();
+				pw.close();
 			}
-			bw.close();
-			fw.close();
-			pw.close();
 		} catch (IOException e) {
 			System.out.println("Loi khong ghi dc file");
 		}

@@ -300,13 +300,16 @@ public class DSNhaCungCap {
 			FileWriter fw = new FileWriter(".\\database\\DSNhaCungCap.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
+			try {
 			for (int i = 0; i < size; i++) {
 				pw.println(dsncc[i].getId() + "|" + dsncc[i].getTenNcc() + "|" + dsncc[i].getDiachi() + "|"
 						+ dsncc[i].getSdt());
 			}
+		} finally {
 			fw.close();
 			bw.close();
 			pw.close();
+		}
 		} catch (IOException e) {
 			System.out.println("Loi khong ghi dc file");
 		}
