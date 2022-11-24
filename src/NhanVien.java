@@ -56,7 +56,7 @@ public class NhanVien extends ConNguoi {
 		System.out.printf("%-15s", getEmail());
 		System.out.printf("%-15s", getSdt());
 		System.out.printf("%-15s", getTenChucVu());
-		System.out.printf("%-15s", getluongCB());
+		System.out.printf("%-,15.0f", getluongCB());
 		// System.out.print("\t" + chucVu + "\t\t" + luong + "\n");
 	}
 	
@@ -75,6 +75,13 @@ public class NhanVien extends ConNguoi {
 		setDiaChi(sc.nextLine());
 		System.out.println("Moi nhap ngay sinh:");
 		ngaySinh.setTime();
+		for(;;) {
+			
+			if(2022 - ngaySinh.getYear() >= 18 && ngaySinh.getMonth()  < 12)
+				break;
+			System.out.println("Chua do 18 tuoi ! Moi ban nhap lai : ");
+			ngaySinh.setTime();
+		}
 		System.out.println("Moi nhap email:");
 		setEmail(sc.nextLine());
 		System.out.println("Moi nhap sdt:");

@@ -38,7 +38,7 @@ public class NVThuNgan extends NhanVien {
 	@Override
 	public void xuat() {
 		super.xuat();
-		System.out.printf("%-15s|%n", getSoNgayLam());
+		System.out.printf("%-45s|%n", getSoNgayLam());
 		// System.out.print("\t" + chucVu + "\t\t" + luong + "\n");
 	}
 

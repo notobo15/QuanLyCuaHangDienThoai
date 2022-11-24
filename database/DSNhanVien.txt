@@ -1,6 +1,6 @@
-NV1|Nguyen Van Moi|nu|HCM|11/2/2002|a@gmail.com|0123456788|Thu Ngan|123.0|20000.0
-NV2|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|Thu Ngan|123.0|21000.0
-NV3|Nguyen Van Moi|nu|HCM|11/2/2002|a@gmail.com|0123456788|Ban Hang|123.0|2000.0|200.0
-NV4|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|Ban Hang|123.0|21000.0|100.0
-NV6|Adf A|nam|adf|1/1/2001|a@ads.dasd|0123456789|Thu Ngan|10000.0|100.0
-NV7|Dasd Das|nu|afdfd|1/1/2000|dasd@dasd.asd|0123456789|Ban Hang|20000.0|300.0|9000.0
+NV1|Nguyen Van Moi|nu|HCM|11/2/2002|a@gmail.com|0123456788|Thu Ngan|5000000.0|26
+NV2|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|Thu Ngan|6000000.0|26
+NV3|Nguyen Van Moi|nu|HCM|11/2/2002|a@gmail.com|0123456788|Ban Hang|7000000.0|300|500000.0
+NV4|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|Ban Hang|9000000.0|310|500000.0
+NV6|Adf A|nam|adf|1/1/2001|a@ads.dasd|0123456789|Thu Ngan|4000000.0|30
+NV7|Dasd Das|nu|afdfd|1/1/2000|dasd@dasd.asd|0123456789|Ban Hang|7000000.0|300.0|500000.0

@@ -12,6 +12,7 @@ import Function.Check;
 public class DSNhaCungCap {
 	private static int size = 0;
 	private int stt;
+	
 	public NhaCungCap[] dsncc = new NhaCungCap[0];
 	static Scanner sc = new Scanner(System.in);
 
@@ -44,7 +45,7 @@ public class DSNhaCungCap {
 		System.out.println("+---------------------------- DANH SACH NHA CUNG CAP ----------------------------+");
 		System.out.println("|ID             TEN                      DIA CHI                 SDT             |");
 		System.out.println("+--------------------------------------------------------------------------------+");
-		for (int i = 0; i < dsncc.length; i++) {
+		for (int i = 0; i < size; i++) {
 			dsncc[i].xuat();
 		}
 		System.out.println("+--------------------------------------------------------------------------------+");
@@ -183,7 +184,7 @@ public class DSNhaCungCap {
 		String id = sc.nextLine();
 		boolean flag = false;
 
-		for (int i = 0; i < dsncc.length; i++) {
+		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(dsncc[i].getId())) {
 
 				if (i != size - 1) {

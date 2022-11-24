@@ -13,6 +13,7 @@ import Function.Check;
 public class DSDonHang implements ThaoTac {
 	private DonHang[] dsdh = new DonHang[0];
 	private static int stt;
+	private static int size = 0;
 	static Scanner sc = new Scanner(System.in);
 
 	public DSDonHang() {
@@ -86,6 +87,7 @@ public class DSDonHang implements ThaoTac {
 			dsdh[i].nhap();
 			System.out.println("Them don hang thanh cong");
 		}
+		size += sl;
 		GhiFile();
 
 	}
@@ -105,7 +107,7 @@ public class DSDonHang implements ThaoTac {
 			System.out.print("Nhap ID nhan vien can tim: ");
 			String id = sc.nextLine();
 			boolean flag = false;
-			for (int i = 0; i < dsdh.length; i++) {
+			for (int i = 0; i < size; i++) {
 				if (id.equalsIgnoreCase(dsdh[i].getId())) {
 					dsdh[i].xuat();
 					flag = true;
@@ -137,7 +139,7 @@ public class DSDonHang implements ThaoTac {
 		id = sc.nextLine();
 		boolean timThay = false;
 		for (;;) {
-			for (int i = 0; i < dsdh.length; i++) {
+			for (int i = 0; i < size; i++) {
 				if (dsdh[i].getId().equalsIgnoreCase(id)) {
 					index = i;
 					timThay = true;
@@ -226,7 +228,7 @@ public class DSDonHang implements ThaoTac {
 				"|  ID        TEN KHACH HANG      TEN THU NGAN        CUA HANG ID         HTTT           NGAY MUA HANG            TONG TIEN      |");
 		System.out.println(
 				"+-------------------------------------------------------------------------------------------------------------------------------+");
-		for (int i = 0; i < dsdh.length; i++) {
+		for (int i = 0; i < size; i++) {
 			dsdh[i].xuat();
 		}
 		// System.out
@@ -237,7 +239,7 @@ public class DSDonHang implements ThaoTac {
 	public void xuatHoaDon() {
 		System.out.println("Nhap id don hang : ");
 		String id = sc.nextLine();
-		for (int i = 0; i < dsdh.length; i++) {
+		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(dsdh[i].getId())) {
 				DSCuaHang dsch = new DSCuaHang();
 				CuaHang ch = dsch.timCuaHang(dsdh[i].getCuaHang_id());
@@ -279,11 +281,11 @@ public class DSDonHang implements ThaoTac {
 		String id = sc.nextLine();
 		boolean flag = false;
 
-		for (int i = 0; i < dsdh.length; i++) {
+		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(dsdh[i].getId())) {
 
-				if (i != dsdh.length - 1) {
-					for (int j = i; j < dsdh.length - 1; j++) {
+				if (i != size - 1) {
+					for (int j = i; j < size - 1; j++) {
 						dsdh[j] = dsdh[j + 1];
 					}
 
@@ -299,6 +301,7 @@ public class DSDonHang implements ThaoTac {
 		if (flag == false) {
 			System.out.println("Khong co don hang de xoa");
 		}
+		size--;
 		GhiFile();
 
 	}
@@ -309,7 +312,7 @@ public class DSDonHang implements ThaoTac {
 			FileWriter fw = new FileWriter(".\\database\\DSDonHang.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			try (PrintWriter pw = new PrintWriter(bw)) {
-				for (int i = 0; i < dsdh.length; i++) {
+				for (int i = 0; i < size; i++) {
 					pw.println(dsdh[i].getId() + "|" + dsdh[i].getKhachHang_id() + "|" + dsdh[i].getthuNgan_id() + "|"
 							+ dsdh[i].getCuaHang_id() + "|" + dsdh[i].getDate() + "|" + dsdh[i].getHinhThucThanhToan()
 							+ "|" + dsdh[i].getTongTien());
@@ -355,6 +358,7 @@ public class DSDonHang implements ThaoTac {
 				dsdh[i] = new DonHang(id, khachHang_id, thuNgan_id, cuaHang_id, date, hinhThucThanhToan, thanhTien);
 				i++;
 			}
+			size = i;
 			br.close();
 			fr.close();
 		}

@@ -30,10 +30,6 @@ public class DonHang {
         return id;
     }
 
-    public void setId() {
-
-        this.id = "DH" + ++stt;
-    }
 
     public void setId(int id) {
 
@@ -168,7 +164,7 @@ public class DonHang {
         System.out.printf("%-15s", getHinhThucThanhToan());
         System.out.printf("%-25s", getDate());
         setTongTien();
-        System.out.printf("%-,15.2f|%n", getTongTien());
+        System.out.printf("%-,15.2f |%n", getTongTien());
 
         DSChiTietDonHang ds = new DSChiTietDonHang();
         ds.XuatTronGDonHang(getId());

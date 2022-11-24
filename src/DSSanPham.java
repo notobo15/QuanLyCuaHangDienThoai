@@ -10,6 +10,7 @@ import java.util.Scanner;
 import Function.Check;
 
 public class DSSanPham implements ThaoTac {
+	private static int size = 0;
 	private SanPham[] sp = new SanPham[0];
 	private static int stt = 0;
 	static Scanner sc = new Scanner(System.in);
@@ -37,13 +38,14 @@ public class DSSanPham implements ThaoTac {
 			sp[i].nhap();
 			System.out.println("Them san pham thanh cong");
 		}
+		size += sl;
 		GhiFile();
 	}
 
 	@Override
 	public void Xuat() {
 
-		for (int i = 0; i < sp.length; i++) {
+		for (int i = 0; i < size; i++) {
 			sp[i].Xuat();
 		}
 
@@ -51,7 +53,7 @@ public class DSSanPham implements ThaoTac {
 
 	public String getTenKhachHang(String id) {
 		DocFile();
-		for (int i = 0; i < sp.length; i++) {
+		for (int i = 0; i < size; i++) {
 			if (sp[i].getId().equalsIgnoreCase(id)) {
 				return sp[i].getTen();
 			}
@@ -112,7 +114,7 @@ public class DSSanPham implements ThaoTac {
 			FileWriter fw = new FileWriter(".\\database\\DSSanPham.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			try (PrintWriter pw = new PrintWriter(bw)) {
-				for (int i = 0; i < sp.length; i++) {
+				for (int i = 0; i < size; i++) {
 					pw.println(sp[i].getId() + "|" + sp[i].getTen() + "|" + sp[i].getMoTa() + "|" + sp[i].getMau() + "|"
 							+ sp[i].getKichCo() + "|" + sp[i].getGia() + "|" + sp[i].getNCC_ID() + "|"
 							+ sp[i].getNgayRaMat());
@@ -163,6 +165,7 @@ public class DSSanPham implements ThaoTac {
 				sp[i] = new SanPham(id, Ten, moTa, Mau, kichCo, Gia, NCC_ID, ngayRaMat);
 				i++;
 			}
+			size = i;
 			br.close();
 			fr.close();
 		} catch (
@@ -181,11 +184,11 @@ public class DSSanPham implements ThaoTac {
 
 		boolean flag = false;
 
-		for (int i = 0; i < sp.length; i++) {
+		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(sp[i].getId())) {
 
-				if (i != sp.length - 1) {
-					for (int j = i; j < sp.length - 1; j++) {
+				if (i != size - 1) {
+					for (int j = i; j < size - 1; j++) {
 						sp[j] = sp[j + 1];
 					}
 
@@ -195,10 +198,10 @@ public class DSSanPham implements ThaoTac {
 				sp = Arrays.copyOf(sp, sp.length - 1);
 				flag = true;
 				System.out.println("Da xoa thanh cong!");
-				GhiFile();
 			}
 		}
-
+		size--;
+		GhiFile();
 		if (flag == false) {
 			System.out.println("Khong co cua hang de xoa");
 		}
@@ -218,7 +221,7 @@ public class DSSanPham implements ThaoTac {
 		id = sc.nextLine();
 		boolean timThay = false;
 		for (;;) {
-			for (int i = 0; i < sp.length; i++) {
+			for (int i = 0; i < size; i++) {
 				if (sp[i].getId().equalsIgnoreCase(id)) {
 					tam = sp[i];
 					timThay = true;
@@ -326,7 +329,7 @@ public class DSSanPham implements ThaoTac {
 		String id = sc.nextLine();
 		String ID = id.toLowerCase();
 		boolean flag = false;
-		for (int i = 0; i < sp.length; i++) {
+		for (int i = 0; i < size; i++) {
 			if (ID.equals(sp[i].getId().toLowerCase())) {
 				sp[i].Xuat();
 				flag = true;
@@ -341,7 +344,7 @@ public class DSSanPham implements ThaoTac {
 
 	public int xuatGia(String id) {
 		DocFile();
-		for (int i = 0; i < sp.length; i++) {
+		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(sp[i].getId())) {
 				return sp[i].getGia();
 			}

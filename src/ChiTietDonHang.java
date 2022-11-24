@@ -66,9 +66,9 @@ public class ChiTietDonHang {
 		this.thanhTien = soLuong * dssp.xuatGia(sanPham_id);
 	}
 
-	public void nhap() {
+	public void nhap(String donHang_id) {
 		// setId();
-		setDonHang_id(id);
+		setDonHang_id(donHang_id);
 		System.out.println("nhap id san pham: ");
 		setSanPham_id(sc.nextLine());
 		System.out.println("nhap so luong: ");

@@ -12,6 +12,7 @@ import Function.Check;
 public class DSCuaHang {
 	static private CuaHang[] dsch = new CuaHang[0];
 	private int sttLast;
+	private static int size = 0;
 	static Scanner sc = new Scanner(System.in);
 
 	public DSCuaHang() {
@@ -34,6 +35,7 @@ public class DSCuaHang {
 			dsch[i].setId(sttLast++);
 			dsch[i].nhap();
 		}
+		size += sl;
 		GhiFile();
 	}
 
@@ -41,7 +43,7 @@ public class DSCuaHang {
 		System.out.println("+--------------------------   DANH SACH CUA HANG   ---------------------------+");
 		System.out.println("|  ID        TEN CUA HANG             DIA CHI                  SDT            |");
 		System.out.println("+-----------------------------------------------------------------------------+");
-		for (int i = 0; i < dsch.length; i++) {
+		for (int i = 0; i < size; i++) {
 			dsch[i].xuat();
 		}
 		System.out.println("+-----------------------------------------------------------------------------+");
@@ -101,7 +103,7 @@ public class DSCuaHang {
 		id = sc.nextLine();
 		boolean timThay = false;
 		for (;;) {
-			for (int i = 0; i < dsch.length; i++) {
+			for (int i = 0; i < size; i++) {
 				if (dsch[i].getId().equalsIgnoreCase(id)) {
 					pos = i;
 					timThay = true;
@@ -182,12 +184,12 @@ public class DSCuaHang {
 		System.out.print("Nhap ID cua hang can xoa : ");
 		String id = sc.nextLine();
 		boolean flag = false;
-		System.out.println(dsch.length);
-		for (int i = 0; i < dsch.length; i++) {
+		System.out.println(size);
+		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(dsch[i].getId())) {
 
-				if (i != dsch.length - 1) {
-					for (int j = i; j < dsch.length - 1; j++) {
+				if (i != size - 1) {
+					for (int j = i; j < size - 1; j++) {
 						dsch[j] = dsch[j + 1];
 					}
 
@@ -200,6 +202,7 @@ public class DSCuaHang {
 
 			}
 		}
+		size--;
 		GhiFile();
 
 		if (flag == false) {
@@ -222,7 +225,7 @@ public class DSCuaHang {
 			sc.nextLine();
 			String id = sc.nextLine();
 			boolean flag = false;
-			for (int i = 0; i < dsch.length; i++) {
+			for (int i = 0; i < size; i++) {
 				if (id.equalsIgnoreCase(dsch[i].getId())) {
 					dsch[i].xuat();
 					flag = true;
@@ -239,7 +242,7 @@ public class DSCuaHang {
 			sc.nextLine();
 			String input = sc.nextLine();
 			boolean flag = false;
-			for (int i = 0; i < dsch.length; i++) {
+			for (int i = 0; i < size; i++) {
 				if ((dsch[i].getTenCh().toLowerCase().contains(input.toLowerCase()))) {
 					dsch[i].xuat();
 					flag = true;
@@ -284,6 +287,7 @@ public class DSCuaHang {
 					i++;
 				}
 			} finally {
+				size = i;
 				fr.close();
 				br.close();
 			}
@@ -301,7 +305,7 @@ public class DSCuaHang {
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
 			try {
-				for (int i = 0; i < dsch.length; i++) {
+				for (int i = 0; i < size; i++) {
 					pw.println(dsch[i].getId() + "|" + dsch[i].getTenCh() + "|" + dsch[i].getDiachi() + "|"
 							+ dsch[i].getSdt());
 				}
@@ -318,7 +322,7 @@ public class DSCuaHang {
 
 	public boolean checkTonTai(String id) {
 		DocFile();
-		for (int i = 0; i < dsch.length; i++) {
+		for (int i = 0; i < size; i++) {
 			if (dsch[i].getId().equalsIgnoreCase(id)) {
 				return true;
 			}
@@ -329,7 +333,7 @@ public class DSCuaHang {
 
 	public CuaHang timCuaHang(String id) {
 		DocFile();
-		for (int i = 0; i < dsch.length; i++) {
+		for (int i = 0; i < size; i++) {
 			if (dsch[i].getId().equalsIgnoreCase(id)) {
 				CuaHang ch = new CuaHang();
 				ch = dsch[i];

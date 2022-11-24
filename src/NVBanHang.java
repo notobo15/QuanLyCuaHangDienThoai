@@ -52,8 +52,9 @@ public class NVBanHang extends NhanVien {
 	@Override
 	public void xuat() {
 		super.xuat();
+		System.out.printf("%-15s", "");
 		System.out.printf("%-15s", getSoGioLam());
-		System.out.printf("%-10s|%n", getPhuCap());
+		System.out.printf("%-,15.0f|%n", getPhuCap());
 		// System.out.print("\t" + chucVu + "\t\t" + luong + "\n");
 	}
 
