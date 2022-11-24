@@ -98,6 +98,7 @@ public class DSNhanVien implements ThaoTac {
 	@Override
 	public void Xoa() {
 		System.out.print("Nhap ID nhan vien can xoa : ");
+		sc.nextLine();
 		String id = sc.nextLine();
 		boolean flag = false;
 		System.out.println(nv.length);
@@ -479,18 +480,6 @@ public class DSNhanVien implements ThaoTac {
 
 	}
 
-	// public static NhanVien[] add(int n, NhanVien myarray[], NhanVien ele) {
-	// int i;
-	// NhanVien newArray[] = new NhanVien[n + 1];
-	// // copy original array into new array
-	// for (i = 0; i < n; i++)
-	// newArray[i] = myarray[i];
-
-	// // add element to the new array
-	// newArray[n] = ele;
-
-	// return newArray;
-	// }
 
 	@Override
 	public void GhiFile() {
@@ -530,6 +519,16 @@ public class DSNhanVien implements ThaoTac {
 			System.out.println("Loi khong ghi dc file");
 		}
 
+	}
+	public NVThuNgan timNVThuNgan (String id) {
+		DocFile();
+		for(int i =0; i < nv.length;  i++) {
+			if(nv[i] instanceof NVThuNgan && nv[i].getId().equalsIgnoreCase(id)) {
+				return (NVThuNgan) nv[i];
+			}
+		}
+		return null;
+		
 	}
 
 

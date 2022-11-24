@@ -65,6 +65,6 @@ public class KhachHang extends ConNguoi {
         System.out.println("Moi nhap Nhom:");
         setthuocNhom(sc.nextLine());
     }
-	
+
 }
 

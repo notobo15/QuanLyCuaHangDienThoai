@@ -385,5 +385,13 @@ public class DSKhachHang implements ThaoTac {
 		}
 		return false;
 	}
-
+	public KhachHang timKhachHang(String id) {
+		DocFile();
+		for(int i =0; i < dskh.length;  i++) {
+			if( dskh[i].getId().equalsIgnoreCase(id)) {
+				return dskh[i];
+			}
+		}
+		return null;
+	}
 }

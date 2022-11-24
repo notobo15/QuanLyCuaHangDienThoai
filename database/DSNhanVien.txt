@@ -2,6 +2,5 @@ NV1|Nguyen Van Moi|nu|HCM|11/2/2002|a@gmail.com|0123456788|Thu Ngan|123.0|20000.
 NV2|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|Thu Ngan|123.0|21000.0
 NV3|Nguyen Van Moi|nu|HCM|11/2/2002|a@gmail.com|0123456788|Ban Hang|123.0|2000.0|200.0
 NV4|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|Ban Hang|123.0|21000.0|100.0
-NV5|Adf Àd|nam|dá|1/1/2000|a@dsad.asd|0123456789|Thu Ngan|22000.0|200.0
 NV6|Adf A|nam|adf|1/1/2001|a@ads.dasd|0123456789|Thu Ngan|10000.0|100.0
 NV7|Dasd Das|nu|afdfd|1/1/2000|dasd@dasd.asd|0123456789|Ban Hang|20000.0|300.0|9000.0

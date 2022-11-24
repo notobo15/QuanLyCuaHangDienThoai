@@ -32,7 +32,7 @@ public class Menu {
 			// System.out.format("+---+--------------------------------------+%n");
 			System.out.format("| 6 | Chon cac thao tac cua hang           |%n");
 			// System.out.format("+---+--------------------------------------+%n");
-			System.out.format("| 7 | Thong ke                             |%n");
+//			System.out.format("| 7 | Thong ke                             |%n");
 			System.out.format("+---+--------------------------------------+%n");
 			System.out.format("| 0 | Thoat chuong trinh                   |%n");
 			System.out.format("+---+--------------------------------------+%n");

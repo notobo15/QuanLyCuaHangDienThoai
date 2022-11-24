@@ -19,7 +19,7 @@ public class DSChiTietDonHang implements ThaoTac {
 	}
 
 	public DSChiTietDonHang(String donHang_id) {
-		this.donHang_id = donHang_id;
+		this.setDonHang_id(donHang_id);
 	}
 
 	@Override
@@ -165,7 +165,7 @@ public class DSChiTietDonHang implements ThaoTac {
 	}
 
 	public double tong(String id) {
-		DocFile();
+		//DocFile();
 		double s = 0;
 		for (int i = 0; i < dsctdh.length; i++) {
 			// System.out.println(dsctdh[i].getThanhTien());
@@ -200,19 +200,19 @@ public class DSChiTietDonHang implements ThaoTac {
 		try {
 			FileWriter fw = new FileWriter(".\\database\\DSChiTietDonHang.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
-			PrintWriter pw = new PrintWriter(bw);
-			try {
+			try (PrintWriter pw = new PrintWriter(bw)) {
 				for (int i = 0; i < dsctdh.length; i++) {
-					pw.println(dsctdh[i].getId() + "|" + dsctdh[i].getDonHang_id() + "|" + dsctdh[i].getSanPham_id()
-							+ "|" + dsctdh[i].getSoLuong() + "|" + dsctdh[i].getThanhTien());
+					pw.println(
+					dsctdh[i].getId() + "|" 
+					+ dsctdh[i].getDonHang_id() + "|"
+					+ dsctdh[i].getSanPham_id() + "|"
+					+ dsctdh[i].getSoLuong() + "|" 
+					+ dsctdh[i].getThanhTien()
+					);
 				}
-			} finally {
-				fw.close();
-				bw.close();
-				pw.close();
 			}
 		} catch (IOException e) {
-			System.out.println("Loi khong ghi dc file");
+			System.out.println("Loi khong ghi dc file danh sach chi tiet don hang");
 		}
 
 	}
@@ -235,8 +235,12 @@ public class DSChiTietDonHang implements ThaoTac {
 				String sanPham_id = txt[2];
 				float soLuong = Float.parseFloat(txt[3]);
 				double thanhTien = Double.parseDouble(txt[4]);
+				
+				String catID = id.replaceAll("\\D+", "");
+				stt = Integer.parseInt(catID);
+				
 				dsctdh = Arrays.copyOf(dsctdh, dsctdh.length + 1);
-
+				
 				dsctdh[i] = new ChiTietDonHang(id, donHang_id, sanPham_id, soLuong, thanhTien);
 				i++;
 			}
@@ -281,4 +285,13 @@ public class DSChiTietDonHang implements ThaoTac {
 		}
 		return s;
 	}
+
+	public String getDonHang_id() {
+		return donHang_id;
+	}
+
+	public void setDonHang_id(String donHang_id) {
+		this.donHang_id = donHang_id;
+	}
+	
 }

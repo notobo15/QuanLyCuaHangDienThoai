@@ -308,17 +308,16 @@ public class DSDonHang implements ThaoTac {
 		try {
 			FileWriter fw = new FileWriter(".\\database\\DSDonHang.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
-			PrintWriter pw = new PrintWriter(bw);
-			try {
+			try (PrintWriter pw = new PrintWriter(bw)) {
 				for (int i = 0; i < dsdh.length; i++) {
 					pw.println(dsdh[i].getId() + "|" + dsdh[i].getKhachHang_id() + "|" + dsdh[i].getthuNgan_id() + "|"
 							+ dsdh[i].getCuaHang_id() + "|" + dsdh[i].getDate() + "|" + dsdh[i].getHinhThucThanhToan()
 							+ "|" + dsdh[i].getTongTien());
 				}
+				pw.close();
 			} finally {
 				fw.close();
 				bw.close();
-				pw.close();
 			}
 
 		} catch (IOException e) {

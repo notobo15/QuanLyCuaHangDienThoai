@@ -111,19 +111,19 @@ public class DSSanPham implements ThaoTac {
 		try {
 			FileWriter fw = new FileWriter(".\\database\\DSSanPham.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
-			PrintWriter pw = new PrintWriter(bw);
-			try {
+			try (PrintWriter pw = new PrintWriter(bw)) {
 				for (int i = 0; i < sp.length; i++) {
 					pw.println(sp[i].getId() + "|" + sp[i].getTen() + "|" + sp[i].getMoTa() + "|" + sp[i].getMau() + "|"
 							+ sp[i].getKichCo() + "|" + sp[i].getGia() + "|" + sp[i].getNCC_ID() + "|"
 							+ sp[i].getNgayRaMat());
 				}
-
+				pw.close();
 			} finally {
 				fw.close();
 				bw.close();
-				pw.close();
 			}
+
+			
 		} catch (IOException e) {
 
 		}
