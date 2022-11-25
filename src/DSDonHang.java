@@ -30,7 +30,7 @@ public class DSDonHang implements ThaoTac {
 			System.out.println("|3. Xoa don hang                            |");
 			System.out.println("|4. Sua don hang                            |");
 			System.out.println("|5. Tim don hang                            |");
-			System.out.println("|6. xuat hoa don                            |");
+			System.out.println("|6. Xuat hoa don                            |");
 			System.out.println("|0. Quay lai                                |");
 			System.out.println("+-------------------------------------------+");
 			System.out.print("Nhap thao tac: ");
@@ -243,13 +243,29 @@ public class DSDonHang implements ThaoTac {
 			if (id.equalsIgnoreCase(dsdh[i].getId())) {
 				DSCuaHang dsch = new DSCuaHang();
 				CuaHang ch = dsch.timCuaHang(dsdh[i].getCuaHang_id());
+				
+				
+				DSNhanVien dsnv = new DSNhanVien();
+				NVThuNgan nv = dsnv.timNVThuNgan(dsdh[i].getthuNgan_id());
+				if(nv == null) {
+					System.out.println("Nhan vien khong ton tai ! Hay kiem tra lai ...");
+				}
+				if(ch ==  null ) {
+					System.out.println("Cua hang khong ton tai ! Hay kiem tra lai ...");
+				}
 				System.out.printf("+----------------- PHIEU THANH TOAN -----------------+%n");
-				System.out.printf("| Ten cua hang  : %-35s|%n", ch.getTenCh().toUpperCase());
-				System.out.printf("| Dia chi       : %-35s|%n", ch.getDiachi());
-				System.out.printf("| SDT           : %-35s|%n", ch.getSdt());
+				if(ch !=  null ) {
+					System.out.printf("| Ten cua hang  : %-35s|%n", ch.getTenCh().toUpperCase());
+					System.out.printf("| Dia chi       : %-35s|%n", ch.getDiachi());
+					System.out.printf("| SDT           : %-35s|%n", ch.getSdt());
+					
+				}
 				System.out.printf("| ID            : %-35s|%n", dsdh[i].getId());
 				System.out.printf("| Ngay tao don  : %-35s|%n", dsdh[i].getDate());
-				System.out.printf("| NV thu ngan   : %-35s|%n", dsdh[i].getthuNgan_id());
+				if(nv != null) {
+					System.out.printf("| NV thu ngan   : %-35s|%n", nv.getHoVaTen());
+					
+				}
 				System.out.printf("+- - - - - - - - - - - - - - - - - - - - - - - - - - +%n");
 				System.out.printf("| Ten SP          So Luong   Gia ban     Thanh Tien  |%n");
 				System.out.printf("+- - - - - - - - - - - - - - - - - - - - - - - - - - +%n");
@@ -258,7 +274,9 @@ public class DSDonHang implements ThaoTac {
 				dsctdh = ds.dsChiTietDonHang(dsdh[i].getId());
 
 				for (ChiTietDonHang x : dsctdh) {
-					System.out.printf("| %-16s", x.getSanPham_id());
+					DSSanPham dssp = new DSSanPham();
+					SanPham sp = dssp.timSanPham(x.getSanPham_id());
+					System.out.printf("| %-16s",sp.getTen());
 					System.out.printf("%-11s", x.getSoLuong());
 					System.out.printf("%-12s", x.getThanhTien() / x.getSoLuong());
 					System.out.printf("%-12s|%n", x.getThanhTien());
@@ -270,7 +288,7 @@ public class DSDonHang implements ThaoTac {
 				// dsdh[i].setTongTien();
 				System.out.printf("| TONG TIEN : %35s    |%n", dsdh[i].getTongTien());
 				System.out.printf("+----------------------------------------------------+%n");
-			}
+				}
 
 		}
 	}
@@ -283,25 +301,24 @@ public class DSDonHang implements ThaoTac {
 
 		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(dsdh[i].getId())) {
-
-				if (i != size - 1) {
-					for (int j = i; j < size - 1; j++) {
-						dsdh[j] = dsdh[j + 1];
+				DonHang[] tam = new DonHang[size - 1];
+				for (int j = 0, k = 0; j < size; j++) { 
+					if (id.equalsIgnoreCase(dsdh[j].getId())) {
+						continue;
 					}
-
-				} else {
-					dsdh[i] = null;
+					tam[k++] = dsdh[j];
 				}
-				dsdh = Arrays.copyOf(dsdh, dsdh.length - 1);
+				dsdh = Arrays.copyOf(tam, tam.length);
 				flag = true;
 				System.out.println("Da xoa thanh cong!");
+				size--;
+				break;
 			}
-		}
-
+ 
+        }
 		if (flag == false) {
 			System.out.println("Khong co don hang de xoa");
 		}
-		size--;
 		GhiFile();
 
 	}

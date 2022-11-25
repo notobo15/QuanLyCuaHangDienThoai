@@ -15,7 +15,7 @@ public class DSSanPham implements ThaoTac {
 	private static int stt = 0;
 	static Scanner sc = new Scanner(System.in);
 
-	public DSSanPham() {
+	public DSSanPham() {	
 	}
 
 	@Override
@@ -186,21 +186,20 @@ public class DSSanPham implements ThaoTac {
 
 		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(sp[i].getId())) {
-
-				if (i != size - 1) {
-					for (int j = i; j < size - 1; j++) {
-						sp[j] = sp[j + 1];
+				SanPham[] tam = new SanPham[size - 1];
+				for (int j = 0, k = 0; j < size; j++) { 
+					if (id.equalsIgnoreCase(sp[j].getId())) {
+						continue;
 					}
-
-				} else {
-					sp[i] = null;
+					tam[k++] = sp[j];
 				}
-				sp = Arrays.copyOf(sp, sp.length - 1);
+				sp = Arrays.copyOf(tam, tam.length);
 				flag = true;
 				System.out.println("Da xoa thanh cong!");
+				size--;
+				break;
 			}
 		}
-		size--;
 		GhiFile();
 		if (flag == false) {
 			System.out.println("Khong co cua hang de xoa");
@@ -216,15 +215,14 @@ public class DSSanPham implements ThaoTac {
 		System.out.println("Nhap ID cua san pham ban muon sua?");
 		System.out.println("0. Quay lai");
 		System.out.print("Moi ban nhap: ");
-		sc.nextLine();
-		SanPham tam = null;
+		int pos = 0;
 		id = sc.nextLine();
 		boolean timThay = false;
 		for (;;) {
 			for (int i = 0; i < size; i++) {
 				if (sp[i].getId().equalsIgnoreCase(id)) {
-					tam = sp[i];
 					timThay = true;
+					pos = i;
 					break;
 				}
 			}
@@ -236,12 +234,7 @@ public class DSSanPham implements ThaoTac {
 		}
 		;
 		if (timThay == true) {
-			System.out.println("ID\tTEN\t\t\tMO TA\tMAU\t\tKICH CO\tGIA\t\tID NHA CUNG CAP\t\tNGAY RA MAT");
-			for (int i = 0; i <= 140; i++) {
-				System.out.print("-");
-			}
-			System.out.println();
-			tam.Xuat();
+			sp[pos].Xuat();
 			System.out.println("+------------- Chon thao tac ban muon sua ------------+");
 			System.out.println("|1. Sua ten san pham                                  |");
 			System.out.println("|2. Sua mo ta                                         |");
@@ -249,6 +242,7 @@ public class DSSanPham implements ThaoTac {
 			System.out.println("|4. Sua kich co                                       |");
 			System.out.println("|5. Sua gia                                           |");
 			System.out.println("|6. Sua ngay ra mat                                   |");
+			System.out.println("+-----------------------------------------------------+");
 			System.out.print("Nhap thao tac : ");
 			try {
 
@@ -259,53 +253,47 @@ public class DSSanPham implements ThaoTac {
 				case 1: {
 					System.out.print("Nhap ten san pham moi : ");
 					String tenMoi = sc.nextLine();
-					tam.setTen(tenMoi);
+					sp[pos].setTen(tenMoi);
 					System.out.println("Da sua thanh cong!");
-					tam.Xuat();
 					GhiFile();
 					break;
 				}
 				case 2: {
 					System.out.print("Nhap mo ta moi: ");
 					String tenMoi = sc.nextLine();
-					tam.setMoTa(tenMoi);
+					sp[pos].setMoTa(tenMoi);
 					System.out.println("Da sua thanh cong!");
-					tam.Xuat();
 					GhiFile();
 					break;
 				}
 				case 3: {
 					System.out.print("Nhap mau moi : ");
 					String tenMoi = sc.nextLine();
-					tam.setMau(tenMoi);
+					sp[pos].setMau(tenMoi);
 					System.out.println("Da sua thanh cong!");
-					tam.Xuat();
 					GhiFile();
 					break;
 				}
 				case 4: {
 					System.out.print("Nhap kich co moi : ");
 					String tenMoi = sc.nextLine();
-					tam.setKichCo(tenMoi);
+					sp[pos].setKichCo(tenMoi);
 					System.out.println("Da sua thanh cong!");
-					tam.Xuat();
 					GhiFile();
 					break;
 				}
 				case 5: {
 					System.out.print("Nhap gia moi : ");
 					int giaMoi = sc.nextInt();
-					tam.setGia(giaMoi);
+					sp[pos].setGia(giaMoi);
 					System.out.println("Da sua thanh cong!");
-					tam.Xuat();
 					GhiFile();
 					break;
 				}
 				case 6: {
 					System.out.print("Nhap ngay ra mat moi : ");
-					tam.setNgayRaMat();
+					sp[pos].setNgayRaMat();
 					System.out.println("Da sua thanh cong!");
-					tam.Xuat();
 					GhiFile();
 					break;
 				}
@@ -324,25 +312,55 @@ public class DSSanPham implements ThaoTac {
 
 	@Override
 	public void TimKiem() {
-		sc = new Scanner(System.in);
-		System.out.print("Nhap ID san pham can tim: ");
-		String id = sc.nextLine();
-		String ID = id.toLowerCase();
-		boolean flag = false;
-		for (int i = 0; i < size; i++) {
-			if (ID.equals(sp[i].getId().toLowerCase())) {
-				sp[i].Xuat();
-				flag = true;
+		int select;
+		System.out.println("+------------- Chon thao tac tim kiem -------------+");
+		System.out.println("|1. Tim san pham theo ID                           |");
+		System.out.println("|2. Tim san pham theo ten                          |");
+		System.out.println("|0. Quay lai                                       |");
+		System.out.println("+--------------------------------------------------+");
+		System.out.print("Nhap thao tac : ");
 
+		select = sc.nextInt();
+
+		switch (select) {
+			case 1: {
+				System.out.print("Nhap ID san pham can tim: ");
+				String id = sc.nextLine();
+				boolean flag = false;
+				for (int i = 0; i < size; i++) {
+					if (id.equalsIgnoreCase(sp[i].getId())) {
+						flag = true;
+
+					}
+				}
+				if (flag == false) {
+					System.out.println("Khong tim thay cua hang");
+				}
+				break;
 			}
-		}
-		if (flag == false) {
-			System.out.println("Khong tim thay san pham!!!");
-		}
+			case 2: {
+				System.out.print("Nhap ten san pham can tim: ");
+				String input = sc.nextLine();
+				boolean flag = false;
+				for (int i = 0; i < size; i++) {
+					if ((sp[i].getTen().toLowerCase().contains(input.toLowerCase()))) {
+						flag = true;
 
+					}
+				}
+				if (flag == false) {
+					System.out.println("Khong tim thay");
+				}
+			}
+			case 0:
+				break;
+			default:
+				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+
+		}
 	}
 
-	public int xuatGia(String id) {
+	public double xuatGia(String id) {
 		DocFile();
 		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(sp[i].getId())) {
@@ -350,5 +368,14 @@ public class DSSanPham implements ThaoTac {
 			}
 		}
 		return 0;
+	}
+	public SanPham timSanPham(String id) {
+		DocFile();
+		for(int i = 0; i < size; i++) {
+			if(id.equalsIgnoreCase(sp[i].getId())) {
+				return sp[i];
+			}
+		}
+		return null;
 	}
 }

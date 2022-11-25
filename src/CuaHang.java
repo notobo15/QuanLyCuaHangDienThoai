@@ -26,12 +26,26 @@ public class CuaHang {
 		this.id = "CH" + ++stt;
 	}
 	public void setTenCh(String tenCh){
+		for(;;) {
+			if(tenCh.length() != 0) {
+				break;
+			}
+			System.out.println("Khong duoc bo trong");
+			tenCh = sc.nextLine();
+		}
         this.TenCh = tenCh;
     }
     public String getTenCh() {
         return TenCh;
     }
     public void setDiachi(String diachi) {
+    	for(;;) {
+			if(diachi.length() != 0) {
+				break;
+			}
+			System.out.println("Khong duoc bo trong");
+			diachi = sc.nextLine();
+		}
         this.diachi = diachi;
     }
     public String getDiachi() {

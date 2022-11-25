@@ -12,50 +12,11 @@ public class SanPham {
 	static Scanner sc = new Scanner(System.in);
 	private String id;
 	private String ten, moTa, mau, kichCo;
-	private int gia;
+	private double gia;
 	private String ncc_id;
 	private Date ngayRaMat = new Date();
-	// private int soLuongSanPham;
-	private static int stt_ncc = 0;
-	// // public void DocFile() {
-	// int i = 0;
-	// try {
-	// FileReader fr = new FileReader("database/DSSanPham.txt");
-	// BufferedReader br = new BufferedReader(fr);
-	// try {
-	// String line = "";
-	// while (true) {
-	// line = br.readLine();
-	// if (line == null) {
-	// break;
-	// }
-	// String txt[] = line.split("\\|");
-	// String id=txt[0];
-	// String Ten=txt[1];
-	// String moTa=txt[2];
-	// String Mau=txt[3];
-	// String kichCo=txt[4];
-	// int Gia= Integer.parseInt(txt[5]);
-	// String NCC_ID=txt[6];
-	// String date=txt[7];
-	// String temp[]= date.split("\\/");
-	// int ngay = Integer.parseInt(temp[0]);
-	// int thang = Integer.parseInt(temp[1]);
-	// int nam = Integer.parseInt(temp[2]);
-	// Date ngayRaMat=new Date(ngay,thang,nam);
-	// sp[i] = new SanPham(id, Ten,moTa,Mau,kichCo,Gia,NCC_ID,ngayRaMat);
-	// i++;
-	// }
-	// } finally {
-	// soLuongSanPham = i;
-	// br.close();
-	// }
-
-	// } catch (Exception e) {
-	// System.out.println("KHONG DOC DUOC DU LIEU!!!");
-	// }
-
-	// }
+//	private int soLuongSanPham;
+	
 	public SanPham() {
 
 	}
@@ -114,11 +75,11 @@ public class SanPham {
 		this.kichCo = kichCo;
 	}
 
-	public int getGia() {
+	public double getGia() {
 		return gia;
 	}
 
-	public void setGia(int gia) {
+	public void setGia(double gia) {
 		this.gia = gia;
 	}
 
@@ -126,10 +87,7 @@ public class SanPham {
 		return ncc_id;
 	}
 
-	public void setNCC_ID() {
-		// DocFile();
-		this.ncc_id = "NCC" + ++stt_ncc;
-	}
+
 
 	public Date getNgayRaMat() {
 		return ngayRaMat;
@@ -172,7 +130,6 @@ public class SanPham {
 		}
 		System.out.print("Nhap gia ban:");
 		setGia(sc.nextInt());
-		setNCC_ID();
 		setNgayRaMat();
 	}
 

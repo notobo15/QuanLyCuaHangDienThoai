@@ -85,18 +85,7 @@ public class DSChiTietDonHang implements ThaoTac {
 
 	}
 
-	public void XuatTronGHoaDon(String id) {
-		DocFile();
-		for (int i = 0; i < size; i++) {
-			if (dsctdh[i].getDonHang_id().equalsIgnoreCase(id)) {
-				System.out.print(dsctdh[i].getSanPham_id() + "\t");
-				System.out.print(dsctdh[i].getSoLuong() + "\t");
-
-				System.out.println(dsctdh[i].getThanhTien());
-			}
-		}
-
-	}
+	
 
 	public ChiTietDonHang[] dsChiTietDonHang(String id) {
 		DocFile();
@@ -124,27 +113,26 @@ public class DSChiTietDonHang implements ThaoTac {
 		String id = sc.nextLine();
 		boolean flag = false;
 		for (int i = 0; i < size; i++) {
-			if (id.equalsIgnoreCase(dsctdh[i].getId()) && dsctdh[i].getDonHang_id().equalsIgnoreCase(donHang_id)) {
-
-				if (i != size - 1) {
-					for (int j = i; j < size - 1; j++) {
-						dsctdh[j] = dsctdh[j + 1];
+			if (id.equalsIgnoreCase(dsctdh[i].getId())) {
+				ChiTietDonHang[] tam = new ChiTietDonHang[size - 1];
+				for (int j = 0, k = 0; j < size; j++) { 
+					if (id.equalsIgnoreCase(dsctdh[j].getId())) {
+						continue;
 					}
-
-				} else {
-					dsctdh[i] = null;
+					tam[k++] = dsctdh[j];
 				}
-				dsctdh = Arrays.copyOf(dsctdh, dsctdh.length - 1);
-				size--;
+				dsctdh = Arrays.copyOf(tam, tam.length);
 				flag = true;
 				System.out.println("Da xoa thanh cong!");
-
+				size--;
+				break;
 			}
-			GhiFile();
-		}
+ 
+        }
 		if(flag == false) {
 			System.out.println("Xoa khong thanh cong");
 		}
+		GhiFile();
 	}
 
 	@Override

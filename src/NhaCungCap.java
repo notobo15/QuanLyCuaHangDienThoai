@@ -17,7 +17,7 @@ public class NhaCungCap {
        
     }
     public void setId(int stt) {
-        this.id = "NCC"+ stt;
+        this.id = "NCC"+ ++stt;
     }
     public String getId() {
         return id;

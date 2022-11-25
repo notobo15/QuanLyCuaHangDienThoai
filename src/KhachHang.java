@@ -9,7 +9,7 @@ public class KhachHang extends ConNguoi {
 		this.thuocNhom = thuocNhom;
 	}
 	public void setId(int stt) 	{
-		super.id = "KH"+ stt;
+		super.id = "KH"+ ++stt;
 	}
 	public String getId() {
 		return this.id;
@@ -45,8 +45,7 @@ public class KhachHang extends ConNguoi {
 		System.out.printf("%-15s", getNgaySinh());
 		System.out.printf("%-15s", getEmail());
 		System.out.printf("%-15s", getSdt());
-		
-		System.out.print("\t" + thuocNhom +"\n");
+		System.out.printf("%-15s|%n", getthuocNhom());
 	}
     public void nhap() {
     	System.out.println("Moi nhap ho ten:");
