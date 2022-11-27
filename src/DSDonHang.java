@@ -103,7 +103,7 @@ public class DSDonHang implements ThaoTac {
 		switch (select) {
 		case 1: {
 			sc = new Scanner(System.in);
-			System.out.print("Nhap ID nhan vien can tim: ");
+			System.out.print("Nhap ID don hang can tim: ");
 			String id = sc.nextLine();
 			boolean flag = false;
 			for (int i = 0; i < size; i++) {
@@ -114,7 +114,7 @@ public class DSDonHang implements ThaoTac {
 				}
 			}
 			if (flag == false) {
-				System.out.println("Khong tim thay nhan vien");
+				System.out.println("Khong tim thay :(");
 			}
 			break;
 		}
@@ -164,9 +164,8 @@ public class DSDonHang implements ThaoTac {
 			System.out.println("|0. Quay lai                                          |");
 			System.out.println("+-----------------------------------------------------+");
 			System.out.print("Nhap thao tac : ");
-			try {
 
-				int select = Integer.parseInt(sc.nextLine());
+				int select = Check.checkInputDigit();
 
 				switch (select) {
 
@@ -213,9 +212,7 @@ public class DSDonHang implements ThaoTac {
 					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 				}
-			} catch (Exception e) {
-				System.out.println("BAN CHI DUOC NHAP SO.\nMoi ban nhap lai...");
-			}
+			
 		}
 
 	}
@@ -277,16 +274,16 @@ public class DSDonHang implements ThaoTac {
 					DSSanPham dssp = new DSSanPham();
 					SanPham sp = dssp.timSanPham(x.getSanPham_id());
 					System.out.printf("| %-16s",sp.getTen());
-					System.out.printf("%-11s", x.getSoLuong());
-					System.out.printf("%-12s", x.getThanhTien() / x.getSoLuong());
-					System.out.printf("%-12s|%n", x.getThanhTien());
+					System.out.printf("%-,11.1f", x.getSoLuong());
+					System.out.printf("%-,12.0f", x.getThanhTien() / x.getSoLuong());
+					System.out.printf("%-,12.0f|%n", x.getThanhTien());
 				}
 				System.out.printf("+- - - - - - - - - - - - - - - - - - - - - - - - - - +%n");
 				dsdh[i].setTongTien();
 
 				// ds.XuatTronGHoaDon(dsdh[i].getId());
 				// dsdh[i].setTongTien();
-				System.out.printf("| TONG TIEN : %35s    |%n", dsdh[i].getTongTien());
+				System.out.printf("| TONG TIEN :%,36.2f    |%n", dsdh[i].getTongTien());
 				System.out.printf("+----------------------------------------------------+%n");
 				}
 

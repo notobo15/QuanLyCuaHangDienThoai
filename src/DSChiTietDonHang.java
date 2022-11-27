@@ -149,7 +149,7 @@ public class DSChiTietDonHang implements ThaoTac {
 
 		for (int i = size; i < size + sl; i++) {
 			dsctdh[i] = new ChiTietDonHang();
-			System.out.println("---------Nhap thong tin-----------");
+			System.out.println("---------   Nhap thong tin   -----------");
 			dsctdh[i].setId(stt++);
 			dsctdh[i].nhap(donHang_id);
 			System.out.println("Them don hang thanh cong");
@@ -163,7 +163,6 @@ public class DSChiTietDonHang implements ThaoTac {
 		DocFile();
 		double s = 0;
 		for (int i = 0; i < size; i++) {
-			// System.out.println(dsctdh[i].getThanhTien());
 			if (id.equalsIgnoreCase(dsctdh[i].getDonHang_id())) {
 				s += dsctdh[i].getThanhTien();
 			}

@@ -61,21 +61,16 @@ public class ChiTietDonHang {
 
 	public void setThanhTien() {
 		DSSanPham dssp = new DSSanPham();
-		System.out.println(dssp.xuatGia(sanPham_id));
-		System.out.println(soLuong);
 		this.thanhTien = soLuong * dssp.xuatGia(sanPham_id);
 	}
 
 	public void nhap(String donHang_id) {
-		// setId();
 		setDonHang_id(donHang_id);
 		System.out.println("nhap id san pham: ");
 		setSanPham_id(sc.nextLine());
 		System.out.println("nhap so luong: ");
 		setSoLuong(Float.parseFloat(sc.nextLine()));
 		setThanhTien();
-		// System.out.println(getThanhTien());
-
 	}
 
 	@Override

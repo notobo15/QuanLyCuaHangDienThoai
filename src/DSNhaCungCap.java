@@ -12,7 +12,7 @@ import Function.Check;
 public class DSNhaCungCap {
 	private static int size = 0;
 	private int stt;
-	
+
 	public NhaCungCap[] dsncc = new NhaCungCap[0];
 	static Scanner sc = new Scanner(System.in);
 
@@ -38,7 +38,7 @@ public class DSNhaCungCap {
 			dsncc[i].nhap();
 			System.out.println("Them nha cung cap thanh cong");
 		}
-		size +=sl;
+		size += sl;
 		GhiFile();
 	}
 
@@ -67,26 +67,26 @@ public class DSNhaCungCap {
 			System.out.print("Nhap thao tac: ");
 			select = Check.checkInputDigit();
 			switch (select) {
-				case 1: {
-					Tao();
-					break;
-				}
-				case 2:
-					Xuat();
-					break;
-				case 3:
-					Xoa();
-					break;
-				case 4:
-					Sua();
-					break;
-				case 5:
-					TimKiem();
-					break;
-				case 0:
-					break;
-				default:
-					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+			case 1: {
+				Tao();
+				break;
+			}
+			case 2:
+				Xuat();
+				break;
+			case 3:
+				Xoa();
+				break;
+			case 4:
+				Sua();
+				break;
+			case 5:
+				TimKiem();
+				break;
+			case 0:
+				break;
+			default:
+				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 			}
 
@@ -133,40 +133,40 @@ public class DSNhaCungCap {
 
 				switch (select) {
 
-					case 1: {
-						System.out.print("Nhap ho va ten nha cung cap moi : ");
-						String tenMoi = sc.nextLine();
-						dsncc[pos].setTenNcc(tenMoi);
-						System.out.println("Da sua thanh cong!");
-						GhiFile();
-						break;
-					}
-					case 2: {
-						System.out.print("Nhap dia chi nha cung cap moi: ");
-						String tenMoi = sc.nextLine();
-						dsncc[pos].setDiachi(tenMoi);
-						System.out.println("Da sua thanh cong!");
-						GhiFile();
-						break;
-					}
-					case 3: {
-						System.out.print("Nhap so dien thoai nha cung cap moi : ");
-						String tenMoi = sc.nextLine();
-						dsncc[pos].setSdt(tenMoi);
-						System.out.println("Da sua thanh cong!");
-						GhiFile();
-						break;
-					}
-					case 4: {
-						dsncc[pos].nhap();
-						System.out.println("Da sua thanh cong!");
-						GhiFile();
-						break;
-					}
-					case 0:
-						break;
-					default:
-						System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+				case 1: {
+					System.out.print("Nhap ho va ten nha cung cap moi : ");
+					String tenMoi = sc.nextLine();
+					dsncc[pos].setTenNcc(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					GhiFile();
+					break;
+				}
+				case 2: {
+					System.out.print("Nhap dia chi nha cung cap moi: ");
+					String tenMoi = sc.nextLine();
+					dsncc[pos].setDiachi(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					GhiFile();
+					break;
+				}
+				case 3: {
+					System.out.print("Nhap so dien thoai nha cung cap moi : ");
+					String tenMoi = sc.nextLine();
+					dsncc[pos].setSdt(tenMoi);
+					System.out.println("Da sua thanh cong!");
+					GhiFile();
+					break;
+				}
+				case 4: {
+					dsncc[pos].nhap();
+					System.out.println("Da sua thanh cong!");
+					GhiFile();
+					break;
+				}
+				case 0:
+					break;
+				default:
+					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 				}
 			} catch (Exception e) {
@@ -183,7 +183,7 @@ public class DSNhaCungCap {
 		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(dsncc[i].getId())) {
 				NhaCungCap[] tam = new NhaCungCap[size - 1];
-				for (int j = 0, k = 0; j < size; j++) { 
+				for (int j = 0, k = 0; j < size; j++) {
 					if (id.equalsIgnoreCase(dsncc[j].getId())) {
 						continue;
 					}
@@ -216,39 +216,39 @@ public class DSNhaCungCap {
 		select = sc.nextInt();
 
 		switch (select) {
-			case 1: {
-				System.out.print("Nhap ID cua hang can tim: ");
-				String id = sc.nextLine();
-				boolean flag = false;
-				for (int i = 0; i < size; i++) {
-					if (id.equalsIgnoreCase(dsncc[i].getId())) {
-						flag = true;
+		case 1: {
+			System.out.print("Nhap ID cua hang can tim: ");
+			String id = sc.nextLine();
+			boolean flag = false;
+			for (int i = 0; i < size; i++) {
+				if (id.equalsIgnoreCase(dsncc[i].getId())) {
+					flag = true;
 
-					}
-				}
-				if (flag == false) {
-					System.out.println("Khong tim thay cua hang");
-				}
-				break;
-			}
-			case 2: {
-				System.out.print("Nhap ten cua hang can tim: ");
-				String input = sc.nextLine();
-				boolean flag = false;
-				for (int i = 0; i < size; i++) {
-					if ((dsncc[i].getTenNcc().toLowerCase().contains(input.toLowerCase()))) {
-						flag = true;
-
-					}
-				}
-				if (flag == false) {
-					System.out.println("Khong tim thay cua hang");
 				}
 			}
-			case 0:
-				break;
-			default:
-				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+			if (flag == false) {
+				System.out.println("Khong tim thay cua hang");
+			}
+			break;
+		}
+		case 2: {
+			System.out.print("Nhap ten cua hang can tim: ");
+			String input = sc.nextLine();
+			boolean flag = false;
+			for (int i = 0; i < size; i++) {
+				if ((dsncc[i].getTenNcc().toLowerCase().contains(input.toLowerCase()))) {
+					flag = true;
+
+				}
+			}
+			if (flag == false) {
+				System.out.println("Khong tim thay cua hang");
+			}
+		}
+		case 0:
+			break;
+		default:
+			System.out.println("Nhap sai thao tac, xin nhap lai !!!");
 
 		}
 	}
@@ -291,15 +291,15 @@ public class DSNhaCungCap {
 			FileWriter fw = new FileWriter(".\\database\\DSNhaCungCap.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
 			try (PrintWriter pw = new PrintWriter(bw)) {
-			for (int i = 0; i < size; i++) {
-				pw.println(dsncc[i].getId() + "|" + dsncc[i].getTenNcc() + "|" + dsncc[i].getDiachi() + "|"
-						+ dsncc[i].getSdt());
-			}
-			pw.close();
+				for (int i = 0; i < size; i++) {
+					pw.println(dsncc[i].getId() + "|" + dsncc[i].getTenNcc() + "|" + dsncc[i].getDiachi() + "|"
+							+ dsncc[i].getSdt());
+				}
+				pw.close();
 			}
 			fw.close();
 			bw.close();
-		}
+
 		} catch (IOException e) {
 			System.out.println("Loi khong ghi dc file");
 		}
