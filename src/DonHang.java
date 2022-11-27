@@ -144,22 +144,10 @@ public class DonHang {
                 + khachHang_id + ", cuaHang_id=" + cuaHang_id + ", date=" + date + "tong tien" + tongTien;
     }
 
-    public String InTenKhachHang() {
-        DSSanPham ds = new DSSanPham();
-        return ds.getTenKhachHang(getKhachHang_id());
-    }
-
-    public String InTenNhanVien() {
-        DSNhanVien ds = new DSNhanVien();
-        return ds.getTenNhanVien(getthuNgan_id());
-    }
-
     public void xuat() {
-        // System.out.println(toString());
         System.out.printf("| %-10s", getId());
         System.out.printf("%-20s", getKhachHang_id());
         System.out.printf("%-20s", getthuNgan_id());
-        // System.out.printf("%-20s", InTenNhanVien());
         System.out.printf("%-20s", getCuaHang_id());
         System.out.printf("%-15s", getHinhThucThanhToan());
         System.out.printf("%-25s", getDate());
