@@ -52,11 +52,17 @@ public class DSKhachHang implements ThaoTac {
 
 	@Override
 	public void Xuat() {
-		System.out.println(size);
+		System.out.println(
+				"+----------------------------------------------------------   DANH SACH KHACH HANG  ------------------------------------------+");
+		System.out.println(
+				"|  ID        HO VA TEN                GIOI TINH      DIA CHI        NGAY SINH      EMAIL          SDT          THUOC NHOM     |");
+		System.out.println(
+				"+-----------------------------------------------------------------------------------------------------------------------------+");
 		for (int i = 0; i < size; i++) {
 			dskh[i].xuat();
 		}
-
+		System.out.println(
+				"+-----------------------------------------------------------------------------------------------------------------------------+");
 	}
 
 	@Override
@@ -75,7 +81,7 @@ public class DSKhachHang implements ThaoTac {
 				} else {
 					dskh[i] = null;
 				}
-				dskh = Arrays.copyOf(dskh, dskh.length - 1);
+				dskh = Arrays.copyOf(dskh, size - 1);
 				flag = true;
 				System.out.println("Da xoa thanh cong!");
 				size--;
@@ -139,7 +145,6 @@ public class DSKhachHang implements ThaoTac {
 		System.out.println("Nhap ID cua NHAN VIEN ban muon sua?");
 		System.out.println("0. Quay lai");
 		System.out.print("Moi ban nhap: ");
-		sc.nextLine();
 		int pos = 0;
 		id = sc.nextLine();
 		boolean timThay = false;
@@ -159,12 +164,7 @@ public class DSKhachHang implements ThaoTac {
 		}
 		;
 		if (timThay == true) {
-			System.out.println("ID\tHO VA TEN\t\t\tGIOI TINH\tDIA CHI\t\tNGAY SINH\tEMAIL\t\tSDT\t\tNhom\t\tLuong");
-			for (int i = 0; i <= 140; i++) {
-				System.out.print("-");
-			}
-			System.out.println();
-			// tam.xuat();
+			
 			System.out.println("+------------- Chon thao tac ban muon sua ------------+");
 			System.out.println("|1. Sua ho va ten nhan vien                           |");
 			System.out.println("|2. Sua gioi tinh                                     |");
@@ -189,7 +189,6 @@ public class DSKhachHang implements ThaoTac {
 					String tenMoi = sc.nextLine();
 					dskh[pos].setHoVaTen(tenMoi);
 					System.out.println("Da sua thanh cong!");
-					// tam.xuat();
 					dskh[pos].xuat();
 					GhiFile();
 					break;
@@ -360,8 +359,8 @@ public class DSKhachHang implements ThaoTac {
 		try {
 			FileWriter fw = new FileWriter(".\\database\\DSKhachHang.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
-			PrintWriter pw = new PrintWriter(bw);
-			try {
+			
+			try (PrintWriter pw = new PrintWriter(bw)) {
 				for (int i = 0; i < size; i++) {
 					pw.println(dskh[i].getId() + "|" + dskh[i].getHoVaTen() + "|" + dskh[i].getGioiTinh() + "|"
 							+ dskh[i].getDiaChi() + "|" + dskh[i].ngaySinh.toString() + "|" + dskh[i].getEmail() + "|"
@@ -371,7 +370,6 @@ public class DSKhachHang implements ThaoTac {
 				
 				fw.close();
 				bw.close();
-				pw.close();
 			}
 
 		} catch (IOException e) {

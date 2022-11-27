@@ -87,7 +87,7 @@ public class ChiTietDonHang {
 		System.out.printf("|\tID CTDH : %-10s", getId());
 		System.out.printf("TEN SAN PHAM : %-30s", getSanPham_id());
 		System.out.printf("SO LUONG : %-15s", getSoLuong());
-		System.out.printf("THANH TIEN : %-,15.2f |%n", getThanhTien());
+		System.out.printf("THANH TIEN : %-,15.0f |%n", getThanhTien());
 
 		// System.out.println(toString());
 	}

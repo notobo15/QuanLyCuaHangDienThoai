@@ -1,2 +1,2 @@
-KH0|Nguyen Thanh Binh|nam|hcm|1/1/2002|a@gmail.com|0123456789|le
-KH1|Nguyen Ban C|nu|hcm|1/1/2020|a@gmail.com|0123456789|si
+KH4|Nguyen Thanh Binh|nam|hcm|1/1/2000|a@gmail.com|0123456789|le
+KH5|Nguyen Va Na|nu|hcm|1/1/2000|a@gmail.com|0123456789|vip

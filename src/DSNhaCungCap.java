@@ -38,6 +38,7 @@ public class DSNhaCungCap {
 			dsncc[i].nhap();
 			System.out.println("Them nha cung cap thanh cong");
 		}
+		size+=sl;
 		GhiFile();
 	}
 
@@ -198,6 +199,7 @@ public class DSNhaCungCap {
 				flag = true;
 				dsncc = Arrays.copyOf(dsncc, dsncc.length - 1);
 				System.out.println("Da xoa thanh cong!");
+				size--;
 				GhiFile();
 				break;
 			}
@@ -287,6 +289,7 @@ public class DSNhaCungCap {
 				dsncc[i] = new NhaCungCap(id, ten, diachi, sdt);
 				i++;
 			}
+			size = i;
 			br.close();
 			fr.close();
 
@@ -300,8 +303,7 @@ public class DSNhaCungCap {
 		try {
 			FileWriter fw = new FileWriter(".\\database\\DSNhaCungCap.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
-			PrintWriter pw = new PrintWriter(bw);
-			try {
+			try (PrintWriter pw = new PrintWriter(bw)) {
 			for (int i = 0; i < size; i++) {
 				pw.println(dsncc[i].getId() + "|" + dsncc[i].getTenNcc() + "|" + dsncc[i].getDiachi() + "|"
 						+ dsncc[i].getSdt());
@@ -309,7 +311,6 @@ public class DSNhaCungCap {
 		} finally {
 			fw.close();
 			bw.close();
-			pw.close();
 		}
 		} catch (IOException e) {
 			System.out.println("Loi khong ghi dc file");

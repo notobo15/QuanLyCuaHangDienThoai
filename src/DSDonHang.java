@@ -30,7 +30,7 @@ public class DSDonHang implements ThaoTac {
 			System.out.println("|3. Xoa don hang                            |");
 			System.out.println("|4. Sua don hang                            |");
 			System.out.println("|5. Tim don hang                            |");
-			System.out.println("|6. xuat hoa don                            |");
+			System.out.println("|6. Xuat hoa don                            |");
 			System.out.println("|0. Quay lai                                |");
 			System.out.println("+-------------------------------------------+");
 			System.out.print("Nhap thao tac: ");
@@ -82,7 +82,7 @@ public class DSDonHang implements ThaoTac {
 
 		for (int i = arrLength; i < arrLength + sl; i++) {
 			dsdh[i] = new DonHang();
-			System.out.println("---------Nhap thong tin-----------");
+			System.out.println("--------- Nhap thong tin -----------");
 			dsdh[i].setId(stt++);
 			dsdh[i].nhap();
 			System.out.println("Them don hang thanh cong");
@@ -94,13 +94,12 @@ public class DSDonHang implements ThaoTac {
 
 	@Override
 	public void TimKiem() {
-		System.out.println("+------------------ Chon thao tac tim kiem ------------------|");
+		System.out.println("+------------------ Chon thao tac tim kiem ------------------+");
 		System.out.println("|1. Tim kiem theo ID don hang                                |");
-		// System.out.println("|2. Tim nhan vien theo ten khach hang |");
 		System.out.println("|0. Quay lai                                                 |");
-		System.out.println("+------------------------------------------------------------|");
+		System.out.println("+------------------------------------------------------------+");
 		System.out.print("Nhap thao tac : ");
-		int select = sc.nextInt();
+		int select = Check.checkInputDigit();
 		switch (select) {
 		case 1: {
 			sc = new Scanner(System.in);
@@ -148,8 +147,9 @@ public class DSDonHang implements ThaoTac {
 			}
 			if (timThay == true || id.equalsIgnoreCase("0"))
 				break;
-			System.out.println("ID KHONG TON TAI moi ban nhap lai!!!");
+			System.out.println("ID KHONG TON TAI !!!");
 			System.out.println("0. Quay lai");
+			System.out.print("Moi ban nhap lai : ");
 			id = sc.nextLine();
 		}
 		;
@@ -294,6 +294,8 @@ public class DSDonHang implements ThaoTac {
 				}
 				dsdh = Arrays.copyOf(dsdh, dsdh.length - 1);
 				flag = true;
+				DSChiTietDonHang dsctdh = new DSChiTietDonHang();
+				dsctdh.xoaChiTietDonHang(id);
 				System.out.println("Da xoa thanh cong!");
 			}
 		}

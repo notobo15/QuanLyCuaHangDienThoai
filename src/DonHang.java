@@ -126,7 +126,7 @@ public class DonHang {
         System.out.println("Nhap id cua khach hang: ");
         setKhachHang_id(sc.nextLine());
         System.out.println("Nhap id cua thu ngan: ");
-         setthuNgan_id(sc.nextLine());
+        setthuNgan_id(sc.nextLine());
         System.out.println("Nhap id cua cua hang: ");
         setCuaHang_id(sc.nextLine());
         System.out.println("Nhap hanh thuc thanh toan: ");
@@ -164,7 +164,7 @@ public class DonHang {
         System.out.printf("%-15s", getHinhThucThanhToan());
         System.out.printf("%-25s", getDate());
         setTongTien();
-        System.out.printf("%-,15.2f |%n", getTongTien());
+        System.out.printf("%-,15.0f |%n", getTongTien());
 
         DSChiTietDonHang ds = new DSChiTietDonHang();
         ds.XuatTronGDonHang(getId());

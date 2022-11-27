@@ -157,10 +157,9 @@ public class DSChiTietDonHang implements ThaoTac {
 			}
 			sl = Check.checkInputDigitDuong();
 		}
-		int arrLength = dsctdh.length;
 		dsctdh = Arrays.copyOf(dsctdh, dsctdh.length + sl);
 
-		for (int i = arrLength; i < arrLength + sl; i++) {
+		for (int i = size; i < size + sl; i++) {
 			dsctdh[i] = new ChiTietDonHang();
 			System.out.println("---------Nhap thong tin-----------");
 			dsctdh[i].setId(stt++);
@@ -302,5 +301,20 @@ public class DSChiTietDonHang implements ThaoTac {
 	public void setDonHang_id(String donHang_id) {
 		this.donHang_id = donHang_id;
 	}
-	
+	public void xoaChiTietDonHang(String id) {
+		DocFile();
+		ChiTietDonHang[] ds = new ChiTietDonHang[0];
+		int k = 0;
+		for(int i = 0; i < size; i++) {
+			if(!dsctdh[i].getDonHang_id().equalsIgnoreCase(id)) {
+				System.out.println(dsctdh[i]);
+				ds = Arrays.copyOf(ds, ds.length + 1);
+				ds[k++] = dsctdh[i];
+				
+			}
+		}
+		dsctdh = Arrays.copyOf(ds, ds.length);
+		size = ds.length;
+		GhiFile();
+	}
 }

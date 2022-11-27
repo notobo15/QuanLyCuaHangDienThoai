@@ -45,8 +45,7 @@ public class KhachHang extends ConNguoi {
 		System.out.printf("%-15s", getNgaySinh());
 		System.out.printf("%-15s", getEmail());
 		System.out.printf("%-15s", getSdt());
-		
-		System.out.print("\t" + thuocNhom +"\n");
+		System.out.printf("%-13s|%n", getthuocNhom());
 	}
     public void nhap() {
     	System.out.println("Moi nhap ho ten:");
