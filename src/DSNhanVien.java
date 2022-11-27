@@ -102,29 +102,25 @@ public class DSNhanVien implements ThaoTac {
 	@Override
 	public void Xoa() {
 		System.out.print("Nhap ID nhan vien can xoa : ");
-		sc.nextLine();
 		String id = sc.nextLine();
 		boolean flag = false;
 		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(nv[i].getId())) {
-
-				if (i != size - 1) {
-					for (int j = i; j < size - 1; j++) {
-						nv[j] = nv[j + 1];
+				NhanVien[] tam = new NhanVien[size - 1];
+				for (int j = 0, k = 0; j < size; j++) { 
+					if (id.equalsIgnoreCase(nv[j].getId())) {
+						continue;
 					}
-
-				} else {
-					nv[i] = null;
+					tam[k++] = nv[j];
 				}
-				nv = Arrays.copyOf(nv, nv.length - 1);
-				size--;
+				nv = Arrays.copyOf(tam, tam.length);
 				flag = true;
 				System.out.println("Da xoa thanh cong!");
-
+				size--;
+				break;
 			}
 		}
 		GhiFile();
-
 		if (flag == false) {
 			System.out.println("Khong co cua hang de xoa");
 		}
@@ -200,7 +196,6 @@ public class DSNhanVien implements ThaoTac {
 		;
 		if (timThay == true) {
 			nv[pos].xuat();
-			// tam.xuat();
 			System.out.println("+------------- Chon thao tac ban muon sua ------------+");
 			System.out.println("|1. Sua ho va ten nhan vien                           |");
 			System.out.println("|2. Sua gioi tinh                                     |");
@@ -462,8 +457,7 @@ public class DSNhanVien implements ThaoTac {
 		try {
 			FileWriter fw = new FileWriter(".\\database\\DSNhanVien.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
-			PrintWriter pw = new PrintWriter(bw);
-
+			try(PrintWriter pw = new PrintWriter(bw)) {
 			for (int i = 0; i < size; i++) {
 				if (nv[i].getTenChucVu().contains("Thu Ngan")) {
 					pw.println((nv[i]).getId() + "|" + (nv[i]).getHoVaTen() + "|" + (nv[i]).getGioiTinh() + "|"
@@ -476,6 +470,7 @@ public class DSNhanVien implements ThaoTac {
 							+ (nv[i]).getSdt() + "|" + (nv[i]).getTenChucVu() + "|" + (nv[i]).getluongCB() + "|"
 							+ ((NVBanHang) nv[i]).getSoGioLam() + "|" + ((NVBanHang) nv[i]).getPhuCap());
 				}
+			}
 			}
 			bw.close();
 		} catch (IOException e) {

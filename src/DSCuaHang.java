@@ -98,7 +98,6 @@ public class DSCuaHang {
 		System.out.println("Nhap ID CUA HANG ban muon sua?");
 		System.out.println("0. Quay lai");
 		System.out.print("Moi ban nhap: ");
-		sc.nextLine();
 		int pos = 0;
 		id = sc.nextLine();
 		boolean timThay = false;
@@ -118,6 +117,9 @@ public class DSCuaHang {
 		}
 		;
 		if (timThay == true) {
+			System.out.println("+--------------------------   DANH SACH CUA HANG   ---------------------------+");
+			System.out.println("|  ID        TEN CUA HANG             DIA CHI                  SDT            |");
+			System.out.println("+-----------------------------------------------------------------------------+");
 			dsch[pos].xuat();
 			System.out.println("+------------- Chon thao tac ban muon sua ------------+");
 			System.out.println("|1. Sua ten cua hang                                  |");
@@ -138,7 +140,6 @@ public class DSCuaHang {
 					String tenMoi = sc.nextLine();
 					dsch[pos].setTenCh(tenMoi);
 					System.out.println("Da sua thanh cong!");
-					dsch[pos].xuat();
 					GhiFile();
 					break;
 				}
@@ -147,7 +148,6 @@ public class DSCuaHang {
 					String tenMoi = sc.nextLine();
 					dsch[pos].setDiachi(tenMoi);
 					System.out.println("Da sua thanh cong!");
-					dsch[pos].xuat();
 					GhiFile();
 					break;
 				}
@@ -156,7 +156,6 @@ public class DSCuaHang {
 					String tenMoi = sc.nextLine();
 					dsch[pos].setSdt(tenMoi);
 					System.out.println("Da sua thanh cong!");
-					dsch[pos].xuat();
 					GhiFile();
 					break;
 				}
@@ -164,7 +163,6 @@ public class DSCuaHang {
 					System.out.print("Nhap dia chi nhan vien moi : ");
 					dsch[pos].nhap();
 					System.out.println("Da sua thanh cong!");
-					dsch[pos].xuat();
 					GhiFile();
 					break;
 				}
@@ -184,25 +182,24 @@ public class DSCuaHang {
 		System.out.print("Nhap ID cua hang can xoa : ");
 		String id = sc.nextLine();
 		boolean flag = false;
-		System.out.println(size);
 		for (int i = 0; i < size; i++) {
 			if (id.equalsIgnoreCase(dsch[i].getId())) {
-
-				if (i != size - 1) {
-					for (int j = i; j < size - 1; j++) {
-						dsch[j] = dsch[j + 1];
+				CuaHang[] tam = new CuaHang[size - 1];
+				for (int j = 0, k = 0; j < size; j++) { 
+					if (id.equalsIgnoreCase(dsch[j].getId())) {
+						continue;
 					}
-
-				} else {
-					dsch[i] = null;
+					tam[k++] = dsch[j];
 				}
-				dsch = Arrays.copyOf(dsch, dsch.length - 1);
+				dsch = Arrays.copyOf(tam, tam.length);
 				flag = true;
 				System.out.println("Da xoa thanh cong!");
-
+				size--;
+				break;
 			}
-		}
-		size--;
+ 
+        }
+
 		GhiFile();
 
 		if (flag == false) {
@@ -214,7 +211,7 @@ public class DSCuaHang {
 	public void TimKiem() {
 		System.out.println("+--------------- Chon thao tac tim kiem ---------------+");
 		System.out.println("|1. Tim cua hang theo ID                               |");
-		System.out.println("|2. Tim cua  hang theo ten                             |");
+		System.out.println("|2. Tim cua hang theo ten                              |");
 		System.out.println("|0. Quay lai                                           |");
 		System.out.println("+------------------------------------------------------+");
 		System.out.print("Nhap thao tac : ");
@@ -227,6 +224,7 @@ public class DSCuaHang {
 			boolean flag = false;
 			for (int i = 0; i < size; i++) {
 				if (id.equalsIgnoreCase(dsch[i].getId())) {
+					
 					dsch[i].xuat();
 					flag = true;
 
@@ -244,6 +242,7 @@ public class DSCuaHang {
 			boolean flag = false;
 			for (int i = 0; i < size; i++) {
 				if ((dsch[i].getTenCh().toLowerCase().contains(input.toLowerCase()))) {
+					
 					dsch[i].xuat();
 					flag = true;
 
@@ -303,16 +302,15 @@ public class DSCuaHang {
 		try {
 			FileWriter fw = new FileWriter(".\\database\\DSCuaHang.txt", false);
 			BufferedWriter bw = new BufferedWriter(fw);
-			PrintWriter pw = new PrintWriter(bw);
-			try {
+			try(PrintWriter pw = new PrintWriter(bw)) {
 				for (int i = 0; i < size; i++) {
 					pw.println(dsch[i].getId() + "|" + dsch[i].getTenCh() + "|" + dsch[i].getDiachi() + "|"
 							+ dsch[i].getSdt());
 				}
+				pw.close();
 			} finally {
 				fw.close();
 				bw.close();
-				pw.close();
 			}
 
 		} catch (IOException e) {
@@ -320,16 +318,6 @@ public class DSCuaHang {
 		}
 	}
 
-	public boolean checkTonTai(String id) {
-		DocFile();
-		for (int i = 0; i < size; i++) {
-			if (dsch[i].getId().equalsIgnoreCase(id)) {
-				return true;
-			}
-		}
-		return false;
-
-	}
 
 	public CuaHang timCuaHang(String id) {
 		DocFile();

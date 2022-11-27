@@ -10,7 +10,7 @@ public class DonHang {
     private String khachHang_id;
     private String cuaHang_id;
     private double tongTien;
-    private String date;
+    private String date;	
 
     public DonHang() {
     }
@@ -92,8 +92,8 @@ public class DonHang {
     public void setCuaHang_id(String cuaHang_id) {
         DSCuaHang ds = new DSCuaHang();
         for (;;) {
-            boolean check = ds.checkTonTai(cuaHang_id);
-            if (check == true)
+            CuaHang check = ds.timCuaHang(cuaHang_id);
+            if (check != null)
                 break;
             System.out.println("cua hang khong ton tai!\nMoi nhap lai:");
             sc.nextLine();

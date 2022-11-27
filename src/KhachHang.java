@@ -9,7 +9,7 @@ public class KhachHang extends ConNguoi {
 		this.thuocNhom = thuocNhom;
 	}
 	public void setId(int stt) 	{
-		super.id = "KH"+ stt;
+		super.id = "KH"+ ++stt;
 	}
 	public String getId() {
 		return this.id;

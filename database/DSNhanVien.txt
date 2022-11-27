@@ -1,4 +1,4 @@
-NV1|Nguyen Van Moi|nam|HCM|11/2/2002|a@gmail.com|0123456788|Thu Ngan|5000000.0|26.0
+NV1|Nguyen Van Moi|nu|HCM|11/2/2002|a@gmail.com|0123456788|Thu Ngan|5000000.0|26.0
 NV2|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|Thu Ngan|6000000.0|26.0
 NV3|Nguyen Van Moi|nu|HCM|11/2/2002|a@gmail.com|0123456788|Ban Hang|7000000.0|300.0|500000.0
 NV4|Nguyen Van Dien|nu|HCM|11/2/2002|a@gmail.com|0123456789|Ban Hang|9000000.0|310.0|500000.0

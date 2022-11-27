@@ -12,55 +12,16 @@ public class SanPham {
 	static Scanner sc = new Scanner(System.in);
 	private String id;
 	private String ten, moTa, mau, kichCo;
-	private int gia;
+	private double gia;
 	private String ncc_id;
 	private Date ngayRaMat = new Date();
-	// private int soLuongSanPham;
-	private static int stt_ncc = 0;
-	// // public void DocFile() {
-	// int i = 0;
-	// try {
-	// FileReader fr = new FileReader("database/DSSanPham.txt");
-	// BufferedReader br = new BufferedReader(fr);
-	// try {
-	// String line = "";
-	// while (true) {
-	// line = br.readLine();
-	// if (line == null) {
-	// break;
-	// }
-	// String txt[] = line.split("\\|");
-	// String id=txt[0];
-	// String Ten=txt[1];
-	// String moTa=txt[2];
-	// String Mau=txt[3];
-	// String kichCo=txt[4];
-	// int Gia= Integer.parseInt(txt[5]);
-	// String NCC_ID=txt[6];
-	// String date=txt[7];
-	// String temp[]= date.split("\\/");
-	// int ngay = Integer.parseInt(temp[0]);
-	// int thang = Integer.parseInt(temp[1]);
-	// int nam = Integer.parseInt(temp[2]);
-	// Date ngayRaMat=new Date(ngay,thang,nam);
-	// sp[i] = new SanPham(id, Ten,moTa,Mau,kichCo,Gia,NCC_ID,ngayRaMat);
-	// i++;
-	// }
-	// } finally {
-	// soLuongSanPham = i;
-	// br.close();
-	// }
-
-	// } catch (Exception e) {
-	// System.out.println("KHONG DOC DUOC DU LIEU!!!");
-	// }
-
-	// }
+//	private int soLuongSanPham;
+	
 	public SanPham() {
 
 	}
 
-	public SanPham(String id, String ten, String moTa, String mau, String kichCo, int gia, String ncc_id,
+	public SanPham(String id, String ten, String moTa, String mau, String kichCo, float gia, String ncc_id,
 			Date ngayRaMat) {
 		this.id = id;
 		this.ten = ten;
@@ -114,22 +75,21 @@ public class SanPham {
 		this.kichCo = kichCo;
 	}
 
-	public int getGia() {
+	public double getGia() {
 		return gia;
 	}
 
-	public void setGia(int gia) {
+	public void setGia(double gia) {
 		this.gia = gia;
 	}
 
 	public String getNCC_ID() {
 		return ncc_id;
 	}
-
-	public void setNCC_ID() {
-		// DocFile();
-		this.ncc_id = "NCC" + ++stt_ncc;
+	public void setNCC_ID(String nCC_ID){
+		this.ncc_id=nCC_ID;
 	}
+
 
 	public Date getNgayRaMat() {
 		return ngayRaMat;
@@ -148,33 +108,42 @@ public class SanPham {
 		setMau(sc.nextLine());
 		System.out.print("Moi nhap kich co:");
 		setKichCo(sc.nextLine());
-		System.out.println("Moi nhap loai hang:");
-		System.out.println("||============ Chon thao tac ===============||");
-		System.out.println("||1. Hang New                         	   ||");
-		System.out.println("||2. Hang Likenew                		   ||");
-		System.out.println("||2. Hang Old                			   ||");
-		System.out.println("||==========================================||");
-		System.out.print("Nhap mo ta: ");
-		int select = sc.nextInt();
-		switch (select) {
-			case 1: {
-				setMoTa("New");
-				break;
-			}
-			case 2:
-				setMoTa("Likenew");
-				break;
-			case 3:
-				setMoTa("Old");
-				break;
-			default:
-				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+		int select;
+		while (true) {
+			System.out.println("Moi nhap loai hang:");
+			System.out.println("+-----------------Chon mo ta-----------------+");
+			System.out.println("+-------------------1.New--------------------+");
+			System.out.println("+-----------------2.Likenew------------------+");
+			System.out.println("+-----------------3.Hang Old-----------------+");
+			System.out.println("+--------------------------------------------+");
+			System.out.print("Nhap loai hang: ");
+			select = sc.nextInt();
+			switch (select) {
+				case 1: {
+					setMoTa("New");
+					break;
+				}
+				case 2:
+					setMoTa("Likenew");
+					break;
+				case 3:
+					setMoTa("Old");
+					break;
+				default:
+					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+			
+			
 		}
-		System.out.print("Nhap gia ban:");
-		setGia(sc.nextInt());
-		setNCC_ID();
-		setNgayRaMat();
+		if(select ==1||select==2||select==3){
+			break;
+		}
 	}
+		System.out.print("Nhap gia ban:");
+		setGia(sc.nextFloat());sc.nextLine();
+		System.out.print("Nhap ID nha cung cap:");
+		setNCC_ID(sc.nextLine());
+		setNgayRaMat();
+		}
 
 	@Override
 	public String toString() {
