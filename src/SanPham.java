@@ -21,7 +21,7 @@ public class SanPham {
 
 	}
 
-	public SanPham(String id, String ten, String moTa, String mau, String kichCo, int gia, String ncc_id,
+	public SanPham(String id, String ten, String moTa, String mau, String kichCo, float gia, String ncc_id,
 			Date ngayRaMat) {
 		this.id = id;
 		this.ten = ten;
@@ -86,7 +86,9 @@ public class SanPham {
 	public String getNCC_ID() {
 		return ncc_id;
 	}
-
+	public void setNCC_ID(String nCC_ID){
+		this.ncc_id=nCC_ID;
+	}
 
 
 	public Date getNgayRaMat() {
@@ -106,32 +108,42 @@ public class SanPham {
 		setMau(sc.nextLine());
 		System.out.print("Moi nhap kich co:");
 		setKichCo(sc.nextLine());
-		System.out.println("Moi nhap loai hang:");
-		System.out.println("||============ Chon thao tac ===============||");
-		System.out.println("||1. Hang New                         	   ||");
-		System.out.println("||2. Hang Likenew                		   ||");
-		System.out.println("||2. Hang Old                			   ||");
-		System.out.println("||==========================================||");
-		System.out.print("Nhap mo ta: ");
-		int select = sc.nextInt();
-		switch (select) {
-			case 1: {
-				setMoTa("New");
-				break;
-			}
-			case 2:
-				setMoTa("Likenew");
-				break;
-			case 3:
-				setMoTa("Old");
-				break;
-			default:
-				System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+		int select;
+		while (true) {
+			System.out.println("Moi nhap loai hang:");
+			System.out.println("+-----------------Chon mo ta-----------------+");
+			System.out.println("+-------------------1.New--------------------+");
+			System.out.println("+-----------------2.Likenew------------------+");
+			System.out.println("+-----------------3.Hang Old-----------------+");
+			System.out.println("+--------------------------------------------+");
+			System.out.print("Nhap loai hang: ");
+			select = sc.nextInt();
+			switch (select) {
+				case 1: {
+					setMoTa("New");
+					break;
+				}
+				case 2:
+					setMoTa("Likenew");
+					break;
+				case 3:
+					setMoTa("Old");
+					break;
+				default:
+					System.out.println("Nhap sai thao tac, xin nhap lai !!!");
+			
+			
 		}
-		System.out.print("Nhap gia ban:");
-		setGia(sc.nextInt());
-		setNgayRaMat();
+		if(select ==1||select==2||select==3){
+			break;
+		}
 	}
+		System.out.print("Nhap gia ban:");
+		setGia(sc.nextFloat());sc.nextLine();
+		System.out.print("Nhap ID nha cung cap:");
+		setNCC_ID(sc.nextLine());
+		setNgayRaMat();
+		}
 
 	@Override
 	public String toString() {

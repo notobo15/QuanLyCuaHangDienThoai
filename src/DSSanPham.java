@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
 import Function.Check;
 
 public class DSSanPham implements ThaoTac {
@@ -149,7 +150,7 @@ public class DSSanPham implements ThaoTac {
 				String moTa = txt[2];
 				String Mau = txt[3];
 				String kichCo = txt[4];
-				int Gia = Integer.parseInt(txt[5]);
+				float Gia = Float.parseFloat(txt[5]);
 				String NCC_ID = txt[6];
 				String date = txt[7];
 				String temp[] = date.split("\\/");
@@ -171,6 +172,7 @@ public class DSSanPham implements ThaoTac {
 		} catch (
 
 		Exception e) {
+			e.printStackTrace();
 			System.out.println("Loi khong doc dc file");
 
 		}
@@ -319,9 +321,8 @@ public class DSSanPham implements ThaoTac {
 		System.out.println("|0. Quay lai                                       |");
 		System.out.println("+--------------------------------------------------+");
 		System.out.print("Nhap thao tac : ");
-
-		select = sc.nextInt();
-
+		select = sc.nextInt();sc.nextLine();
+		
 		switch (select) {
 			case 1: {
 				System.out.print("Nhap ID san pham can tim: ");
@@ -330,7 +331,8 @@ public class DSSanPham implements ThaoTac {
 				for (int i = 0; i < size; i++) {
 					if (id.equalsIgnoreCase(sp[i].getId())) {
 						flag = true;
-
+						System.out.println("ID\tTEN\t\t\tMO TA\t\tMAU\t\tKICH CO\t\tGIA\t\tID NHA CUNG CAP\t\tNGAY RA MAT");
+						sp[i].Xuat();
 					}
 				}
 				if (flag == false) {
@@ -345,7 +347,8 @@ public class DSSanPham implements ThaoTac {
 				for (int i = 0; i < size; i++) {
 					if ((sp[i].getTen().toLowerCase().contains(input.toLowerCase()))) {
 						flag = true;
-
+						System.out.println("ID\tTEN\t\t\tMO TA\t\tMAU\t\tKICH CO\t\tGIA\t\tID NHA CUNG CAP\t\tNGAY RA MAT");
+						sp[i].Xuat();
 					}
 				}
 				if (flag == false) {
